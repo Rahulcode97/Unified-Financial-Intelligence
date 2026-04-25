@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCAvenue API Master — Finance Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/theme-portfolio.css">
+    <link rel="stylesheet" href="assets/app-shell.css">
+    <link rel="stylesheet" href="assets/dashboard-pages.css">
+</head>
+<body class="fd-chrome">
+<div class="app-shell">
+    <aside class="sidebar fd-chrome" id="sidebar" aria-label="Main navigation">
+        <div class="sidebar-logo">
+            <div>
+                <div class="logo-text">Finance</div>
+                <div class="logo-sub">Dashboard</div>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">App</div>
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 7.5L9 2l6 5.5V16H3V7.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="6.5" height="6.5" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                <span class="nav-label">Dashboard</span>
+            </a>
+            <a href="graphs.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 15V9M7 15V3M12 15v-5M17 15V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                <span class="nav-label">Analytics</span>
+            </a>
+            <a href="impact.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 12l3.5-3.5L9 12l3-3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M13.5 6H17v3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
+                <span class="nav-label">Impact</span>
+            </a>
+            <a href="ccavenue-master.html" class="nav-item active">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 4.5h12v9H3v-9z" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                <span class="nav-label">CCAvenue API Master</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.5 14.5V3.5L6 6l3.5-2.5L13 6l3.5-2.5v11" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+                <span class="nav-label">Payment Reports</span>
+            </a>
+            <a href="portal-account.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="6" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                <span class="nav-label">Account &amp; Access</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar-placeholder" aria-hidden="true">AK</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name">A. Krishnan</div>
+                    <div class="sidebar-user-role">Finance · Operations</div>
+                </div>
+            </div>
+            <a href="login.html" class="nav-item nav-item--logout" style="margin-top:10px;">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3M12 14l4-4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="nav-label">Sign Out</span>
+            </a>
+        </div>
+    </aside>
+    <button type="button" class="sidebar-toggle" id="sidebarToggle" title="Collapse sidebar" aria-label="Collapse sidebar">‹</button>
+    <div class="main-content">
+        <header class="header">
+            <div class="header-left" style="display:flex;align-items:center;gap:8px">
+                <button type="button" class="fd-mobile-menu" id="mobileMenuBtn" aria-label="Open menu">☰</button>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html" style="color:var(--text-secondary);text-decoration:none">Home</a>
+                    <span class="sep">/</span>
+                    <a href="dashboard.html" style="color:var(--text-secondary);text-decoration:none">Dashboard</a>
+                    <span class="sep">/</span>
+                    <span class="current">CCAvenue</span>
+                    <span class="sep">/</span>
+                    <span class="current">CCAvenue API Master</span>
+                </nav>
+            </div>
+        </header>
+        <div class="page-content">
+            <div class="om-container om-premium-ui">
+                <div class="ds-page-header">
+                    <div>
+                        <h1 class="ds-page-title">CCAvenue API Master</h1>
+                        <p class="ds-page-subtitle">CCAvenue API Orders</p>
+                    </div>
+                    <div class="ds-page-actions">
+                        <button type="button" class="ds-btn ds-btn-secondary" disabled>Export</button>
+                        <button type="button" class="ds-btn ds-btn-secondary" disabled>Payout Summary</button>
+                    </div>
+                </div>
+
+                <div class="ds-filter-bar" style="flex-wrap:wrap;">
+                    <div class="ds-filter-group">
+                        <button type="button" class="ds-quick-btn" disabled>This Month</button>
+                        <button type="button" class="ds-quick-btn" disabled>Last Month</button>
+                        <button type="button" class="ds-quick-btn" disabled>This FY</button>
+                    </div>
+                    <div class="ds-filter-group" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                        <input type="date" class="ds-input ds-input-sm" value="2026-04-01" disabled>
+                        <span class="ds-text-sm" style="color:var(--text-muted)">to</span>
+                        <input type="date" class="ds-input ds-input-sm" value="2026-04-30" disabled>
+                    </div>
+                    <div class="ds-filter-group" style="flex:1;min-width:200px">
+                        <input type="search" class="ds-input" placeholder="Search orders, ref, paper ID…" disabled style="width:100%;max-width:400px">
+                    </div>
+                </div>
+
+                <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px"><strong>Tip:</strong> click a row or <strong>Details</strong> to open the transaction summary in a dialog (matches production flow).</p>
+
+                <div class="ds-table-wrap">
+                    <table class="ds-table om-table" id="camMainTable" aria-label="CCAvenue API orders">
+                        <thead>
+                            <tr>
+                                <th data-col="date"><div class="om-th-content">Date</div></th>
+                                <th data-col="order_no"><div class="om-th-content">Order No</div></th>
+                                <th data-col="card"><div class="om-th-content">Card</div></th>
+                                <th data-col="currency"><div class="om-th-content">Curr</div></th>
+                                <th data-col="gross"><div class="om-th-content">Gross</div></th>
+                                <th data-col="order_amt"><div class="om-th-content">Order Amt</div></th>
+                                <th data-col="conf"><div class="om-th-content">Conference</div></th>
+                                <th data-col="paper_id"><div class="om-th-content">Paper ID</div></th>
+                                <th data-col="status"><div class="om-th-content">Status</div></th>
+                                <th data-col="actions" style="min-width:240px">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="camTableBody">
+                            <tr class="om-row" data-tx-ref="REF-CCA-2026-04-814021" tabindex="0" role="button" aria-label="Order ORD-814021, open detail">
+                                <td>14-Apr-2026</td>
+                                <td>ORD-814021-GRS-AX</td>
+                                <td><span class="cam-pay-badge" title="Visa"><svg class="cam-pay-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M9.112 8.262L5.97 15.758H3.92L2.374 9.775c-.094-.368-.175-.503-.461-.658C1.447 8.864.677 8.627 0 8.479l.046-.217h3.3a.904.904 0 01.894.764l.817 4.338 2.018-5.102zm8.033 5.049c.008-1.979-2.736-2.088-2.717-2.972.006-.269.262-.555.822-.628a3.66 3.66 0 011.913.336l.34-1.59a5.207 5.207 0 00-1.814-.333c-1.917 0-3.266 1.02-3.278 2.479-.012 1.079.963 1.68 1.698 2.04.756.367 1.01.603 1.006.931-.005.504-.602.725-1.16.734-.975.015-1.54-.263-1.992-.473l-.351 1.642c.453.208 1.289.39 2.156.398 2.037 0 3.37-1.006 3.377-2.564m5.061 2.447H24l-1.565-7.496h-1.656a.883.883 0 00-.826.55l-2.909 6.946h2.036l.405-1.12h2.488zm-2.163-2.656l1.02-2.815.588 2.815zm-8.16-4.84l-1.603 7.496H8.34l1.605-7.496z"/></svg></span></td>
+                                <td>INR</td>
+                                <td>18,500.00</td>
+                                <td>18,500.00</td>
+                                <td><span class="om-badge">ICRAI 2026</span></td>
+                                <td><span class="cam-paper-id-clip">10482</span></td>
+                                <td>Shipped</td>
+                                <td>
+                                    <span class="cam-action-gap">
+                                        <span class="cam-led-wrap" role="img" aria-label="Both verified">
+                                            <span class="cam-led cam-led--conf is-on" title="Conference"></span>
+                                            <span class="cam-led cam-led--fin is-on" title="Finance"></span>
+                                        </span>
+                                        <button type="button" class="om-action-btn om-edit" disabled>Edit</button>
+                                        <a href="#" class="om-action-btn js-tx-detail" data-tx-ref="REF-CCA-2026-04-814021">Details</a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="om-row" data-tx-ref="REF-CCA-2026-04-220011" tabindex="0" role="button" aria-label="Order ORD-220011, open detail">
+                                <td>12-Apr-2026</td>
+                                <td>ORD-220011-M7</td>
+                                <td><span class="cam-pay-badge" title="Mastercard"><svg class="cam-pay-svg cam-pay-svg--mc" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M11.343 18.031c.058.049.12.098.181.146-1.177.783-2.59 1.238-4.107 1.238C3.32 19.416 0 16.096 0 12c0-4.095 3.32-7.416 7.416-7.416 1.518 0 2.931.456 4.105 1.238-.06.051-.12.098-.165.15C9.6 7.489 8.595 9.688 8.595 12c0 2.311 1.001 4.51 2.748 6.031zm5.241-13.447c-1.52 0-2.931.456-4.105 1.238.06.051.12.098.165.15C14.4 7.489 15.405 9.688 15.405 12c0 2.31-1.001 4.507-2.748 6.031-.058.049-.12.098-.181.146 1.177.783 2.588 1.238 4.107 1.238C20.68 19.416 24 16.096 24 12c0-4.094-3.32-7.416-7.416-7.416zM12 6.174c-.096.075-.189.15-.28.231C10.156 7.764 9.169 9.765 9.169 12c0 2.236.987 4.236 2.551 5.595.09.08.185.158.28.232.096-.074.189-.152.28-.232 1.563-1.359 2.551-3.359 2.551-5.595 0-2.235-.987-4.236-2.551-5.595-.09-.08-.184-.156-.28-.231z"/></svg></span></td>
+                                <td>INR</td>
+                                <td>9,200.00</td>
+                                <td>9,200.00</td>
+                                <td><span class="om-badge">NCME 2026</span></td>
+                                <td><span class="cam-paper-id-clip">21005</span></td>
+                                <td>Refunded</td>
+                                <td>
+                                    <span class="cam-action-gap">
+                                        <span class="cam-led-wrap" role="img" aria-label="Both verified">
+                                            <span class="cam-led cam-led--conf is-on"></span>
+                                            <span class="cam-led cam-led--fin is-on"></span>
+                                        </span>
+                                        <button type="button" class="om-action-btn om-edit" disabled>Edit</button>
+                                        <a href="#" class="om-action-btn js-tx-detail" data-tx-ref="REF-CCA-2026-04-220011">Details</a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="om-row" data-tx-ref="REF-CCA-2026-03-990441" tabindex="0" role="button" aria-label="Order ORD-USD-99, open detail">
+                                <td>28-Mar-2026</td>
+                                <td>ORD-USD-99-TX</td>
+                                <td><span class="cam-pay-badge" title="UPI"><svg class="cam-pay-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M11.5 14.692h.885v-2.076h2.423q.444 0 .76-.317.316-.316.316-.76v-1.154q0-.444-.316-.761-.316-.316-.76-.316H11.5zm5.77 0h.884V9.308h-.885zm-4.885-2.961v-1.539h2.307q.116 0 .212.097.096.096.096.211v.923q0 .116-.096.212t-.212.096zm-5.577 2.961h2.23q.445 0 .761-.316.317-.316.317-.76V9.308H9.23V13.5q0 .116-.096.212t-.212.096h-2q-.115 0-.211-.096t-.096-.212V9.308H5.73v4.308q0 .444.316.76.317.316.76.316M4.616 19q-.69 0-1.153-.462T3 17.384V6.616q0-.691.463-1.153T4.615 5h14.77q.69 0 1.152.463T21 6.616v10.769q0 .69-.463 1.153T19.385 19z"/></svg></span></td>
+                                <td>USD</td>
+                                <td>350.00</td>
+                                <td>350.00</td>
+                                <td><span class="om-badge">WCM 2026</span></td>
+                                <td><span class="cam-paper-id-clip">5012</span></td>
+                                <td>Shipped</td>
+                                <td>
+                                    <span class="cam-action-gap">
+                                        <span class="cam-led-wrap"><span class="cam-led cam-led--conf is-on"></span><span class="cam-led cam-led--fin is-on"></span></span>
+                                        <button type="button" class="om-action-btn om-edit" disabled>Edit</button>
+                                        <a href="#" class="om-action-btn js-tx-detail" data-tx-ref="REF-CCA-2026-03-990441">Details</a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="om-row" data-tx-ref="REF-CCA-2026-04-101902" tabindex="0" role="button" aria-label="Order ORD-GBP, open detail">
+                                <td>10-Apr-2026</td>
+                                <td>ORD-GBP-7K-PL</td>
+                                <td><span class="cam-pay-badge" title="Visa"><svg class="cam-pay-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M9.112 8.262L5.97 15.758H3.92L2.374 9.775c-.094-.368-.175-.503-.461-.658C1.447 8.864.677 8.627 0 8.479l.046-.217h3.3a.904.904 0 01.894.764l.817 4.338 2.018-5.102zm8.033 5.049c.008-1.979-2.736-2.088-2.717-2.972.006-.269.262-.555.822-.628a3.66 3.66 0 011.913.336l.34-1.59a5.207 5.207 0 00-1.814-.333c-1.917 0-3.266 1.02-3.278 2.479-.012 1.079.963 1.68 1.698 2.04.756.367 1.01.603 1.006.931-.005.504-.602.725-1.16.734-.975.015-1.54-.263-1.992-.473l-.351 1.642c.453.208 1.289.39 2.156.398 2.037 0 3.37-1.006 3.377-2.564m5.061 2.447H24l-1.565-7.496h-1.656a.883.883 0 00-.826.55l-2.909 6.946h2.036l.405-1.12h2.488zm-2.163-2.656l1.02-2.815.588 2.815zm-8.16-4.84l-1.603 7.496H8.34l1.605-7.496z"/></svg></span></td>
+                                <td>GBP</td>
+                                <td>240.00</td>
+                                <td>240.00</td>
+                                <td><span class="om-badge">ICRAI 2026</span></td>
+                                <td><span class="cam-paper-id-clip">11902</span></td>
+                                <td>Shipped</td>
+                                <td>
+                                    <span class="cam-action-gap">
+                                        <span class="cam-led-wrap"><span class="cam-led cam-led--conf is-on"></span><span class="cam-led cam-led--fin is-on"></span></span>
+                                        <button type="button" class="om-action-btn om-edit" disabled>Edit</button>
+                                        <a href="#" class="om-action-btn js-tx-detail" data-tx-ref="REF-CCA-2026-04-101902">Details</a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="om-row" data-tx-ref="REF-CCA-2026-04-552200" tabindex="0" role="button" aria-label="Order ORD-NB, open detail">
+                                <td>08-Apr-2026</td>
+                                <td>ORD-NB-552200</td>
+                                <td><span style="font-size:11px;color:#64748b">NetBank</span></td>
+                                <td>INR</td>
+                                <td>4,800.00</td>
+                                <td>4,800.00</td>
+                                <td><span class="om-badge">ICRAI 2026</span></td>
+                                <td><span class="cam-paper-id-clip">3320</span></td>
+                                <td>Shipped</td>
+                                <td>
+                                    <span class="cam-action-gap">
+                                        <span class="cam-led-wrap"><span class="cam-led cam-led--conf is-on"></span><span class="cam-led cam-led--fin is-on"></span></span>
+                                        <button type="button" class="om-action-btn om-edit" disabled>Edit</button>
+                                        <a href="#" class="om-action-btn js-tx-detail" data-tx-ref="REF-CCA-2026-04-552200">Details</a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="om-row" data-tx-ref="REF-CCA-2026-04-331155" tabindex="0" role="button" aria-label="Order wallet, open detail">
+                                <td>05-Apr-2026</td>
+                                <td>ORD-WL-331155</td>
+                                <td><span style="font-size:11px;color:#64748b">Wallet</span></td>
+                                <td>INR</td>
+                                <td>2,150.00</td>
+                                <td>2,150.00</td>
+                                <td><span class="om-badge">NCME 2026</span></td>
+                                <td><span class="cam-paper-id-clip">7781</span></td>
+                                <td>Shipped</td>
+                                <td>
+                                    <span class="cam-action-gap">
+                                        <span class="cam-led-wrap"><span class="cam-led cam-led--conf is-on"></span><span class="cam-led cam-led--fin is-on"></span></span>
+                                        <button type="button" class="om-action-btn om-edit" disabled>Edit</button>
+                                        <a href="#" class="om-action-btn js-tx-detail" data-tx-ref="REF-CCA-2026-04-331155">Details</a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="ds-pagination">
+                    <div>Showing <strong>1–6</strong> of <strong>6</strong></div>
+                    <div class="ds-pagination-controls">
+                        <select class="ds-select" style="width:100px" disabled><option>50 rows</option></select>
+                        <button type="button" class="ds-page-btn" disabled>‹ Prev</button>
+                        <span>Page 1 of 1</span>
+                        <button type="button" class="ds-page-btn" disabled>Next ›</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tx-modal-overlay" id="txModalOverlay" aria-hidden="true" role="presentation">
+    <div class="tx-modal" role="dialog" aria-modal="true" aria-labelledby="txModalTitle">
+        <div class="tx-modal__head">
+            <h2 id="txModalTitle">Transaction Detail</h2>
+            <button type="button" class="tx-modal__close" onclick="closePortfolioTxModal()" aria-label="Close">×</button>
+        </div>
+        <div class="tx-modal__body" id="txModalBody"></div>
+    </div>
+</div>
+
+<script src="assets/tx-details-data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+    var body = document.getElementById('camTableBody');
+    if (!body) return;
+    function openFromTr(tr) {
+        var ref = tr.getAttribute('data-tx-ref');
+        if (!ref || !window.openPortfolioTxModal) return;
+        var order = tr.querySelector('td:nth-child(2)');
+        var title = order ? 'Transaction Detail — ' + order.textContent.trim() : 'Transaction Detail';
+        window.openPortfolioTxModal(ref, title);
+    }
+    body.addEventListener('click', function (e) {
+        if (e.target.closest('.om-edit')) {
+            e.stopPropagation();
+            return;
+        }
+        if (e.target.closest('.js-tx-detail')) {
+            e.preventDefault();
+            var tr = e.target.closest('tr');
+            if (tr) openFromTr(tr);
+            return;
+        }
+        var tr = e.target.closest('tr.om-row');
+        if (tr) openFromTr(tr);
+    });
+    body.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        var tr = e.target.closest('tr.om-row');
+        if (tr && e.target === tr) {
+            e.preventDefault();
+            openFromTr(tr);
+        }
+    });
+})();
+</script>
+</body>
+</html>

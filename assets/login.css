@@ -1,0 +1,200 @@
+/**
+ * Login — Financial Atelier (light) — portfolio copy
+ */
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+    --lg-bg: #fbf9f6;
+    --lg-surface-low: #f5f3f0;
+    --lg-surface: #ffffff;
+    --lg-primary: #0c5252;
+    --lg-primary-mid: #2d6a6a;
+    --lg-on: #1b1c1a;
+    --lg-muted: #3f4848;
+    --lg-font-display: "Playfair Display", Georgia, serif;
+    --lg-font-body: "Source Sans 3", "Source Sans Pro", system-ui, sans-serif;
+    --lg-shadow: 0 2px 24px rgba(27, 28, 26, 0.08);
+    --lg-shadow-lg: 0 24px 60px -20px rgba(12, 82, 82, 0.2);
+}
+
+body.login-atelier {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    font-family: var(--lg-font-body);
+    color: var(--lg-on);
+    background: var(--lg-bg);
+    position: relative;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.login-atelier__glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 80% 50% at 20% 20%, rgba(12, 82, 82, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(45, 106, 106, 0.1) 0%, transparent 45%);
+}
+
+.login-atelier__shell {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 440px;
+    opacity: 0;
+    animation: loginCardIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+@keyframes loginCardIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.login-atelier__card {
+    background: var(--lg-surface);
+    border-radius: 1.5rem;
+    padding: clamp(1.75rem, 4vw, 2.5rem);
+    box-shadow: var(--lg-shadow-lg);
+    border: 1px solid rgba(191, 200, 200, 0.5);
+}
+
+.login-atelier__back {
+    margin: 0 0 1rem;
+    text-align: center;
+}
+.login-atelier__back-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--lg-primary-mid);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+.login-atelier__back-link:hover {
+    color: var(--lg-primary);
+    border-bottom-color: currentColor;
+}
+
+.login-atelier__brand { text-align: center; margin-bottom: 1.75rem; }
+
+.login-atelier__kicker {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--lg-primary);
+    margin: 0 0 0.5rem;
+}
+
+.login-atelier__title {
+    font-family: var(--lg-font-display);
+    font-size: clamp(1.75rem, 4.5vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--lg-primary);
+    margin: 0;
+}
+.login-atelier__title span {
+    display: block;
+    font-size: 0.92em;
+    font-weight: 600;
+    margin-top: 0.2rem;
+    color: var(--lg-muted);
+}
+
+.login-atelier__field-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--lg-on);
+    margin-bottom: 0.4rem;
+}
+.login-atelier__input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 0.875rem;
+    border: none;
+    background: var(--lg-surface-low);
+    color: var(--lg-on);
+    font-family: var(--lg-font-body);
+    font-size: 1rem;
+    transition: box-shadow 0.2s;
+}
+.login-atelier__input::placeholder { color: #707978; opacity: 0.85; }
+.login-atelier__input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(12, 82, 82, 0.22);
+    background: #fff;
+}
+.login-atelier__email-block { margin-bottom: 1.15rem; }
+.login-atelier__hint {
+    margin-top: 0.45rem;
+    font-size: 0.8rem;
+    color: var(--lg-muted);
+    line-height: 1.4;
+}
+.login-atelier__actions { display: flex; flex-direction: column; gap: 0.75rem; }
+.login-atelier__btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    border: none;
+    border-radius: 0.875rem;
+    padding: 0.9rem 1.15rem;
+    font-family: var(--lg-font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.login-atelier__btn--primary {
+    background: linear-gradient(90deg, var(--lg-primary), var(--lg-primary-mid));
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(12, 82, 82, 0.28);
+}
+.login-atelier__btn--primary:hover { opacity: 0.95; }
+.login-atelier__btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.login-atelier__btn--google {
+    background: #fff;
+    color: #1b1c1a;
+    border: 1px solid rgba(191, 200, 200, 0.9);
+    box-shadow: var(--lg-shadow);
+}
+.login-atelier__btn--google:hover { background: var(--lg-surface-low); }
+.login-atelier__status {
+    min-height: 1.25rem;
+    margin-top: 0.9rem;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--lg-muted);
+}
+.login-atelier__status--err { color: #b91c1c; }
+.login-atelier__passkey-note {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    background: rgba(12, 82, 82, 0.06);
+    border: 1px solid rgba(12, 82, 82, 0.12);
+    font-size: 0.8rem;
+    color: var(--lg-muted);
+    line-height: 1.45;
+}
+@media (prefers-reduced-motion: reduce) {
+    .login-atelier__shell { animation: none; opacity: 1; }
+}

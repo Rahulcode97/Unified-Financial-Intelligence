@@ -1,0 +1,159 @@
+/* Landing homepage — typography aligned with Account & Access (portal-account) */
+.land-root {
+    /* Match portal-account.css tokens */
+    --land-display: "Playfair Display", Georgia, serif;
+    --land-body: "Source Sans 3", "Source Sans Pro", system-ui, sans-serif;
+    --land-on-surface: #1b1c1a;
+    --land-on-variant: #3f4848;
+    --land-primary: #0c5252;
+    --land-primary-mid: #2d6a6a;
+    --land-bg: #fbf9f6;
+    --land-card: #ffffff;
+    --land-glow: rgba(12, 82, 82, 0.12);
+    font-family: var(--land-body);
+    color: var(--land-on-surface);
+    background: var(--land-bg);
+    min-height: 100vh;
+}
+.land-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: min(88vh, 900px);
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 5vw, 3rem) 3rem;
+}
+.land-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 90% 60% at 10% 0%, var(--land-glow) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 50% at 90% 20%, rgba(45, 106, 106, 0.1) 0%, transparent 50%),
+        linear-gradient(180deg, #fffefb 0%, var(--land-bg) 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+.land-hero__inner { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.land-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: clamp(2rem, 6vw, 4rem); }
+.land-mark {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--land-body);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--land-primary);
+    letter-spacing: -0.02em;
+}
+.land-mark svg { width: 32px; height: 32px; }
+.land-top-actions { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.land-link {
+    text-decoration: none;
+    font-family: var(--land-body);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--land-on-variant);
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    transition: color 0.2s, background 0.2s;
+}
+.land-link:hover { color: var(--land-primary); background: rgba(12, 82, 82, 0.06); }
+.land-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.65rem 1.2rem; border-radius: 999px; font-size: 0.82rem; font-weight: 700;
+    text-decoration: none; border: none; cursor: pointer;
+    font-family: var(--land-body);
+    transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+}
+.land-btn--ghost { background: #fff; color: var(--land-primary); box-shadow: 0 1px 3px rgba(0,0,0,0.06); border: 1px solid rgba(12, 82, 82, 0.15); }
+.land-btn--ghost:hover { box-shadow: 0 4px 14px rgba(12, 82, 82, 0.12); }
+.land-btn--solid {
+    background: linear-gradient(135deg, var(--land-primary), var(--land-primary-mid));
+    color: #fff; box-shadow: 0 4px 20px rgba(12, 82, 82, 0.35);
+}
+.land-btn--solid:hover { opacity: 0.96; transform: translateY(-1px); }
+.land-hero h1 {
+    font-family: var(--land-display);
+    font-size: clamp(2rem, 4.5vw, 2.85rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--land-primary);
+    margin: 0 0 1.1rem;
+    max-width: 22ch;
+}
+.land-hero__lead {
+    font-family: var(--land-body);
+    font-size: clamp(1.02rem, 1.6vw, 1.15rem);
+    font-weight: 400;
+    color: var(--land-on-variant);
+    line-height: 1.65;
+    max-width: min(58ch, 100%);
+    margin: 0 0 1.75rem;
+}
+.land-hero__cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem; }
+.land-hero__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 540px; }
+@media (max-width: 520px) { .land-hero__stats { grid-template-columns: 1fr; } }
+.land-stat {
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(12, 82, 82, 0.1);
+    border-radius: 1rem;
+    padding: 1rem 1.15rem;
+    backdrop-filter: blur(8px);
+}
+.land-stat b {
+    display: block;
+    font-family: var(--land-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--land-primary);
+    letter-spacing: -0.02em;
+}
+.land-stat span {
+    display: block;
+    margin-top: 0.35rem;
+    font-family: var(--land-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--land-on-variant);
+}
+.land-section { padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.25rem, 5vw, 3rem); max-width: 1120px; margin: 0 auto; }
+.land-section h2 {
+    font-family: var(--land-display);
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    font-weight: 600;
+    margin: 0 0 1.75rem;
+    color: var(--land-primary);
+    letter-spacing: -0.02em;
+}
+.land-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.15rem; }
+.land-tile {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--land-card);
+    border: 1px solid rgba(27, 28, 26, 0.08);
+    border-radius: 1.15rem; padding: 1.35rem 1.4rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: box-shadow 0.25s, border-color 0.25s, transform 0.2s;
+}
+.land-tile:hover { box-shadow: 0 12px 36px rgba(12, 82, 82, 0.12); border-color: rgba(12, 82, 82, 0.2); transform: translateY(-2px); }
+.land-tile__icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin-bottom: 0.9rem; background: linear-gradient(135deg, rgba(12, 82, 82, 0.1), rgba(45, 106, 106, 0.08)); }
+.land-tile h3 {
+    font-family: var(--land-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.4rem;
+    color: var(--land-primary);
+}
+.land-tile p { font-family: var(--land-body); font-size: 0.9rem; color: var(--land-on-variant); line-height: 1.5; margin: 0; }
+.land-tile__arrow { margin-top: 0.9rem; font-size: 0.75rem; font-weight: 700; color: var(--land-primary); font-family: var(--land-body); }
+.land-footer {
+    font-family: var(--land-body);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--land-on-variant);
+    border-top: 1px solid rgba(27, 28, 26, 0.08);
+}
+.land-footer a { color: var(--land-primary); font-weight: 600; }

@@ -1,0 +1,106 @@
+/**
+ * Transaction detail HTML fragments for the modal (keyed by CCAvenue ref).
+ */
+(function () {
+    var d = {};
+
+    d['REF-CCA-2026-04-814021'] = ''
+        + '<div class="cc-api-detail">'
+        + '<div class="section-header">Transaction type: Shipped</div>'
+        + '<div class="detail-section"><h4>💰 Financial Summary Comparison</h4>'
+        + '<table class="detail-table compact"><thead><tr>'
+        + '<th>Src</th><th>Curr</th><th>Ord Amt</th><th>Disc</th><th>%</th><th>PG Amt</th><th>Tax</th><th>Payable</th><th>Basic</th><th>GST</th><th>Conv Rt</th>'
+        + '</tr></thead><tbody>'
+        + '<tr><td><strong>Order</strong></td><td><span class="badge badge-warning">INR</span></td><td class="amount-highlight">₹18,500.00</td><td></td><td>1.90%</td><td class="amount-deduct">₹251.00</td><td>₹0.00</td><td class="amount-highlight">₹18,249.00</td><td>₹15,677.97</td><td>₹2,822.03</td><td>1.00</td></tr>'
+        + '<tr><td><strong>Txn</strong></td><td><span class="badge badge-warning">INR</span></td><td class="amount-highlight">₹18,500.00</td><td>₹0.00</td><td>1.90%</td><td class="amount-deduct">₹251.00</td><td>₹0.00</td><td class="amount-highlight">₹18,249.00</td><td>₹15,677.97</td><td>₹2,822.03</td><td>1.00</td></tr>'
+        + '</tbody></table></div>'
+        + '<div class="detail-section"><h4>📋 Transaction Summary</h4><table class="detail-table"><tbody>'
+        + '<tr><td>CCAvenue Order No</td><td><code>ORD-814021-GRS-AX</code></td></tr>'
+        + '<tr><td>CCAvenue Ref No</td><td><code>REF-CCA-2026-04-814021</code></td></tr>'
+        + '<tr><td>Payout / Pay ID</td><td><code>901002441</code></td></tr>'
+        + '<tr><td>Transaction type</td><td><span class="badge badge-success">Shipped</span></td></tr>'
+        + '</tbody></table></div>'
+        + '<div class="two-col"><div class="detail-section"><h4>📅 Order Dates</h4><table class="detail-table"><tbody>'
+        + '<tr><td>Order Date</td><td>14 Apr 2026, 11:20 AM</td></tr><tr><td>Order Status</td><td><span class="badge badge-success">Shipped</span></td></tr>'
+        + '</tbody></table></div><div class="detail-section"><h4>💳 Payment</h4><table class="detail-table"><tbody>'
+        + '<tr><td>Payment Mode</td><td><span class="badge badge-primary">Credit Card</span></td></tr><tr><td>Card Network</td><td>Visa</td></tr>'
+        + '</tbody></table></div></div>'
+        + '<div class="detail-section"><h4>👤 Customer (Billing)</h4><table class="detail-table"><tbody>'
+        + '<tr><td>Name</td><td><strong>R. Mehta</strong></td></tr><tr><td>Email</td><td><a href="#">r.mehta@institute.ac.in</a></td></tr><tr><td>Paper ID</td><td>10482</td></tr>'
+        + '</tbody></table></div>'
+        + '</div>';
+
+    d['REF-CCA-2026-04-220011'] = ''
+        + '<div class="cc-api-detail">'
+        + '<div class="section-header">Transaction type: Refunded</div>'
+        + '<div class="detail-section"><h4>📋 Transaction Summary</h4><table class="detail-table"><tbody>'
+        + '<tr><td>CCAvenue Order No</td><td><code>ORD-220011-M7</code></td></tr>'
+        + '<tr><td>CCAvenue Ref No</td><td><code>REF-CCA-2026-04-220011</code></td></tr>'
+        + '<tr><td>Transaction type</td><td><span class="badge badge-success">Refunded</span></td></tr>'
+        + '</tbody></table></div>'
+        + '<div class="detail-section"><h4>💰 Amounts</h4><table class="detail-table"><tbody>'
+        + '<tr><td>Order amount</td><td>₹9,200.00 INR</td></tr><tr><td>Refund to customer</td><td>₹9,200.00</td></tr>'
+        + '</tbody></table></div>'
+        + '<div class="detail-section"><h4>👤 Customer</h4><table class="detail-table"><tbody>'
+        + '<tr><td>Paper ID</td><td>21005</td></tr><tr><td>Conference</td><td>NCME 2026</td></tr>'
+        + '</tbody></table></div>'
+        + '</div>';
+
+    d['REF-CCA-2026-03-990441'] = ''
+        + '<div class="cc-api-detail">'
+        + '<div class="section-header">Transaction type: Shipped</div>'
+        + '<div class="detail-section"><h4>💰 Financial Summary Comparison</h4>'
+        + '<table class="detail-table compact"><thead><tr>'
+        + '<th>Src</th><th>Curr</th><th>Ord Amt</th><th>Disc</th><th>%</th><th>PG Amt</th><th>Tax</th><th>Payable</th><th>Basic</th><th>GST</th><th>Conv Rt</th>'
+        + '</tr></thead><tbody>'
+        + '<tr><td><strong>Order</strong></td><td><span class="badge badge-warning">USD</span></td><td class="amount-highlight">USD 350.00</td><td></td><td>1.90%</td><td class="amount-deduct">USD 5.10</td><td>USD 0.00</td><td class="amount-highlight">USD 344.90</td><td></td><td></td><td>288.00</td></tr>'
+        + '<tr><td><strong>Txn</strong></td><td><span class="badge badge-warning">INR</span></td><td class="amount-highlight">₹1,00,800.00</td><td>₹0.00</td><td>1.90%</td><td class="amount-deduct">₹1,470.00</td><td>₹0.00</td><td class="amount-highlight">₹99,330.00</td><td>₹84,177.97</td><td>₹15,152.03</td><td>288.00</td></tr>'
+        + '</tbody></table></div>'
+        + '<div class="detail-section"><h4>📋 Transaction Summary</h4><table class="detail-table"><tbody>'
+        + '<tr><td>CCAvenue Ref No</td><td><code>REF-CCA-2026-03-990441</code></td></tr>'
+        + '<tr><td>Payout / Pay ID</td><td><code>900882144</code></td></tr>'
+        + '</tbody></table></div>'
+        + '<div class="two-col"><div class="detail-section"><h4>💳 Payment Information</h4><table class="detail-table"><tbody>'
+        + '<tr><td>Payment Mode</td><td><span class="badge badge-primary">Unified Payments</span></td></tr>'
+        + '<tr><td>Card Network</td><td>UPI / QR</td></tr></tbody></table></div>'
+        + '<div class="detail-section"><h4>👤 Customer</h4><table class="detail-table"><tbody>'
+        + '<tr><td>Name</td><td><strong>Dr. Ananya Deshpande</strong></td></tr>'
+        + '<tr><td>Email</td><td><a href="#">ananya.d+paper5012@univ.edu.in</a></td></tr>'
+        + '<tr><td>Paper ID</td><td>5012</td></tr>'
+        + '</tbody></table></div></div>'
+        + '</div>';
+
+    d['REF-CCA-2026-04-101902'] = ''
+        + '<div class="cc-api-detail">'
+        + '<div class="section-header">Transaction type: Shipped</div>'
+        + '<div class="detail-section"><h4>📋 Transaction Summary</h4><table class="detail-table"><tbody>'
+        + '<tr><td>Order No</td><td><code>ORD-GBP-7K-PL</code></td></tr>'
+        + '<tr><td>Ref</td><td><code>REF-CCA-2026-04-101902</code></td></tr>'
+        + '<tr><td>Currency</td><td>GBP · settled as INR PayId</td></tr>'
+        + '</tbody></table></div>'
+        + '<div class="detail-section"><h4>👤 Customer</h4><table class="detail-table"><tbody>'
+        + '<tr><td>Paper ID</td><td>11902</td></tr><tr><td>Conference</td><td>ICRAI 2026</td></tr>'
+        + '</tbody></table></div>'
+        + '</div>';
+
+    d['REF-CCA-2026-04-552200'] = ''
+        + '<div class="cc-api-detail">'
+        + '<div class="section-header">Transaction type: Shipped</div>'
+        + '<p style="color:#64748b;font-size:0.9rem">INR net banking line — same verification LEDs as the grid.</p>'
+        + '<div class="detail-section"><table class="detail-table"><tbody>'
+        + '<tr><td>Ref</td><td><code>REF-CCA-2026-04-552200</code></td></tr>'
+        + '<tr><td>Order</td><td><code>ORD-NB-552200</code></td></tr>'
+        + '<tr><td>Amount</td><td>₹4,800.00</td></tr><tr><td>Paper ID</td><td>3320</td></tr>'
+        + '</tbody></table></div></div>';
+
+    d['REF-CCA-2026-04-331155'] = ''
+        + '<div class="cc-api-detail">'
+        + '<div class="section-header">Transaction type: Shipped</div>'
+        + '<div class="detail-section"><table class="detail-table"><tbody>'
+        + '<tr><td>Ref</td><td><code>REF-CCA-2026-04-331155</code></td></tr>'
+        + '<tr><td>Worldline wallet</td><td>Test capture</td></tr>'
+        + '<tr><td>Paper ID</td><td>7781</td></tr>'
+        + '</tbody></table></div></div>';
+
+    window.PORTFOLIO_TX_DETAILS = d;
+})();

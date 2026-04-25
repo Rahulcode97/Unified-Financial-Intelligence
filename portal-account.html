@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account &amp; Access — Finance Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/theme-portfolio.css">
+    <link rel="stylesheet" href="assets/app-shell.css">
+    <link rel="stylesheet" href="assets/portal-account.css">
+    <link rel="stylesheet" href="assets/portal-page-portfolio.css">
+</head>
+<body class="fd-chrome page-portal-account">
+<div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+        <div class="sidebar-logo">
+            <div><div class="logo-text">Finance</div><div class="logo-sub">Dashboard</div></div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">App</div>
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 7.5L9 2l6 5.5V16H3V7.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="6.5" height="6.5" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                <span class="nav-label">Dashboard</span>
+            </a>
+            <a href="graphs.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 15V9M7 15V3M12 15v-5M17 15V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                <span class="nav-label">Analytics</span>
+            </a>
+            <a href="impact.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 12l3.5-3.5L9 12l3-3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M13.5 6H17v3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
+                <span class="nav-label">Impact</span>
+            </a>
+            <a href="ccavenue-master.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 4.5h12v9H3v-9z" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                <span class="nav-label">CCAvenue API Master</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.5 14.5V3.5L6 6l3.5-2.5L13 6l3.5-2.5v11" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+                <span class="nav-label">Payment Reports</span>
+            </a>
+            <a href="portal-account.html" class="nav-item active">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="6" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M2.5 14c0-2 1.7-3.5 3.8-3.5h.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                <span class="nav-label">Account &amp; Access</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar-placeholder">A</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name">A. Krishnan</div>
+                    <div class="sidebar-user-role">Admin · Finance</div>
+                </div>
+            </div>
+            <a href="login.html" class="nav-item nav-item--logout" style="margin-top:10px">
+                <span class="nav-label">Sign Out</span>
+            </a>
+        </div>
+    </aside>
+    <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar">‹</button>
+    <div class="main-content">
+        <header class="header">
+            <div class="header-left" style="display:flex;align-items:center;gap:8px">
+                <button type="button" class="fd-mobile-menu" id="mobileMenuBtn" aria-label="Open menu">☰</button>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html" style="color:var(--text-secondary);text-decoration:none">Home</a>
+                    <span class="sep">/</span>
+                    <a href="dashboard.html" style="color:var(--text-secondary);text-decoration:none">Dashboard</a>
+                    <span class="sep">/</span>
+                    <span class="current">Account &amp; Access</span>
+                </nav>
+            </div>
+        </header>
+        <div class="page-content">
+
+<div class="portal-wrap">
+    <section class="portal-hero-panel">
+        <div class="portal-hero-inner">
+            <div class="portal-avatar-large--ph" aria-hidden="true">A</div>
+            <div>
+                <p class="portal-kicker">Your Profile</p>
+                <h1 class="portal-name">A. Krishnan</h1>
+                <p class="portal-email">a.krishnan@grscholastic.in</p>
+                <div class="portal-tags">
+                    <span class="portal-tag portal-tag--admin">admin</span>
+                    <span class="portal-tag portal-tag--director">director</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="portal-flash portal-flash--ok" id="demoFlash" style="display:none">Update recorded.</div>
+
+    <div class="portal-grid cols-2">
+        <div class="portal-card">
+            <h2>Sign-In &amp; Security</h2>
+            <p class="portal-sub">Use a passkey (Windows Hello, phone, or security key) for quick sign-in on this portal—same flow as the login page.</p>
+            <div class="portal-stat-row">
+                <div class="portal-stat-row__left">
+                    <div class="portal-stat-icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M6 10V8a6 6 0 0 1 12 0v2"/><path d="M8 14v2a4 4 0 0 0 8 0v-2"/></svg>
+                    </div>
+                    <div>
+                        <p class="portal-field-label" style="margin-bottom:0.15rem;">Passkeys</p>
+                        <p class="portal-muted" style="margin:0;">Biometric or security key</p>
+                    </div>
+                </div>
+                <span class="portal-stat-pill">2 passkeys</span>
+            </div>
+            <button type="button" class="portal-btn" id="passkeySelfBtn" data-user-id="1">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 11V3M8 7l4-4 4 4"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+                Add Passkey
+            </button>
+            <p class="portal-muted" id="passkeySelfStatus" role="status"></p>
+        </div>
+
+        <div class="portal-card">
+            <h2>Access Overview</h2>
+            <p class="portal-sub">Page permissions currently effective for your account (admin users implicitly have full access).</p>
+            <ul class="portal-access-list">
+                <li class="portal-access-item">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    <div>
+                        <h4>Administrator</h4>
+                        <p>You have the <strong>admin</strong> role: all pages and actions are allowed.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2 class="portal-section-title">Team &amp; Access Management</h2>
+    <p class="portal-sub" style="margin:-0.5rem 0 1.5rem;">Invite users by Gmail, adjust roles, permission overrides, and activation. Use the actions below to manage team access.</p>
+
+    <div class="portal-action-bar">
+        <button type="button" class="portal-btn portal-btn--primary" onclick="openModal('inviteUserModal')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+            Invite Or Update User
+        </button>
+        <button type="button" class="portal-btn portal-btn--secondary" onclick="openModal('setOwnerModal')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Set Primary Admin
+        </button>
+    </div>
+
+    <div id="inviteUserModal" class="portal-modal" style="display:none;">
+        <div class="portal-modal-overlay" onclick="closeModal('inviteUserModal')"></div>
+        <div class="portal-modal-content">
+            <div class="portal-modal-header">
+                <h2>Invite or Update User</h2>
+                <button type="button" class="portal-modal-close" onclick="closeModal('inviteUserModal')" aria-label="Close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="portal-modal-body">
+                <p class="portal-sub">Creates or reactivates the account and assigns roles. New users can complete sign-in with Google.</p>
+                <form onsubmit="return portfolioDemoForm(event, 'User invite saved.')">
+                    <div class="portal-form-group">
+                        <label class="portal-field-label" for="invite-email">Work Gmail</label>
+                        <input class="portal-input" id="invite-email" type="email" name="email" placeholder="name@gmail.com" autocomplete="email">
+                    </div>
+                    <div class="portal-form-group">
+                        <label class="portal-field-label" for="invite-roles">Roles</label>
+                        <select class="portal-select portal-select--enhanced" id="invite-roles" name="roles[]" multiple size="6">
+                            <option value="admin">Admin</option>
+                            <option value="director">Director</option>
+                            <option value="finance">Finance</option>
+                            <option value="conference">Conference</option>
+                            <option value="viewer">Viewer</option>
+                        </select>
+                        <p class="portal-muted">Hold Ctrl/Cmd to select multiple.</p>
+                    </div>
+                    <button type="submit" class="portal-btn portal-btn--primary" style="width:100%;">Save User Access</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="setOwnerModal" class="portal-modal" style="display:none;">
+        <div class="portal-modal-overlay" onclick="closeModal('setOwnerModal')"></div>
+        <div class="portal-modal-content">
+            <div class="portal-modal-header">
+                <h2>Primary Admin Owner</h2>
+                <button type="button" class="portal-modal-close" onclick="closeModal('setOwnerModal')" aria-label="Close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="portal-modal-body">
+                <p class="portal-sub">Designated owner for singleton admin configuration. User must receive the <strong>admin</strong> role.</p>
+                <p class="portal-muted" style="margin-bottom:1.5rem;">Current owner user ID: <strong>1</strong></p>
+                <form onsubmit="return portfolioDemoForm(event, 'Primary admin owner updated.')">
+                    <div class="portal-form-group">
+                        <label class="portal-field-label" for="owner-user-id">Select User</label>
+                        <select class="portal-select portal-select--enhanced" id="owner-user-id" name="user_id" required>
+                            <option value="1">a.krishnan@grscholastic.in (#1)</option>
+                            <option value="2">priya.n@grscholastic.in (#2)</option>
+                            <option value="3">rahul.verma@grscholastic.in (#3)</option>
+                            <option value="4">james@partner.edu (#4)</option>
+                            <option value="5">sneha.reddy@grscholastic.in (#5)</option>
+                            <option value="6">noreply+sync@grscholastic.in (#6)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="portal-btn portal-btn--primary" style="width:100%;">Set Owner</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <section class="portal-directory" style="margin-top:2rem;">
+        <div class="portal-directory__head">
+            <h2>User Directory</h2>
+            <p class="portal-sub" style="margin:0;">Deactivate access, adjust roles, set permission overrides, remove users, or register a passkey for a selected account.</p>
+        </div>
+        <div class="portal-directory__scroll">
+            <table class="portal-dir-table" role="grid">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Status &amp; ID</th>
+                        <th>Security</th>
+                        <th>Roles</th>
+                        <th style="text-align:right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- User 1: self -->
+                    <tr class="portal-dir-main">
+                        <td class="portal-dir-user-cell">
+                            <div class="portal-dir-user-row">
+                                <div class="portal-dir-avatar">AK</div>
+                                <div>
+                                    <p class="portal-dir-name">A. Krishnan</p>
+                                    <p class="portal-dir-email">a.krishnan@grscholastic.in</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="portal-status-badge"><span class="portal-status-dot" aria-hidden="true"></span>Active</span>
+                            <div class="portal-dir-id">ID: 1</div>
+                        </td>
+                        <td>2 passkeys</td>
+                        <td>
+                            <div class="portal-tags" style="margin:0;">
+                                <span class="portal-tag portal-tag--admin">admin</span>
+                                <span class="portal-tag portal-tag--director">director</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="portal-dir-actions">
+                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm passkey-other-btn" data-user-id="1">Add Passkey</button>
+                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm" onclick="toggleUserForms(1)">Manage</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="portal-dir-forms-row" id="userForms1" style="display:none;">
+                        <td colspan="5">
+                            <div class="portal-dir-forms">
+                                <div class="portal-form-section">
+                                    <h4 class="portal-form-section-title">Account Status</h4>
+                                    <form onsubmit="return portfolioDemoForm(event)" class="portal-inline">
+                                        <select class="portal-select portal-select--enhanced" name="is_active" aria-label="User status">
+                                            <option value="1" selected>Active</option>
+                                            <option value="0">Inactive</option>
+                                        </select>
+                                        <button type="submit" class="portal-btn portal-btn--ghost portal-btn--sm">Update Status</button>
+                                    </form>
+                                </div>
+                                <div class="portal-form-section">
+                                    <h4 class="portal-form-section-title">Add Role</h4>
+                                    <form onsubmit="return portfolioDemoForm(event)" class="portal-inline">
+                                        <select class="portal-select portal-select--enhanced" name="role_slug" aria-label="Add role">
+                                            <option value="finance">Finance</option>
+                                            <option value="conference">Conference</option>
+                                        </select>
+                                        <button type="submit" class="portal-btn portal-btn--success portal-btn--sm">Add Role</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- User 2 -->
+                    <tr class="portal-dir-main">
+                        <td class="portal-dir-user-cell">
+                            <div class="portal-dir-user-row">
+                                <div class="portal-dir-avatar">PN</div>
+                                <div>
+                                    <p class="portal-dir-name">Priya Nair</p>
+                                    <p class="portal-dir-email">priya.n@grscholastic.in</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="portal-status-badge"><span class="portal-status-dot" aria-hidden="true"></span>Active</span>
+                            <div class="portal-dir-id">ID: 2</div>
+                        </td>
+                        <td>1 passkey</td>
+                        <td>
+                            <div class="portal-tags" style="margin:0;">
+                                <span class="portal-tag">finance</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="portal-dir-actions">
+                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm passkey-other-btn" data-user-id="2">Add Passkey</button>
+                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm" onclick="toggleUserForms(2)">Manage</button>
+                                <button type="button" class="portal-btn portal-btn--danger portal-btn--sm" onclick="portfolioDemoDelete()">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="portal-dir-forms-row" id="userForms2" style="display:none;">
+                        <td colspan="5">
+                            <div class="portal-dir-forms">
+                                <div class="portal-form-section">
+                                    <h4 class="portal-form-section-title">Remove Role</h4>
+                                    <form onsubmit="return portfolioDemoForm(event)" class="portal-inline">
+                                        <select class="portal-select portal-select--enhanced" name="role_slug" aria-label="Remove role">
+                                            <option value="finance">finance</option>
+                                        </select>
+                                        <button type="submit" class="portal-btn portal-btn--danger portal-btn--sm">Remove Role</button>
+                                    </form>
+                                </div>
+                                <div class="portal-form-section">
+                                    <h4 class="portal-form-section-title">Permission Override</h4>
+                                    <form onsubmit="return portfolioDemoForm(event)" class="portal-inline">
+                                        <select class="portal-select portal-select--enhanced" name="permission_key" aria-label="Permission">
+                                            <option value="page.cca_api_master">page.cca_api_master</option>
+                                            <option value="page.paypal_api_master">page.paypal_api_master</option>
+                                        </select>
+                                        <select class="portal-select portal-select--enhanced" name="effect" aria-label="Effect">
+                                            <option value="allow">Allow</option>
+                                            <option value="deny">Deny</option>
+                                        </select>
+                                        <button type="submit" class="portal-btn portal-btn--ghost portal-btn--sm">Set Override</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- User 3 -->
+                    <tr class="portal-dir-main">
+                        <td class="portal-dir-user-cell">
+                            <div class="portal-dir-user-row">
+                                <div class="portal-dir-avatar">RV</div>
+                                <div>
+                                    <p class="portal-dir-name">Rahul Verma</p>
+                                    <p class="portal-dir-email">rahul.verma@grscholastic.in</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="portal-status-badge"><span class="portal-status-dot" aria-hidden="true"></span>Active</span>
+                            <div class="portal-dir-id">ID: 3</div>
+                        </td>
+                        <td>0 passkeys</td>
+                        <td>
+                            <div class="portal-tags" style="margin:0;"><span class="portal-tag">conference</span></div>
+                        </td>
+                        <td>
+                            <div class="portal-dir-actions">
+                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm passkey-other-btn" data-user-id="3">Add Passkey</button>
+                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm" onclick="toggleUserForms(3)">Manage</button>
+                                <button type="button" class="portal-btn portal-btn--danger portal-btn--sm" onclick="portfolioDemoDelete()">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="portal-dir-forms-row" id="userForms3" style="display:none;">
+                        <td colspan="5"><div class="portal-dir-forms"><p class="portal-muted" style="margin:0">Same controls as the production portal.</p></div></td>
+                    </tr>
+
+                    <!-- User 4 -->
+                    <tr class="portal-dir-main">
+                        <td class="portal-dir-user-cell">
+                            <div class="portal-dir-user-row">
+                                <div class="portal-dir-avatar">JO</div>
+                                <div>
+                                    <p class="portal-dir-name">James O'Brien</p>
+                                    <p class="portal-dir-email">james@partner.edu</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="portal-status-badge"><span class="portal-status-dot" aria-hidden="true"></span>Active</span>
+                            <div class="portal-dir-id">ID: 4</div>
+                        </td>
+                        <td>3 passkeys</td>
+                        <td>
+                            <div class="portal-tags" style="margin:0;"><span class="portal-tag portal-tag--director">director</span></div>
+                        </td>
+                        <td>
+                            <div class="portal-dir-actions">
+                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm passkey-other-btn" data-user-id="4">Add Passkey</button>
+                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm" onclick="toggleUserForms(4)">Manage</button>
+                                <button type="button" class="portal-btn portal-btn--danger portal-btn--sm" onclick="portfolioDemoDelete()">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="portal-dir-forms-row" id="userForms4" style="display:none;">
+                        <td colspan="5"><div class="portal-dir-forms"><p class="portal-muted" style="margin:0">Expandable row with account controls.</p></div></td>
+                    </tr>
+
+                    <!-- User 5 inactive -->
+                    <tr class="portal-dir-main">
+                        <td class="portal-dir-user-cell">
+                            <div class="portal-dir-user-row">
+                                <div class="portal-dir-avatar">SR</div>
+                                <div>
+                                    <p class="portal-dir-name">Sneha Reddy</p>
+                                    <p class="portal-dir-email">sneha.reddy@grscholastic.in</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="portal-status-badge portal-status-badge--inactive">Inactive</span>
+                            <div class="portal-dir-id">ID: 5</div>
+                        </td>
+                        <td>0 passkeys</td>
+                        <td>
+                            <div class="portal-tags" style="margin:0;"><span class="portal-tag">finance</span></div>
+                        </td>
+                        <td>
+                            <div class="portal-dir-actions">
+                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm passkey-other-btn" data-user-id="5">Add Passkey</button>
+                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm" onclick="toggleUserForms(5)">Manage</button>
+                                <button type="button" class="portal-btn portal-btn--danger portal-btn--sm" onclick="portfolioDemoDelete()">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="portal-dir-forms-row" id="userForms5" style="display:none;">
+                        <td colspan="5"><div class="portal-dir-forms">
+                            <form onsubmit="return portfolioDemoForm(event)" class="portal-inline">
+                                <select class="portal-select portal-select--enhanced" name="is_active" aria-label="User status">
+                                    <option value="1">Active</option>
+                                    <option value="0" selected>Inactive</option>
+                                </select>
+                                <button type="submit" class="portal-btn portal-btn--ghost portal-btn--sm">Update Status</button>
+                            </form>
+                        </div></td>
+                    </tr>
+
+                    <!-- User 6 service -->
+                    <tr class="portal-dir-main">
+                        <td class="portal-dir-user-cell">
+                            <div class="portal-dir-user-row">
+                                <div class="portal-dir-avatar">SY</div>
+                                <div>
+                                    <p class="portal-dir-name">Sync Service</p>
+                                    <p class="portal-dir-email">noreply+sync@grscholastic.in</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="portal-status-badge"><span class="portal-status-dot" aria-hidden="true"></span>Active</span>
+                            <div class="portal-dir-id">ID: 6</div>
+                        </td>
+                        <td>0 passkeys</td>
+                        <td>
+                            <div class="portal-tags" style="margin:0;"><span class="portal-tag">viewer</span></div>
+                        </td>
+                        <td>
+                            <div class="portal-dir-actions">
+                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm passkey-other-btn" data-user-id="6">Add Passkey</button>
+                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm" onclick="toggleUserForms(6)">Manage</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="portal-dir-forms-row" id="userForms6" style="display:none;">
+                        <td colspan="5"><div class="portal-dir-forms"><p class="portal-muted" style="margin:0">No delete on automation accounts in some deployments — here omitted for variety.</p></div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <p class="portal-status" id="passkeyOtherStatus" role="status"></p>
+</div>
+
+        </div>
+    </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+(function () {
+    window.openModal = function (modalId) {
+        var modal = document.getElementById(modalId);
+        if (!modal) return;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        setTimeout(function () { modal.classList.add('portal-modal--open'); }, 10);
+    };
+    window.closeModal = function (modalId) {
+        var modal = document.getElementById(modalId);
+        if (!modal) return;
+        modal.classList.remove('portal-modal--open');
+        setTimeout(function () {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 300);
+    };
+    window.toggleUserForms = function (userId) {
+        var row = document.getElementById('userForms' + userId);
+        if (!row) return;
+        row.style.display = (row.style.display === 'none' || row.style.display === '') ? 'table-row' : 'none';
+    };
+    window.portfolioDemoForm = function (e, msg) {
+        if (e && e.preventDefault) e.preventDefault();
+        var el = document.getElementById('demoFlash');
+        if (el) {
+            el.textContent = msg || 'Request received.';
+            el.style.display = 'block';
+        }
+        return false;
+    };
+    window.portfolioDemoDelete = function () {
+        if (window.confirm('Remove this user permanently?')) {
+            portfolioDemoForm(null, 'User removed from the list.');
+        }
+    };
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.portal-modal.portal-modal--open').forEach(function (m) {
+                closeModal(m.id);
+            });
+        }
+    });
+    function demoPasskey(label) {
+        var a = document.getElementById('passkeySelfStatus');
+        var b = document.getElementById('passkeyOtherStatus');
+        var el = label === 'self' ? a : b;
+        if (el) {
+            el.textContent = 'Passkey registration would continue in the device secure flow.';
+        }
+    }
+    var selfBtn = document.getElementById('passkeySelfBtn');
+    if (selfBtn) selfBtn.addEventListener('click', function () { demoPasskey('self'); });
+    document.querySelectorAll('.passkey-other-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () { demoPasskey('other'); });
+    });
+})();
+</script>
+</body>
+</html>

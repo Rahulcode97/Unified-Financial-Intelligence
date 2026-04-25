@@ -1,0 +1,12 @@
+/* Warm canvas for Account & Access — matches fd-atelier + portal-account in production */
+body.page-portal-account .page-content {
+    background: #fbf9f6;
+    padding-top: 20px;
+}
+body.page-portal-account .main-content {
+    background: #fbf9f6;
+}
+/* Modals must sit above app sidebar (z-index 100) */
+.portal-modal {
+    z-index: 2000;
+}

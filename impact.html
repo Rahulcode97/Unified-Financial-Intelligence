@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact &amp; ROI — Finance Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/theme-portfolio.css">
+    <link rel="stylesheet" href="assets/app-shell.css">
+    <link rel="stylesheet" href="assets/impact.css">
+</head>
+<body class="fd-chrome page-impact">
+<div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+        <div class="sidebar-logo">
+            <div><a href="index.html" style="text-decoration:none;color:inherit"><div class="logo-text">Finance</div><div class="logo-sub">Portal</div></a></div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">App</div>
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 7.5L9 2l6 5.5V16H3V7.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="6.5" height="6.5" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                <span class="nav-label">Dashboard</span>
+            </a>
+            <a href="graphs.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 15V9M7 15V3M12 15v-5M17 15V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                <span class="nav-label">Analytics</span>
+            </a>
+            <a href="impact.html" class="nav-item active">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 12l3.5-3.5L9 12l3-3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M13.5 6H17v3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
+                <span class="nav-label">Impact</span>
+            </a>
+            <a href="ccavenue-master.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 4.5h12v9H3v-9z" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                <span class="nav-label">CCAvenue API Master</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.5 14.5V3.5L6 6l3.5-2.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+                <span class="nav-label">Payment Reports</span>
+            </a>
+            <a href="portal-account.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="6" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                <span class="nav-label">Account &amp; Access</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar-placeholder">AK</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name">A. Krishnan</div>
+                    <div class="sidebar-user-role">Finance</div>
+                </div>
+            </div>
+            <a href="login.html" class="nav-item nav-item--logout" style="margin-top:10px">
+                <span class="nav-label">Sign Out</span>
+            </a>
+        </div>
+    </aside>
+    <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">‹</button>
+    <div class="main-content">
+        <header class="header">
+            <div class="header-left" style="display:flex;align-items:center;gap:8px">
+                <button type="button" class="fd-mobile-menu" id="mobileMenuBtn" aria-label="Open menu">☰</button>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html" style="color:var(--text-secondary);text-decoration:none">Home</a>
+                    <span class="sep">/</span>
+                    <span class="current">Impact &amp; ROI</span>
+                </nav>
+            </div>
+        </header>
+        <div class="page-content">
+            <div class="imp-hero">
+                <p class="imp-hero__kicker">Return On Investment</p>
+                <h1>Enterprise-Grade Finance, Without the Three Usual Headaches</h1>
+                <p class="imp-hero__hook">
+                    <strong>Developed a full-stack, cross-platform financial ecosystem</strong> that automated 99% of manual reporting workflows, cutting reconciliation cycles from <strong>one week to one hour</strong> while surfacing tax mismatches and revenue leakage before they hit the books.
+                </p>
+            </div>
+
+            <div class="imp-erp-strip" aria-label="Positioning">
+                <span class="imp-erp-strip__label">Framing</span>
+                <p style="margin:0;font-size:0.9rem;color:var(--text-secondary);line-height:1.5;flex:1;min-width:200px">More than a reporting tool: an <strong style="color:var(--text-primary)">ERP lite</strong> that addresses the core constraints every finance team lives with.</p>
+                <div class="imp-pillars" role="list">
+                    <span class="imp-pillar" role="listitem"><span aria-hidden="true">⏱</span> Time</span>
+                    <span class="imp-pillar" role="listitem"><span aria-hidden="true">₹</span> Money</span>
+                    <span class="imp-pillar" role="listitem"><span aria-hidden="true">🔐</span> Security</span>
+                </div>
+            </div>
+
+            <p class="imp-section-title">Quantified Impact</p>
+            <div class="imp-cards" aria-label="Impact highlights">
+                <article class="imp-card">
+                    <div class="imp-card__icon" aria-hidden="true">⚡</div>
+                    <h2>Operational Velocity</h2>
+                    <p>Engineered an automated data pipeline that <strong>slashed report generation time by over 95%</strong> (from one week to &lt;1 hour) and enabled <strong>instant, one-click exports</strong> for work that previously required day-long financial audits.</p>
+                </article>
+                <article class="imp-card">
+                    <div class="imp-card__icon" aria-hidden="true">◎</div>
+                    <h2>Financial Integrity &amp; Audit</h2>
+                    <p>Developed a <strong>multi-gateway reconciliation engine</strong> (PayPal, CCAvenue, bank transfer) that <strong>eliminated human entry errors</strong> and automatically <strong>flagged GST and tax mismatches</strong>, supporting <strong>100% data accuracy</strong> across unified sales reports.</p>
+                </article>
+                <article class="imp-card">
+                    <div class="imp-card__icon" aria-hidden="true">◈</div>
+                    <h2>Cost Optimization</h2>
+                    <p>Leveraged <strong>deep data analysis</strong> to identify primary revenue drivers and <strong>service provider fee inefficiencies</strong>—insights that <strong>reduced the need for additional administrative headcount</strong>.</p>
+                </article>
+                <article class="imp-card">
+                    <div class="imp-card__icon" aria-hidden="true">🛡</div>
+                    <h2>Security &amp; Governance</h2>
+                    <p>Implemented a <strong>high-security architecture</strong> with <strong>passkey</strong> authentication, <strong>encrypted data layers</strong>, and a <strong>granular role-based access control (RBAC)</strong> system to protect sensitive financial data.</p>
+                </article>
+            </div>
+
+            <div class="imp-arch">
+                <div class="imp-arch__head">
+                    <h2>Technical Architecture (How)</h2>
+                    <p>Polyglot microservices: each layer uses tools matched to the problem—web UI, fast APIs, analytics, and durable storage on cloud infrastructure.</p>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Layer</th>
+                            <th scope="col">Technology</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Frontend / Desktop</th>
+                            <td>React for the web experience; Tauri for a lightweight, secure native shell where a desktop app is required.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Backend &amp; APIs</th>
+                            <td>Node.js and PHP for robust API handling; Python for data analysis, reconciliation logic, and refund flows.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Database / Cloud</th>
+                            <td>Hybrid SQL (MySQL) and NoSQL, hosted on Google Cloud for scalable, low-latency reads against large transaction sets.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Security</th>
+                            <td>Passkey (biometric / hardware) authentication and <strong>end-to-end encryption</strong> for transaction logs and sensitive financial payloads.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>
