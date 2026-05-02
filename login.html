@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In — Finance Portfolio</title>
+    <title>Sign In — Rahul Srivastava Finance Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/login.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5MNCLNL933"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5MNCLNL933');
+    </script>
 </head>
 <body class="login-atelier">
     <div class="login-atelier__glow" aria-hidden="true"></div>
@@ -19,7 +27,7 @@
             </p>
             <header class="login-atelier__brand">
                 <p class="login-atelier__kicker">Sign In</p>
-                <h1 class="login-atelier__title">GR Scholastic<span>Finance Portal</span></h1>
+                <h1 class="login-atelier__title">Finance Console<span>Portfolio by Rahul Srivastava</span></h1>
             </header>
 
             <p class="login-atelier__passkey-note">
@@ -30,7 +38,7 @@
                 <form id="passkeyForm" class="passkey-form" action="#" onsubmit="return false;" style="display:flex;flex-direction:column;gap:0;">
                     <div class="login-atelier__email-block">
                         <label class="login-atelier__field-label" for="passkeyEmail">Email</label>
-                        <input type="email" id="passkeyEmail" name="username" class="login-atelier__input" autocomplete="username webauthn" autocapitalize="none" spellcheck="false" inputmode="email" placeholder="you@organization.com" value="analyst@grscholastic.in">
+                        <input type="email" id="passkeyEmail" name="username" class="login-atelier__input" autocomplete="username webauthn" autocapitalize="none" spellcheck="false" inputmode="email" placeholder="you@organization.com" value="rahul.srivastava@grscholastic.in">
                         <p class="login-atelier__hint">Saved passkeys and accounts can show here when you focus or start typing (browser behavior).</p>
                     </div>
                     <button type="button" class="login-atelier__btn login-atelier__btn--primary" id="passkeyBtn" aria-label="Sign in with passkey">

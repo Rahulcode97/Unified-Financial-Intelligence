@@ -61,3 +61,13 @@
         }
     });
 })();
+
+// Live date display
+(function() {
+    var el = document.getElementById('live-date');
+    if (el) {
+        el.textContent = new Date().toLocaleDateString('en-IN', {
+            weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+        });
+    }
+})();

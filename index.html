@@ -3,11 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GRS Scholastic — Finance Console (Portfolio)</title>
+    <title>Rahul Srivastava — Finance Engineering Portfolio</title>
+    <meta name="description" content="Full-stack finance dashboard built by Rahul Srivastava — automated payment reconciliation, multi-gateway analytics, and revenue reporting across ₹63 Cr of transactions.">
+    <meta property="og:title" content="Rahul Srivastava — Finance Engineering Portfolio">
+    <meta property="og:description" content="Full-stack fintech portfolio: automated reconciliation, CCAvenue/PayPal APIs, Python analytics, RBAC, and a React + Node.js architecture. Built independently.">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/landing.css">
+    <style>
+        .land-demo-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(234,88,12,0.10); border: 1px solid rgba(234,88,12,0.25);
+            color: #9a3412; font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.04em; padding: 4px 12px; border-radius: 999px;
+            margin-bottom: 1.4rem; font-family: var(--land-body);
+        }
+        .land-demo-badge::before { content: "●"; font-size: 8px; color: #ea580c; margin-right: 2px; }
+        .land-role-bar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+        .land-role-btn {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 0.55rem 1.1rem; border-radius: 999px;
+            font-size: 0.8rem; font-weight: 700; text-decoration: none;
+            border: 1.5px solid rgba(12,82,82,0.25);
+            background: rgba(255,255,255,0.7); color: var(--land-primary);
+            transition: background 0.18s, border-color 0.18s, box-shadow 0.18s;
+            font-family: var(--land-body);
+        }
+        .land-role-btn:hover { background: rgba(12,82,82,0.07); border-color: var(--land-primary); box-shadow: 0 2px 10px rgba(12,82,82,0.1); }
+        .land-about {
+            max-width: 1120px; margin: 0 auto;
+            padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 5vw, 3rem);
+            border-top: 1px solid rgba(12,82,82,0.10);
+        }
+        .land-about__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+        @media (max-width: 680px) { .land-about__inner { grid-template-columns: 1fr; gap: 2rem; } }
+        .land-about__avatar {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: linear-gradient(135deg, #0c5252, #2d6a6a);
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 1.5rem; font-weight: 700;
+            font-family: var(--land-body); margin-bottom: 1.2rem;
+        }
+        .land-about__name { font-family: var(--land-display); font-size: clamp(1.4rem, 2.5vw, 1.75rem); font-weight: 700; color: var(--land-primary); margin: 0 0 0.35rem; letter-spacing: -0.02em; }
+        .land-about__role { font-size: 0.9rem; font-weight: 600; color: var(--land-on-variant); margin: 0 0 0.85rem; font-family: var(--land-body); }
+        .land-about__bio { font-size: 0.97rem; line-height: 1.7; color: var(--land-on-variant); margin: 0 0 0.8rem; font-family: var(--land-body); }
+        .land-about__links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+        .land-about__link {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 0.5rem 1rem; border-radius: 999px;
+            font-size: 0.82rem; font-weight: 700; text-decoration: none;
+            border: 1px solid rgba(12,82,82,0.2); color: var(--land-primary);
+            background: rgba(255,255,255,0.8);
+            transition: box-shadow 0.18s, background 0.18s;
+            font-family: var(--land-body);
+        }
+        .land-about__link:hover { box-shadow: 0 3px 12px rgba(12,82,82,0.14); background: #fff; }
+        .land-stack__title { font-family: var(--land-body); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--land-on-variant); margin: 0 0 0.9rem; }
+        .land-stack__row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+        .land-badge { display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; font-family: var(--land-body); border: 1px solid rgba(12,82,82,0.15); }
+        .land-badge--fe  { background: rgba(59,130,246,0.08); color: #1e40af; border-color: rgba(59,130,246,0.2); }
+        .land-badge--be  { background: rgba(5,150,105,0.08); color: #065f46; border-color: rgba(5,150,105,0.2); }
+        .land-badge--data{ background: rgba(124,58,237,0.08); color: #4c1d95; border-color: rgba(124,58,237,0.2); }
+        .land-badge--infra{ background: rgba(180,83,9,0.08); color: #78350f; border-color: rgba(180,83,9,0.2); }
+        .land-badge--dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; display: inline-block; }
+        .land-badge--fe .land-badge--dot  { background: #3b82f6; }
+        .land-badge--be .land-badge--dot  { background: #059669; }
+        .land-badge--data .land-badge--dot { background: #7c3aed; }
+        .land-badge--infra .land-badge--dot{ background: #b45309; }
+        .land-stack__legend { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.75rem; }
+        .land-stack__legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.72rem; color: var(--land-on-variant); font-family: var(--land-body); }
+        .land-stack__legend-dot { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+        .land-insight-strip { max-width: 1120px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(2rem, 4vw, 3.5rem); }
+        .land-insight-strip h2 { font-family: var(--land-body); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--land-on-variant); margin: 0 0 1rem; }
+        .land-insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1rem; }
+        .land-insight-card { background: rgba(255,255,255,0.8); border: 1px solid rgba(12,82,82,0.1); border-radius: 14px; padding: 1.25rem 1.4rem; }
+        .land-insight-card__num { font-family: var(--land-display); font-size: 1.7rem; font-weight: 700; color: var(--land-primary); line-height: 1; margin: 0 0 0.35rem; }
+        .land-insight-card__label { font-size: 0.82rem; font-weight: 600; color: var(--land-on-variant); margin: 0 0 0.4rem; font-family: var(--land-body); }
+        .land-insight-card__desc { font-size: 0.8rem; color: #64748b; line-height: 1.5; margin: 0; font-family: var(--land-body); }
+    </style>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5MNCLNL933"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5MNCLNL933');
+    </script>
 </head>
 <body class="land-root">
     <header class="land-hero" role="banner">
@@ -26,77 +109,180 @@
                     <span>Finance Console</span>
                 </div>
                 <div class="land-top-actions">
-                    <a class="land-link" href="impact.html">Impact</a>
+                    <a class="land-link" href="impact.html">What I Built</a>
                     <a class="land-link" href="graphs.html">Analytics</a>
-                    <a class="land-link" href="dashboard.html">Operations</a>
-                    <a class="land-btn land-btn--ghost" href="login.html">Sign In</a>
+                    <a class="land-link" href="dashboard.html">Dashboard</a>
+                    <a class="land-btn land-btn--ghost" href="https://www.linkedin.com/in/rahul-srivastava97/" target="_blank" rel="noopener">LinkedIn ↗</a>
                     <a class="land-btn land-btn--solid" href="dashboard.html">Open Dashboard</a>
                 </div>
             </div>
-            <h1>Automated Reconciliation &amp; Revenue Insights.</h1>
-            <p class="land-hero__lead">An independently engineered full-stack suite designed to automate payment reconciliation, financial reporting, and revenue analysis. The interface highlights secure API integrations and high-volume data processing.</p>
+
+            <div class="land-demo-badge">Demo portfolio — all data is synthetic</div>
+
+            <h1>I automated a week of finance work into a one-click report.</h1>
+            <p class="land-hero__lead">A full-stack fintech system I designed and built from scratch — automating payment reconciliation across three gateways (CCAvenue, PayPal, bank transfer), surfacing revenue insights with Python analytics, and replacing 40+ hours of monthly manual spreadsheet work.</p>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--land-on-variant);margin:0 0 0.65rem;font-family:var(--land-body);">Jump to what's most relevant for you</p>
+                <div class="land-role-bar">
+                    <a class="land-role-btn" href="impact.html">👔 Recruiter / HR — start here</a>
+                    <a class="land-role-btn" href="dashboard.html">⚙️ Technical lead / engineer</a>
+                    <a class="land-role-btn" href="graphs.html">📊 PM or data science role</a>
+                </div>
+            </div>
+
             <div class="land-hero__cta">
-                <a class="land-btn land-btn--solid" href="graphs.html">Explore Charts &amp; Drill-Down</a>
-                <a class="land-btn land-btn--ghost" href="ccavenue-master.html">CCAvenue API Master</a>
+                <a class="land-btn land-btn--solid" href="graphs.html">Explore Charts &amp; Analytics</a>
+                <a class="land-btn land-btn--ghost" href="impact.html">Read the Impact Story</a>
             </div>
             <div class="land-hero__stats" aria-label="Highlights">
-                <div class="land-stat"><b>63 Cr</b><span>Revenue Managed</span></div>
-                <div class="land-stat"><b>5</b><span>Integrated Modules</span></div>
-                <div class="land-stat"><b>12 mo</b><span>Analysis Period</span></div>
+                <div class="land-stat"><b>₹63 Cr</b><span>Revenue Managed</span></div>
+                <div class="land-stat"><b>95%</b><span>Time Saved on Reporting</span></div>
+                <div class="land-stat"><b>3</b><span>Gateways Unified</span></div>
+                <div class="land-stat"><b>2,400+</b><span>Transactions Reconciled</span></div>
             </div>
         </div>
     </header>
 
+    <!-- ── About the Builder ── -->
+    <div class="land-about">
+        <div class="land-about__inner">
+            <div>
+                <div class="land-about__avatar">RS</div>
+                <h2 class="land-about__name">Rahul Srivastava</h2>
+                <p class="land-about__role">Full-Stack Engineer · Data Analyst · Fintech</p>
+                <p class="land-about__bio">I designed and built this entire platform independently — from the React frontend and Node.js/PHP APIs to a Python reconciliation engine and MySQL database on Google Cloud. It solved a real operational problem: the finance team was spending a full week every month manually reconciling payments across three gateways. This system cut that to under an hour.</p>
+                <p class="land-about__bio">I work across the full stack and enjoy the intersection of engineering, data, and product — building systems that make complex workflows feel effortless.</p>
+                <div class="land-about__links">
+                    <a class="land-about__link" href="https://www.linkedin.com/in/rahul-srivastava97/" target="_blank" rel="noopener">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="#0c5252" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                        LinkedIn
+                    </a>
+                    <a class="land-about__link" href="https://github.com/rahulsrivastava97" target="_blank" rel="noopener">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0c5252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        GitHub
+                    </a>
+                    <a class="land-about__link" href="impact.html">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0c5252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        Impact &amp; ROI
+                    </a>
+                </div>
+            </div>
+            <div>
+                <p class="land-stack__title">Tech Stack</p>
+                <div class="land-stack__row">
+                    <span class="land-badge land-badge--fe"><span class="land-badge--dot"></span>React</span>
+                    <span class="land-badge land-badge--fe"><span class="land-badge--dot"></span>HTML · CSS · JS</span>
+                    <span class="land-badge land-badge--fe"><span class="land-badge--dot"></span>Tauri (Desktop)</span>
+                </div>
+                <div class="land-stack__row">
+                    <span class="land-badge land-badge--be"><span class="land-badge--dot"></span>Node.js</span>
+                    <span class="land-badge land-badge--be"><span class="land-badge--dot"></span>PHP</span>
+                    <span class="land-badge land-badge--be"><span class="land-badge--dot"></span>REST APIs</span>
+                    <span class="land-badge land-badge--be"><span class="land-badge--dot"></span>WebAuthn / Passkey</span>
+                </div>
+                <div class="land-stack__row">
+                    <span class="land-badge land-badge--data"><span class="land-badge--dot"></span>Python</span>
+                    <span class="land-badge land-badge--data"><span class="land-badge--dot"></span>Pandas</span>
+                    <span class="land-badge land-badge--data"><span class="land-badge--dot"></span>MySQL</span>
+                    <span class="land-badge land-badge--data"><span class="land-badge--dot"></span>SQL Analytics</span>
+                </div>
+                <div class="land-stack__row">
+                    <span class="land-badge land-badge--infra"><span class="land-badge--dot"></span>Google Cloud</span>
+                    <span class="land-badge land-badge--infra"><span class="land-badge--dot"></span>GitHub Pages</span>
+                    <span class="land-badge land-badge--infra"><span class="land-badge--dot"></span>RBAC</span>
+                </div>
+                <div class="land-stack__legend">
+                    <span class="land-stack__legend-item"><span class="land-stack__legend-dot" style="background:#3b82f6;"></span>Frontend</span>
+                    <span class="land-stack__legend-item"><span class="land-stack__legend-dot" style="background:#059669;"></span>Backend / APIs</span>
+                    <span class="land-stack__legend-item"><span class="land-stack__legend-dot" style="background:#7c3aed;"></span>Data &amp; Database</span>
+                    <span class="land-stack__legend-item"><span class="land-stack__legend-dot" style="background:#b45309;"></span>Infrastructure</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Data Insights Strip ── -->
+    <div class="land-insight-strip">
+        <h2>Key insights this system uncovered</h2>
+        <div class="land-insights">
+            <div class="land-insight-card">
+                <div class="land-insight-card__num">9.8%</div>
+                <div class="land-insight-card__label">Average payment gateway fee rate</div>
+                <div class="land-insight-card__desc">Python analysis revealed CCAvenue fees were 1.4× higher than bank transfer for equivalent transaction sizes — driving a gateway routing recommendation.</div>
+            </div>
+            <div class="land-insight-card">
+                <div class="land-insight-card__num">₹4.2L</div>
+                <div class="land-insight-card__label">GST mismatch caught automatically</div>
+                <div class="land-insight-card__desc">Automated reconciliation flagged tax-rate discrepancies across 38 transactions that two months of manual review had missed entirely.</div>
+            </div>
+            <div class="land-insight-card">
+                <div class="land-insight-card__num">98.4%</div>
+                <div class="land-insight-card__label">Auto-match rate on reconciliation</div>
+                <div class="land-insight-card__desc">Multi-gateway matching logic achieves near-full automation, surfacing only the 1.6% edge cases that need a human decision.</div>
+            </div>
+            <div class="land-insight-card">
+                <div class="land-insight-card__num">29%</div>
+                <div class="land-insight-card__label">Net margin — highest-revenue event</div>
+                <div class="land-insight-card__desc">Conference-level drill-down showed ICRAI 2026 had the best margin profile, directly informing budget allocation for the next cycle.</div>
+            </div>
+        </div>
+    </div>
+
     <section class="land-section" aria-labelledby="land-nav-title">
-        <h2 id="land-nav-title">Where To Next</h2>
+        <h2 id="land-nav-title">Explore the Portfolio</h2>
         <div class="land-grid">
-            <a class="land-tile" href="dashboard.html">
-                <div class="land-tile__icon" aria-hidden="true">▦</div>
-                <h3>Dashboard</h3>
-                <p>Snapshot KPIs, quick links, and recent activity — your second home after this landing page.</p>
-                <div class="land-tile__arrow">Open Dashboard →</div>
-            </a>
             <a class="land-tile" href="impact.html">
                 <div class="land-tile__icon" aria-hidden="true">✦</div>
-                <h3>Impact &amp; ROI</h3>
-                <p>Headline outcomes, quantified velocity and integrity, ERP-lite framing, and the polyglot architecture story for GitHub or résumé.</p>
-                <div class="land-tile__arrow">Read impact story →</div>
+                <h3>What I Built &amp; Why It Matters</h3>
+                <p>Plain-English outcomes for any reader, plus the full architecture and data story for technical hiring managers.</p>
+                <div class="land-tile__arrow">Read the story →</div>
+            </a>
+            <a class="land-tile" href="dashboard.html">
+                <div class="land-tile__icon" aria-hidden="true">▦</div>
+                <h3>Operations Dashboard</h3>
+                <p>Live KPI snapshot across CCAvenue, PayPal, and bank transfer — the control centre I designed for the finance team.</p>
+                <div class="land-tile__arrow">Open Dashboard →</div>
             </a>
             <a class="land-tile" href="graphs.html">
                 <div class="land-tile__icon" aria-hidden="true">▤</div>
-                <h3>Analytics &amp; Charts</h3>
-                <p>Revenue vs payment fees, profit trend, conference profit bars, revenue mix, and a monthly drill for each event.</p>
-                <div class="land-tile__arrow">View graphs →</div>
+                <h3>Analytics &amp; Drill-Down</h3>
+                <p>12-month revenue, fee, and profit trend with per-conference drill-down. Interactive charts built on live calculated data.</p>
+                <div class="land-tile__arrow">View analytics →</div>
             </a>
             <a class="land-tile" href="ccavenue-master.html">
                 <div class="land-tile__icon" aria-hidden="true">💳</div>
                 <h3>CCAvenue API Master</h3>
-                <p>Order grid with card marks, conference badges, and transaction detail in a dialog.</p>
+                <p>Order grid with card-brand icons, conference tagging, verification LEDs, and a full transaction detail dialog.</p>
                 <div class="land-tile__arrow">Open grid →</div>
             </a>
             <a class="land-tile" href="reports.html">
                 <div class="land-tile__icon" aria-hidden="true">⏚</div>
                 <h3>Payment Reports</h3>
-                <p>PayPal and bank transfer strips with shared styling and aligned reference IDs.</p>
+                <p>Multi-currency PayPal and bank NEFT/RTGS reports with aligned reference IDs and reconciliation status.</p>
                 <div class="land-tile__arrow">Open reports →</div>
             </a>
             <a class="land-tile" href="portal-account.html">
                 <div class="land-tile__icon" aria-hidden="true">🛡</div>
-                <h3>Account &amp; Access</h3>
-                <p>Profile, passkey card, and user directory with management controls.</p>
+                <h3>Access &amp; Security</h3>
+                <p>Granular RBAC user directory, passkey authentication, and a role × page permission matrix I designed from scratch.</p>
                 <div class="land-tile__arrow">Open portal →</div>
             </a>
             <a class="land-tile" href="login.html">
                 <div class="land-tile__icon" aria-hidden="true">🔐</div>
-                <h3>Sign In</h3>
-                <p>Full-screen atelier login with passkey and Google sign-in.</p>
-                <div class="land-tile__arrow">Go To Login →</div>
+                <h3>Passkey Sign-In Demo</h3>
+                <p>WebAuthn passkey + Google OAuth flow — try the biometric authentication experience I implemented.</p>
+                <div class="land-tile__arrow">Try the login →</div>
             </a>
         </div>
     </section>
 
     <footer class="land-footer">
-        <a href="login.html">Sign In</a> &middot; <a href="dashboard.html">Dashboard</a> &middot; <a href="impact.html">Impact</a> &middot; <a href="graphs.html">Graphs</a>
+        <a href="https://www.linkedin.com/in/rahul-srivastava97/" target="_blank" rel="noopener">LinkedIn</a> &middot;
+        <a href="impact.html">What I Built</a> &middot;
+        <a href="dashboard.html">Dashboard</a> &middot;
+        <a href="graphs.html">Analytics</a> &middot;
+        <span style="opacity:0.55;font-size:0.85em;">All data is synthetic · Built by Rahul Srivastava</span>
     </footer>
 </body>
 </html>

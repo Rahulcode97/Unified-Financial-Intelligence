@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+        <meta name="description" content="12-month revenue, fee, and profit drill-down with per-conference analytics. Built with Chart.js on live calculated data.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analytics &amp; Charts — Finance Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,6 +10,14 @@
     <link rel="stylesheet" href="assets/theme-portfolio.css">
     <link rel="stylesheet" href="assets/app-shell.css">
     <link rel="stylesheet" href="assets/graphs.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5MNCLNL933"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5MNCLNL933');
+    </script>
 </head>
 <body class="fd-chrome page-graphs">
 <div class="app-shell">
@@ -32,7 +41,7 @@
             </a>
             <a href="impact.html" class="nav-item">
                 <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 12l3.5-3.5L9 12l3-3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M13.5 6H17v3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
-                <span class="nav-label">Impact</span>
+                <span class="nav-label">What I Built</span>
             </a>
             <a href="ccavenue-master.html" class="nav-item">
                 <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 4.5h12v9H3v-9z" stroke="currentColor" stroke-width="1.5"/></svg></span>
@@ -49,9 +58,9 @@
         </nav>
         <div class="sidebar-footer">
             <div class="sidebar-user">
-                <div class="sidebar-avatar-placeholder">AK</div>
+                <div class="sidebar-avatar-placeholder">RS</div>
                 <div class="sidebar-user-info">
-                    <div class="sidebar-user-name">A. Krishnan</div>
+                    <div class="sidebar-user-name">R. Srivastava</div>
                     <div class="sidebar-user-role">Finance</div>
                 </div>
             </div>
@@ -76,6 +85,20 @@
             <div class="gfx-hero">
                 <h1>Analytics &amp; Drill-Down</h1>
                 <p>Financial year <strong>Apr 2025 – Mar 2026</strong>. Amounts in <strong>₹ Lakh</strong> on charts unless noted. Click a <strong>conference bar</strong> or a <strong>pill</strong> to drill into month-level profit, revenue, and fees.</p>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.85rem;margin-top:1.25rem;">
+                    <div style="background:rgba(12,82,82,0.05);border:1px solid rgba(12,82,82,0.12);border-radius:10px;padding:0.9rem 1.1rem;">
+                        <p style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#0c5252;margin:0 0 0.3rem;">Insight #1</p>
+                        <p style="font-size:0.85rem;color:#1E293B;margin:0;line-height:1.5;">Payment fees peaked at <strong>9.8%</strong> of revenue in Mar 26 — Python analysis flagged CCAvenue as the primary cost driver.</p>
+                    </div>
+                    <div style="background:rgba(12,82,82,0.05);border:1px solid rgba(12,82,82,0.12);border-radius:10px;padding:0.9rem 1.1rem;">
+                        <p style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#0c5252;margin:0 0 0.3rem;">Insight #2</p>
+                        <p style="font-size:0.85rem;color:#1E293B;margin:0;line-height:1.5;">Revenue grew <strong>71% YoY</strong> (₹42L → ₹72L) — ICRAI 2026 contributed 34% and held the best net margin at 29%.</p>
+                    </div>
+                    <div style="background:rgba(12,82,82,0.05);border:1px solid rgba(12,82,82,0.12);border-radius:10px;padding:0.9rem 1.1rem;">
+                        <p style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#0c5252;margin:0 0 0.3rem;">Insight #3</p>
+                        <p style="font-size:0.85rem;color:#1E293B;margin:0;line-height:1.5;">Q4 (Jan–Mar 26) accounted for <strong>37% of FY revenue</strong> — seasonality pattern used to plan cash flow and staffing.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="gfx-kpi-row" aria-label="Summary KPIs">
