@@ -4,85 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rahul Srivastava — Finance Engineering Portfolio</title>
-    <meta name="description" content="Full-stack finance dashboard built by Rahul Srivastava — automated payment reconciliation, multi-gateway analytics, and revenue reporting across ₹63 Cr of transactions.">
+    <meta name="description" content="Full-stack fintech portfolio by Rahul Srivastava — automated payment reconciliation, multi-gateway analytics, Python data analysis, and revenue reporting across ₹63 Cr of transactions.">
     <meta property="og:title" content="Rahul Srivastava — Finance Engineering Portfolio">
-    <meta property="og:description" content="Full-stack fintech portfolio: automated reconciliation, CCAvenue/PayPal APIs, Python analytics, RBAC, and a React + Node.js architecture. Built independently.">
+    <meta property="og:description" content="Full-stack fintech system: automated reconciliation, CCAvenue/PayPal APIs, Python analytics, RBAC. Built independently.">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/landing.css">
-    <style>
-        .land-demo-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: rgba(234,88,12,0.10); border: 1px solid rgba(234,88,12,0.25);
-            color: #9a3412; font-size: 0.75rem; font-weight: 700;
-            letter-spacing: 0.04em; padding: 4px 12px; border-radius: 999px;
-            margin-bottom: 1.4rem; font-family: var(--land-body);
-        }
-        .land-demo-badge::before { content: "●"; font-size: 8px; color: #ea580c; margin-right: 2px; }
-        .land-role-bar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
-        .land-role-btn {
-            display: inline-flex; align-items: center; gap: 7px;
-            padding: 0.55rem 1.1rem; border-radius: 999px;
-            font-size: 0.8rem; font-weight: 700; text-decoration: none;
-            border: 1.5px solid rgba(12,82,82,0.25);
-            background: rgba(255,255,255,0.7); color: var(--land-primary);
-            transition: background 0.18s, border-color 0.18s, box-shadow 0.18s;
-            font-family: var(--land-body);
-        }
-        .land-role-btn:hover { background: rgba(12,82,82,0.07); border-color: var(--land-primary); box-shadow: 0 2px 10px rgba(12,82,82,0.1); }
-        .land-about {
-            max-width: 1120px; margin: 0 auto;
-            padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 5vw, 3rem);
-            border-top: 1px solid rgba(12,82,82,0.10);
-        }
-        .land-about__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-        @media (max-width: 680px) { .land-about__inner { grid-template-columns: 1fr; gap: 2rem; } }
-        .land-about__avatar {
-            width: 64px; height: 64px; border-radius: 50%;
-            background: linear-gradient(135deg, #0c5252, #2d6a6a);
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-size: 1.5rem; font-weight: 700;
-            font-family: var(--land-body); margin-bottom: 1.2rem;
-        }
-        .land-about__name { font-family: var(--land-display); font-size: clamp(1.4rem, 2.5vw, 1.75rem); font-weight: 700; color: var(--land-primary); margin: 0 0 0.35rem; letter-spacing: -0.02em; }
-        .land-about__role { font-size: 0.9rem; font-weight: 600; color: var(--land-on-variant); margin: 0 0 0.85rem; font-family: var(--land-body); }
-        .land-about__bio { font-size: 0.97rem; line-height: 1.7; color: var(--land-on-variant); margin: 0 0 0.8rem; font-family: var(--land-body); }
-        .land-about__links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
-        .land-about__link {
-            display: inline-flex; align-items: center; gap: 7px;
-            padding: 0.5rem 1rem; border-radius: 999px;
-            font-size: 0.82rem; font-weight: 700; text-decoration: none;
-            border: 1px solid rgba(12,82,82,0.2); color: var(--land-primary);
-            background: rgba(255,255,255,0.8);
-            transition: box-shadow 0.18s, background 0.18s;
-            font-family: var(--land-body);
-        }
-        .land-about__link:hover { box-shadow: 0 3px 12px rgba(12,82,82,0.14); background: #fff; }
-        .land-stack__title { font-family: var(--land-body); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--land-on-variant); margin: 0 0 0.9rem; }
-        .land-stack__row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
-        .land-badge { display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; font-family: var(--land-body); border: 1px solid rgba(12,82,82,0.15); }
-        .land-badge--fe  { background: rgba(59,130,246,0.08); color: #1e40af; border-color: rgba(59,130,246,0.2); }
-        .land-badge--be  { background: rgba(5,150,105,0.08); color: #065f46; border-color: rgba(5,150,105,0.2); }
-        .land-badge--data{ background: rgba(124,58,237,0.08); color: #4c1d95; border-color: rgba(124,58,237,0.2); }
-        .land-badge--infra{ background: rgba(180,83,9,0.08); color: #78350f; border-color: rgba(180,83,9,0.2); }
-        .land-badge--dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; display: inline-block; }
-        .land-badge--fe .land-badge--dot  { background: #3b82f6; }
-        .land-badge--be .land-badge--dot  { background: #059669; }
-        .land-badge--data .land-badge--dot { background: #7c3aed; }
-        .land-badge--infra .land-badge--dot{ background: #b45309; }
-        .land-stack__legend { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.75rem; }
-        .land-stack__legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.72rem; color: var(--land-on-variant); font-family: var(--land-body); }
-        .land-stack__legend-dot { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
-        .land-insight-strip { max-width: 1120px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(2rem, 4vw, 3.5rem); }
-        .land-insight-strip h2 { font-family: var(--land-body); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--land-on-variant); margin: 0 0 1rem; }
-        .land-insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1rem; }
-        .land-insight-card { background: rgba(255,255,255,0.8); border: 1px solid rgba(12,82,82,0.1); border-radius: 14px; padding: 1.25rem 1.4rem; }
-        .land-insight-card__num { font-family: var(--land-display); font-size: 1.7rem; font-weight: 700; color: var(--land-primary); line-height: 1; margin: 0 0 0.35rem; }
-        .land-insight-card__label { font-size: 0.82rem; font-weight: 600; color: var(--land-on-variant); margin: 0 0 0.4rem; font-family: var(--land-body); }
-        .land-insight-card__desc { font-size: 0.8rem; color: #64748b; line-height: 1.5; margin: 0; font-family: var(--land-body); }
-    </style>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5MNCLNL933"></script>
     <script>
@@ -91,198 +20,1046 @@
       gtag('js', new Date());
       gtag('config', 'G-5MNCLNL933');
     </script>
+    <style>
+        /* ─────────────────────────────────────────────────────────
+           CINEMATIC PINNED HERO — full-page scroll showcase
+           Page-stays-still while scenes swap on a tilting glass device.
+           ───────────────────────────────────────────────────────── */
+        :root {
+            --teal-900: #073a3a;
+            --teal-700: #0c5252;
+            --teal-500: #2d6a6a;
+            --teal-300: #6a9c9c;
+            --ink: #0e1414;
+            --ink-soft: #3f4848;
+            --ink-mute: #6b7c7c;
+            --bg: #fbf9f6;
+            --bg-tint: #f3eee6;
+            --line: rgba(12, 82, 82, 0.12);
+        }
+        body.land-root { background: var(--bg); margin: 0; }
+        body.land-root *, body.land-root *::before, body.land-root *::after { box-sizing: border-box; }
+
+        /* ── Sticky topbar: glassy, persistent ── */
+        .nav-shell {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; justify-content: center;
+            padding: 14px clamp(16px, 4vw, 32px) 0;
+            pointer-events: none;
+        }
+        .nav-shell__inner {
+            pointer-events: auto;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 1rem; width: 100%; max-width: 1180px;
+            padding: 10px 14px 10px 18px;
+            background: rgba(251, 249, 246, 0.72);
+            backdrop-filter: saturate(180%) blur(18px);
+            -webkit-backdrop-filter: saturate(180%) blur(18px);
+            border: 1px solid rgba(12, 82, 82, 0.10);
+            border-radius: 999px;
+            box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 8px 32px rgba(12, 82, 82, 0.08);
+        }
+        .nav-mark { display: flex; align-items: center; gap: 9px; font: 700 0.95rem/1 "Source Sans 3", sans-serif; color: var(--teal-700); letter-spacing: -0.01em; }
+        .nav-mark svg { width: 26px; height: 26px; }
+        .nav-links { display: flex; align-items: center; gap: 4px; }
+        .nav-links a { font: 600 0.82rem/1 "Source Sans 3", sans-serif; color: var(--ink-soft); text-decoration: none; padding: 7px 12px; border-radius: 999px; transition: color .15s, background .15s; }
+        .nav-links a:hover { color: var(--teal-700); background: rgba(12,82,82,0.06); }
+        .nav-cta { font: 700 0.82rem/1 "Source Sans 3", sans-serif; color: #fff !important; background: var(--teal-700); padding: 9px 14px !important; border-radius: 999px !important; transition: background .15s, transform .15s; }
+        .nav-cta:hover { background: var(--teal-900) !important; transform: translateY(-1px); }
+        @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+        /* ── STAGE — pinned region ── */
+        .stage-wrap { position: relative; height: 480vh; }
+        .stage {
+            position: sticky; top: 0; height: 100vh; overflow: hidden;
+            display: grid; place-items: center; isolation: isolate;
+        }
+        .stage::before {
+            content: ""; position: absolute; inset: -10%;
+            background:
+                radial-gradient(ellipse 70% 55% at 18% 12%, rgba(12,82,82,0.18) 0%, transparent 60%),
+                radial-gradient(ellipse 65% 50% at 82% 80%, rgba(45,106,106,0.16) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 50% 50%, rgba(255,255,255,0.45) 0%, transparent 70%),
+                linear-gradient(180deg, #fffefb 0%, var(--bg) 60%, var(--bg-tint) 100%);
+            z-index: -2;
+            transform: translate3d(0, calc(var(--scene-prog, 0) * -40px), 0);
+        }
+        .stage::after {
+            content: ""; position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.045 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+            mix-blend-mode: multiply; pointer-events: none; z-index: -1; opacity: 0.55;
+        }
+        .orb { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(40px); opacity: 0.55; z-index: -1; }
+        .orb-a { width: 380px; height: 380px; left: -8%; top: 8%; background: radial-gradient(circle at 30% 30%, rgba(12,82,82,0.45), transparent 70%); transform: translate3d(calc(var(--scene-prog,0) * 60px), calc(var(--scene-prog,0) * -30px), 0); }
+        .orb-b { width: 460px; height: 460px; right: -10%; bottom: 4%; background: radial-gradient(circle at 60% 40%, rgba(180, 130, 70, 0.32), transparent 70%); transform: translate3d(calc(var(--scene-prog,0) * -50px), calc(var(--scene-prog,0) * 40px), 0); }
+
+        .stage-grid {
+            position: relative; z-index: 2;
+            width: 100%; max-width: 1180px;
+            padding: 0 clamp(20px, 4vw, 40px);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+            gap: clamp(28px, 5vw, 64px);
+            align-items: center;
+        }
+        @media (max-width: 920px) {
+            .stage-grid { grid-template-columns: 1fr; gap: 24px; padding: 60px clamp(20px, 4vw, 28px) 0; }
+            .stage { align-items: start; }
+        }
+        @media (max-width: 560px) {
+            .stage-grid { gap: 20px; padding-top: 50px; }
+        }
+
+        /* ── Left column: text scenes that crossfade ── */
+        .copy-stack { position: relative; min-height: 420px; }
+        @media (max-width: 920px) {
+            .copy-stack { min-height: 380px; order: 2; padding: 0 4px; }
+        }
+        @media (max-width: 560px) {
+            .copy-stack { min-height: 460px; }
+        }
+
+        .scene-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font: 700 0.7rem/1 "Source Sans 3", sans-serif;
+            text-transform: uppercase; letter-spacing: 0.16em;
+            color: var(--teal-700);
+            padding: 8px 14px; border-radius: 999px;
+            background: rgba(12,82,82,0.08);
+            border: 1px solid rgba(12,82,82,0.15);
+            margin-bottom: 22px;
+        }
+        .scene-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal-700); box-shadow: 0 0 0 4px rgba(12,82,82,0.2); animation: pulse 2.4s ease-in-out infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .55; transform: scale(0.85); } }
+
+        .scene {
+            position: absolute; inset: 0;
+            opacity: 0; transform: translateY(28px);
+            transition: opacity .6s cubic-bezier(.2,.65,.25,1), transform .7s cubic-bezier(.2,.65,.25,1);
+            pointer-events: none;
+        }
+        .scene.is-active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+        .scene h1, .scene h2 {
+            font-family: "Playfair Display", Georgia, serif;
+            font-weight: 700; color: var(--ink);
+            letter-spacing: -0.025em; margin: 0 0 18px; line-height: 1.04;
+        }
+        .scene h1 { font-size: clamp(2.4rem, 5.4vw, 4.2rem); }
+        .scene h2 { font-size: clamp(2rem, 4.6vw, 3.4rem); }
+        @media (max-width: 560px) {
+            .scene h1 { font-size: 2rem; line-height: 1.08; }
+            .scene h2 { font-size: 1.7rem; line-height: 1.1; }
+            .scene p { font-size: 0.97rem; }
+        }
+        .scene h1 em, .scene h2 em {
+            font-style: italic;
+            background: linear-gradient(120deg, var(--teal-700) 0%, var(--teal-500) 50%, #b48246 100%);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .scene p {
+            font: 400 1.05rem/1.6 "Source Sans 3", sans-serif;
+            color: var(--ink-soft); margin: 0 0 20px; max-width: 480px;
+        }
+        .scene p strong { color: var(--ink); font-weight: 600; }
+        .scene-meta {
+            display: flex; flex-wrap: wrap; gap: 10px;
+            font: 600 0.78rem/1 "Source Sans 3", sans-serif;
+            color: var(--ink-mute);
+        }
+        .scene-meta span {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 7px 11px; border-radius: 8px;
+            background: rgba(255,255,255,0.6);
+            border: 1px solid var(--line);
+            backdrop-filter: blur(10px);
+        }
+        .scene-meta span::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--teal-500); }
+
+        .scene-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            margin-top: 12px; padding: 14px 22px;
+            font: 700 0.92rem/1 "Source Sans 3", sans-serif;
+            color: #fff;
+            background: linear-gradient(140deg, var(--teal-700), var(--teal-900));
+            border-radius: 999px; text-decoration: none;
+            box-shadow: 0 1px 0 rgba(255,255,255,0.15) inset, 0 10px 30px -8px rgba(12,82,82,0.45);
+            transition: transform .25s cubic-bezier(.2,.65,.25,1), box-shadow .25s;
+        }
+        .scene-cta:hover { transform: translateY(-2px); box-shadow: 0 1px 0 rgba(255,255,255,0.15) inset, 0 16px 36px -8px rgba(12,82,82,0.55); }
+        .scene-cta__arrow { transition: transform .25s; }
+        .scene-cta:hover .scene-cta__arrow { transform: translateX(4px); }
+        .scene-secondary {
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-left: 14px;
+            font: 600 0.85rem/1 "Source Sans 3", sans-serif;
+            color: var(--teal-700); text-decoration: none; padding: 13px 0;
+        }
+        .scene-secondary:hover { color: var(--teal-900); text-decoration: underline; text-underline-offset: 4px; }
+
+        /* ── DEVICE ── */
+        .device-stage {
+            perspective: 1800px; perspective-origin: 50% 40%;
+            position: relative; width: 100%;
+            aspect-ratio: 16 / 11; max-width: 640px; justify-self: center;
+        }
+        @media (max-width: 920px) { .device-stage { order: 1; max-width: 86vw; aspect-ratio: 16/11; } }
+        @media (max-width: 560px) { .device-stage { max-width: 92vw; aspect-ratio: 16/12; } }
+        .device {
+            position: absolute; inset: 0;
+            transform-style: preserve-3d;
+            transform:
+                rotateX(calc((1 - var(--scene-prog, 0)) * 6deg + var(--mouse-x, 0) * 2deg))
+                rotateY(calc(var(--mouse-y, 0) * -4deg + var(--scene-prog, 0) * -2deg))
+                translateZ(0);
+            transition: transform .12s linear;
+        }
+        .device-frame {
+            position: absolute; inset: 0;
+            border-radius: 28px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.55));
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.7);
+            box-shadow:
+                0 1px 0 rgba(255,255,255,0.9) inset,
+                0 -1px 0 rgba(12,82,82,0.06) inset,
+                0 30px 60px -20px rgba(12,82,82,0.35),
+                0 80px 120px -40px rgba(12,82,82,0.25),
+                0 0 0 1px rgba(12,82,82,0.05);
+            overflow: hidden;
+        }
+        .device-frame::before {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.45) 45%, transparent 60%);
+            transform: translateX(calc(-30% + var(--scene-prog,0) * 80%));
+            transition: transform 1.2s ease;
+            pointer-events: none; mix-blend-mode: overlay;
+        }
+        .device-frame::after {
+            content: ""; position: absolute; inset: 0; border-radius: inherit;
+            box-shadow: 0 0 60px rgba(12,82,82,0.12) inset;
+            pointer-events: none;
+        }
+        .device-titlebar {
+            position: relative; z-index: 2;
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(12,82,82,0.08);
+            background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
+        }
+        .traffic { display: flex; gap: 6px; }
+        .traffic span { width: 10px; height: 10px; border-radius: 50%; }
+        .traffic span:nth-child(1) { background: #ff5f57; }
+        .traffic span:nth-child(2) { background: #febc2e; }
+        .traffic span:nth-child(3) { background: #28c840; }
+        .device-tab {
+            font: 600 0.72rem/1 "Source Sans 3", sans-serif;
+            color: var(--ink-soft);
+            background: rgba(255,255,255,0.65);
+            padding: 6px 12px; border-radius: 7px;
+            border: 1px solid rgba(12,82,82,0.08);
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .device-tab .lock { color: var(--teal-500); }
+        .device-content {
+            position: absolute; top: 41px; left: 0; right: 0; bottom: 0;
+            overflow: hidden;
+        }
+        .panel {
+            position: absolute; inset: 0;
+            padding: 22px 24px;
+            display: flex; flex-direction: column;
+            opacity: 0; transform: translateY(18px) scale(0.985);
+            transition: opacity .55s cubic-bezier(.2,.65,.25,1), transform .65s cubic-bezier(.2,.65,.25,1);
+            pointer-events: none;
+        }
+        .panel.is-active { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+
+        /* Scene 1: Mess */
+        .panel--mess { padding: 0; }
+        .mess-canvas { position: relative; width: 100%; height: 100%; overflow: hidden; }
+        .float-card {
+            position: absolute;
+            background: rgba(255,255,255,0.85);
+            border: 1px solid rgba(12,82,82,0.1);
+            border-radius: 12px; padding: 10px 14px;
+            box-shadow: 0 8px 24px -10px rgba(12,82,82,0.25);
+            font: 600 0.78rem/1 "Source Sans 3", sans-serif;
+            color: var(--ink);
+            display: flex; align-items: center; gap: 8px;
+            backdrop-filter: blur(8px);
+            animation: drift 8s ease-in-out infinite;
+        }
+        .float-card .gw-dot { width: 8px; height: 8px; border-radius: 50%; }
+        .float-card--cc { top: 12%; left: 6%; animation-delay: 0s; }
+        .float-card--cc .gw-dot { background: #1f6feb; }
+        .float-card--pp { top: 16%; right: 6%; animation-delay: -2s; }
+        .float-card--pp .gw-dot { background: #003087; }
+        .float-card--bnk { bottom: 16%; left: 8%; animation-delay: -4s; }
+        .float-card--bnk .gw-dot { background: #b48246; }
+        .float-card--xls { bottom: 12%; right: 8%; animation-delay: -1s; }
+        .float-card--xls .gw-dot { background: #107c41; }
+        .float-card--csv { top: 50%; right: 4%; transform: translateY(-50%); animation-delay: -3s; }
+        .float-card--csv .gw-dot { background: #6b7c7c; }
+        @keyframes drift {
+            0%,100% { transform: translate(0,0) rotate(0deg); }
+            33%     { transform: translate(8px, -10px) rotate(-1.2deg); }
+            66%     { transform: translate(-6px, 6px) rotate(1deg); }
+        }
+        .mess-overlay {
+            position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%); text-align: center;
+        }
+        .mess-overlay__num {
+            font: 800 clamp(2.2rem, 5vw, 3.6rem)/1 "Playfair Display", serif;
+            color: #c0392b; letter-spacing: -0.03em;
+        }
+        .mess-overlay__lbl {
+            font: 600 0.78rem/1.4 "Source Sans 3", sans-serif;
+            color: var(--ink-soft);
+            text-transform: uppercase; letter-spacing: 0.14em;
+            margin-top: 6px;
+        }
+        .mess-bg-grid {
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(12,82,82,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(12,82,82,0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 75%);
+                    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 75%);
+        }
+
+        /* Scene 2: System */
+        .panel--system { gap: 14px; }
+        .sys-header { display: flex; align-items: center; justify-content: space-between; }
+        .sys-title { font: 700 1rem/1 "Source Sans 3", sans-serif; color: var(--ink); }
+        .sys-pills { display: flex; gap: 6px; }
+        .sys-pill { font: 600 0.7rem/1 "Source Sans 3", sans-serif; padding: 5px 9px; border-radius: 6px; background: rgba(12,82,82,0.08); color: var(--teal-700); border: 1px solid rgba(12,82,82,0.12); }
+        .sys-pill--live { background: rgba(40,200,64,0.12); color: #157135; border-color: rgba(40,200,64,0.25); display: inline-flex; align-items: center; gap: 5px; }
+        .sys-pill--live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #28c840; box-shadow: 0 0 0 3px rgba(40,200,64,0.25); animation: pulse 1.6s infinite; }
+        .sys-flow {
+            display: grid; grid-template-columns: repeat(3, 1fr) auto 1fr;
+            gap: 10px; align-items: center; margin: 4px 0 8px;
+        }
+        .sys-node {
+            background: rgba(255,255,255,0.8);
+            border: 1px solid rgba(12,82,82,0.1);
+            border-radius: 10px; padding: 10px;
+            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            font: 600 0.72rem/1 "Source Sans 3", sans-serif;
+            color: var(--ink-soft);
+        }
+        .sys-node__icon { width: 28px; height: 28px; border-radius: 7px; display: grid; place-items: center; font-size: 14px; font-weight: 800; color: #fff; }
+        .sys-node--cc .sys-node__icon { background: #1f6feb; }
+        .sys-node--pp .sys-node__icon { background: #003087; }
+        .sys-node--bnk .sys-node__icon { background: #b48246; }
+        .sys-arrow { color: var(--teal-500); font-size: 20px; line-height: 1; text-align: center; }
+        .sys-engine {
+            background: linear-gradient(140deg, var(--teal-700), var(--teal-900));
+            color: #fff; border-radius: 10px; padding: 12px 10px;
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+            box-shadow: 0 8px 20px -6px rgba(12,82,82,0.45);
+        }
+        .sys-engine__icon { font-size: 18px; }
+        .sys-engine__lbl { font: 700 0.72rem/1 "Source Sans 3", sans-serif; }
+        .sys-engine__sub { font: 500 0.62rem/1 "Source Sans 3", sans-serif; opacity: 0.85; }
+        .sys-bars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 4px; }
+        .sys-bar { background: rgba(255,255,255,0.7); border: 1px solid rgba(12,82,82,0.08); border-radius: 8px; padding: 8px 10px; }
+        .sys-bar__lbl { font: 600 0.66rem/1 "Source Sans 3", sans-serif; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+        .sys-bar__num { font: 700 1.1rem/1 "Playfair Display", serif; color: var(--teal-700); }
+        .sys-bar__track { height: 4px; background: rgba(12,82,82,0.08); border-radius: 4px; margin-top: 6px; overflow: hidden; }
+        .sys-bar__fill { height: 100%; background: linear-gradient(90deg, var(--teal-500), var(--teal-700)); border-radius: 4px; }
+        .sys-log {
+            margin-top: auto;
+            font: 500 0.72rem/1.5 ui-monospace, "SF Mono", monospace;
+            color: var(--ink-mute);
+            background: rgba(12,82,82,0.04);
+            border: 1px solid rgba(12,82,82,0.08);
+            border-radius: 8px; padding: 10px 12px;
+            max-height: 70px; overflow: hidden;
+        }
+        .sys-log .ok { color: #157135; }
+
+        /* Scene 3: Results */
+        .panel--results { justify-content: center; gap: 18px; }
+        .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .result-card {
+            background: linear-gradient(160deg, rgba(255,255,255,0.92), rgba(255,255,255,0.6));
+            border: 1px solid rgba(12,82,82,0.12);
+            border-radius: 14px; padding: 18px 16px;
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .result-card::before {
+            content: ""; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(12,82,82,0.08), transparent 70%);
+        }
+        .result-card__num {
+            font: 800 clamp(1.5rem, 3.4vw, 2.3rem)/1 "Playfair Display", serif;
+            color: var(--teal-700); letter-spacing: -0.03em; position: relative;
+        }
+        .result-card__lbl {
+            font: 600 0.7rem/1.4 "Source Sans 3", sans-serif;
+            color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.1em;
+            margin-top: 8px; position: relative;
+        }
+        .result-trend {
+            background: rgba(255,255,255,0.75);
+            border: 1px solid rgba(12,82,82,0.1);
+            border-radius: 10px; padding: 14px 16px; margin-top: 4px;
+        }
+        .result-trend__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .result-trend__lbl { font: 600 0.72rem/1 "Source Sans 3", sans-serif; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.1em; }
+        .result-trend__delta { font: 700 0.78rem/1 "Source Sans 3", sans-serif; color: #157135; }
+        .result-trend__chart { height: 50px; }
+        .result-trend__chart svg { width: 100%; height: 100%; display: block; }
+
+        /* Scene 4: Story */
+        .panel--story {
+            justify-content: center; text-align: center;
+            background: linear-gradient(160deg, rgba(12,82,82,0.04), rgba(255,255,255,0));
+        }
+        .story-mark {
+            font: 800 0.72rem/1 "Source Sans 3", sans-serif;
+            text-transform: uppercase; letter-spacing: 0.18em;
+            color: var(--teal-500); margin-bottom: 12px;
+        }
+        .story-title {
+            font: 700 clamp(1.4rem, 2.8vw, 2rem)/1.1 "Playfair Display", serif;
+            color: var(--ink); letter-spacing: -0.02em;
+            margin: 0 0 12px; max-width: 380px; align-self: center;
+        }
+        .story-title em {
+            font-style: italic;
+            background: linear-gradient(120deg, var(--teal-700), #b48246);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .story-sub {
+            font: 400 0.92rem/1.55 "Source Sans 3", sans-serif;
+            color: var(--ink-soft); margin: 0 auto 20px; max-width: 360px;
+        }
+        .story-arrow {
+            font-size: 30px; color: var(--teal-700);
+            animation: nudge 1.4s ease-in-out infinite;
+        }
+        @keyframes nudge { 0%,100% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(6px); opacity: 0.5; } }
+
+        /* Scene rail (right side) */
+        .scene-rail {
+            position: absolute; right: clamp(14px, 2.5vw, 28px); top: 50%;
+            transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 14px;
+            z-index: 5;
+        }
+        @media (max-width: 920px) { .scene-rail { display: none; } }
+        .scene-rail__item {
+            display: flex; align-items: center; gap: 10px;
+            font: 600 0.72rem/1 "Source Sans 3", sans-serif;
+            color: var(--ink-mute);
+            cursor: pointer;
+            background: none; border: none; padding: 0;
+            transition: color .25s;
+        }
+        .scene-rail__dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: rgba(12,82,82,0.2);
+            transition: background .25s, box-shadow .25s, transform .25s;
+        }
+        .scene-rail__item.is-active { color: var(--teal-700); }
+        .scene-rail__item.is-active .scene-rail__dot {
+            background: var(--teal-700);
+            box-shadow: 0 0 0 4px rgba(12,82,82,0.18);
+            transform: scale(1.15);
+        }
+        .scene-rail__label { opacity: 0; transition: opacity .25s; }
+        .scene-rail__item.is-active .scene-rail__label,
+        .scene-rail__item:hover .scene-rail__label { opacity: 1; }
+
+        /* Scroll hint */
+        .scroll-hint {
+            position: absolute; bottom: 28px; left: 50%;
+            transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            font: 600 0.7rem/1 "Source Sans 3", sans-serif;
+            color: var(--ink-mute);
+            text-transform: uppercase; letter-spacing: 0.16em;
+            opacity: calc(1 - var(--scene-prog, 0) * 4);
+            transition: opacity .3s; pointer-events: none;
+        }
+        @media (max-width: 920px) { .scroll-hint { display: none; } }
+        .scroll-hint__line {
+            width: 1px; height: 34px;
+            background: linear-gradient(180deg, var(--teal-700), transparent);
+            position: relative; overflow: hidden;
+        }
+        .scroll-hint__line::after {
+            content: ""; position: absolute; left: 0; right: 0; top: -100%; height: 50%;
+            background: var(--teal-700);
+            animation: scrollDrop 2s ease-in-out infinite;
+        }
+        @keyframes scrollDrop {
+            0%   { transform: translateY(0); opacity: 0; }
+            40%  { opacity: 1; }
+            100% { transform: translateY(220%); opacity: 0; }
+        }
+
+        /* Post-pin */
+        .reveal-section {
+            position: relative; background: var(--bg);
+            padding: clamp(96px, 11vw, 140px) clamp(20px, 4vw, 40px) 0;
+        }
+
+        .ticker {
+            max-width: 1180px; margin: 0 auto;
+            background: rgba(255,255,255,0.7);
+            border: 1px solid var(--line);
+            border-radius: 18px; overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+                    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+            backdrop-filter: blur(8px);
+        }
+        .ticker__row { display: flex; width: max-content; animation: tickerRoll 38s linear infinite; }
+        .ticker:hover .ticker__row { animation-play-state: paused; }
+        @keyframes tickerRoll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .ticker__item {
+            display: inline-flex; align-items: center; gap: 9px;
+            padding: 14px 26px; white-space: nowrap;
+            font: 700 0.78rem/1 "Source Sans 3", sans-serif;
+            color: var(--ink-soft);
+            border-right: 1px solid rgba(12,82,82,0.06);
+        }
+
+        .identity {
+            max-width: 1180px; margin: 64px auto 0;
+            display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px;
+            align-items: start;
+        }
+        @media (max-width: 820px) { .identity { grid-template-columns: 1fr; gap: 32px; } }
+        .identity__avatar {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+            display: grid; place-items: center;
+            color: #fff; font: 700 1.4rem/1 "Source Sans 3", sans-serif;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 20px -6px rgba(12,82,82,0.4);
+        }
+        .identity__name { font: 700 clamp(1.5rem, 2.4vw, 1.85rem)/1.1 "Playfair Display", serif; color: var(--ink); margin: 0 0 4px; letter-spacing: -0.02em; }
+        .identity__role { font: 600 0.9rem/1 "Source Sans 3", sans-serif; color: var(--teal-700); margin: 0 0 18px; }
+        .identity__bio { font: 400 1rem/1.7 "Source Sans 3", sans-serif; color: var(--ink-soft); margin: 0 0 14px; max-width: 540px; }
+        .identity__links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+        .identity__link {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 10px 16px; border-radius: 999px;
+            font: 700 0.82rem/1 "Source Sans 3", sans-serif; text-decoration: none;
+            border: 1px solid var(--line); color: var(--teal-700);
+            background: rgba(255,255,255,0.85);
+            transition: box-shadow .15s, background .15s, transform .15s;
+        }
+        .identity__link:hover { box-shadow: 0 6px 18px -6px rgba(12,82,82,0.25); background: #fff; transform: translateY(-1px); }
+
+        .stack__title { font: 800 0.7rem/1 "Source Sans 3", sans-serif; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-mute); margin: 0 0 14px; }
+        .stack__row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 9px; }
+        .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; font: 700 0.78rem/1 "Source Sans 3", sans-serif; border: 1px solid; }
+        .badge .d { width: 7px; height: 7px; border-radius: 50%; }
+        .badge--fe   { background: rgba(59,130,246,0.08); color: #1e40af; border-color: rgba(59,130,246,0.22); } .badge--fe .d { background: #3b82f6; }
+        .badge--be   { background: rgba(5,150,105,0.08);  color: #065f46; border-color: rgba(5,150,105,0.22); } .badge--be .d { background: #059669; }
+        .badge--data { background: rgba(124,58,237,0.08); color: #4c1d95; border-color: rgba(124,58,237,0.22); } .badge--data .d { background: #7c3aed; }
+        .badge--ai   { background: rgba(234,88,12,0.08);  color: #9a3412; border-color: rgba(234,88,12,0.22); } .badge--ai .d { background: #ea580c; }
+        .badge--inf  { background: rgba(180,83,9,0.08);   color: #78350f; border-color: rgba(180,83,9,0.22); } .badge--inf .d { background: #b45309; }
+
+        .grid-section {
+            max-width: 1180px; margin: 96px auto 0;
+            padding-bottom: clamp(48px, 6vw, 80px);
+        }
+        .grid-section h2 {
+            font: 700 clamp(1.5rem, 2.6vw, 2rem)/1.1 "Playfair Display", serif;
+            color: var(--ink); letter-spacing: -0.02em; margin: 0 0 8px;
+        }
+        .grid-eyebrow {
+            font: 700 0.72rem/1 "Source Sans 3", sans-serif;
+            text-transform: uppercase; letter-spacing: 0.14em;
+            color: var(--teal-500); margin: 0 0 14px;
+        }
+        .grid-lead {
+            font: 400 1rem/1.6 "Source Sans 3", sans-serif;
+            color: var(--ink-soft); margin: 0 0 32px; max-width: 540px;
+        }
+        .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+        .tile {
+            position: relative; display: block;
+            padding: 22px 22px 24px;
+            background: rgba(255,255,255,0.85);
+            border: 1px solid var(--line);
+            border-radius: 16px; text-decoration: none; color: inherit;
+            transition: transform .25s cubic-bezier(.2,.65,.25,1), box-shadow .25s, border-color .25s, background .25s;
+            overflow: hidden;
+        }
+        .tile::before {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(12,82,82,0.04), transparent 60%);
+            opacity: 0; transition: opacity .25s;
+        }
+        .tile:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -16px rgba(12,82,82,0.28); border-color: rgba(12,82,82,0.22); }
+        .tile:hover::before { opacity: 1; }
+        .tile--featured { background: linear-gradient(135deg, rgba(12,82,82,0.06), rgba(255,255,255,0.92)); border-color: rgba(12,82,82,0.22); }
+        .tile__icon {
+            display: inline-grid; place-items: center;
+            width: 36px; height: 36px; border-radius: 10px;
+            background: rgba(12,82,82,0.08); color: var(--teal-700);
+            font-size: 16px; margin-bottom: 14px;
+        }
+        .tile h3 { font: 700 1.05rem/1.3 "Source Sans 3", sans-serif; color: var(--ink); margin: 0 0 8px; letter-spacing: -0.01em; }
+        .tile p { font: 400 0.9rem/1.55 "Source Sans 3", sans-serif; color: var(--ink-soft); margin: 0 0 14px; }
+        .tile__arrow { font: 700 0.8rem/1 "Source Sans 3", sans-serif; color: var(--teal-700); display: inline-flex; align-items: center; gap: 6px; transition: gap .2s; }
+        .tile:hover .tile__arrow { gap: 10px; }
+
+        .foot {
+            border-top: 1px solid var(--line);
+            padding: 28px clamp(20px, 4vw, 40px) 36px;
+            text-align: center;
+            font: 500 0.85rem/1.6 "Source Sans 3", sans-serif;
+            color: var(--ink-soft);
+        }
+        .foot a { color: var(--teal-700); text-decoration: none; margin: 0 6px; font-weight: 600; }
+        .foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
+        .foot__notice { font-size: 0.74rem; color: var(--ink-mute); max-width: 720px; margin: 14px auto 0; }
+        .foot__notice strong { color: var(--ink-soft); }
+
+        /* Reduced motion fallback */
+        @media (prefers-reduced-motion: reduce) {
+            .stage-wrap { height: auto; }
+            .stage { position: relative; height: auto; padding: 60px 0; }
+            .scene { position: relative; opacity: 1; transform: none; margin-bottom: 32px; }
+            .panel { position: relative; opacity: 1; transform: none; }
+            .device-frame::before, .float-card, .scroll-hint__line::after, .story-arrow { animation: none; }
+            .device { transform: none !important; }
+        }
+    </style>
 </head>
 <body class="land-root">
-    <header class="land-hero" role="banner">
-        <div class="land-hero__inner">
-            <div class="land-topbar">
-                <div class="land-mark" aria-label="Product">
-                    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2" y="2" width="12" height="12" rx="2.5" fill="url(#a)"/>
-                        <rect x="18" y="2" width="12" height="12" rx="2.5" fill="url(#a)" opacity=".55"/>
-                        <rect x="2" y="18" width="12" height="12" rx="2.5" fill="url(#a)" opacity=".4"/>
-                        <rect x="18" y="18" width="12" height="12" rx="2.5" fill="url(#a)" opacity=".7"/>
-                        <defs><linearGradient id="a" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#0c5252"/><stop offset="1" stop-color="#2d6a6a"/>
-                        </linearGradient></defs>
-                    </svg>
-                    <span>Finance Console</span>
+
+<div class="nav-shell">
+    <div class="nav-shell__inner">
+        <div class="nav-mark">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="2" width="12" height="12" rx="2.5" fill="url(#navg)"/>
+                <rect x="18" y="2" width="12" height="12" rx="2.5" fill="url(#navg)" opacity=".55"/>
+                <rect x="2" y="18" width="12" height="12" rx="2.5" fill="url(#navg)" opacity=".4"/>
+                <rect x="18" y="18" width="12" height="12" rx="2.5" fill="url(#navg)" opacity=".7"/>
+                <defs><linearGradient id="navg" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#0c5252"/><stop offset="1" stop-color="#2d6a6a"/>
+                </linearGradient></defs>
+            </svg>
+            <span>Finance Console</span>
+        </div>
+        <div class="nav-links">
+            <a href="impact.html">Story</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="graphs.html">Analytics</a>
+            <a href="ml-analysis.html">ML</a>
+            <a class="nav-cta" href="impact.html">Read the story →</a>
+        </div>
+    </div>
+</div>
+
+<div class="stage-wrap" id="stageWrap">
+    <div class="stage" id="stage">
+        <div class="orb orb-a"></div>
+        <div class="orb orb-b"></div>
+
+        <div class="scene-rail" id="sceneRail">
+            <button class="scene-rail__item is-active" data-go="0"><span class="scene-rail__label">The mess</span><span class="scene-rail__dot"></span></button>
+            <button class="scene-rail__item" data-go="1"><span class="scene-rail__label">The system</span><span class="scene-rail__dot"></span></button>
+            <button class="scene-rail__item" data-go="2"><span class="scene-rail__label">The result</span><span class="scene-rail__dot"></span></button>
+            <button class="scene-rail__item" data-go="3"><span class="scene-rail__label">The story</span><span class="scene-rail__dot"></span></button>
+        </div>
+
+        <div class="stage-grid">
+            <div class="copy-stack" id="copyStack">
+
+                <div class="scene is-active" data-scene="0">
+                    <div class="scene-eyebrow"><span class="dot"></span>The problem</div>
+                    <h1>A week of finance work, <em>buried in spreadsheets.</em></h1>
+                    <p>Three payment gateways. Hundreds of transactions a month. A finance team reconciling them by hand, line by line — <strong>40+ hours every cycle</strong>, with errors that took two months to surface.</p>
+                    <div class="scene-meta"><span>CCAvenue</span><span>PayPal</span><span>Bank NEFT/RTGS</span></div>
                 </div>
-                <div class="land-top-actions">
-                    <a class="land-link" href="impact.html">What I Built</a>
-                    <a class="land-link" href="graphs.html">Analytics</a>
-                    <a class="land-link" href="dashboard.html">Dashboard</a>
-                    <a class="land-btn land-btn--ghost" href="https://www.linkedin.com/in/rahul-srivastava97/" target="_blank" rel="noopener">LinkedIn ↗</a>
-                    <a class="land-btn land-btn--solid" href="dashboard.html">Open Dashboard</a>
+
+                <div class="scene" data-scene="1">
+                    <div class="scene-eyebrow"><span class="dot"></span>The system</div>
+                    <h2>I built one console that <em>reconciles all three.</em></h2>
+                    <p>A Python engine that ingests every gateway, matches references against bank statements, flags GST mismatches, and produces a one-click monthly report. <strong>React frontend, Node and PHP APIs, MySQL on Google Cloud</strong> — designed and shipped solo.</p>
+                    <div class="scene-meta"><span>Python · Pandas</span><span>Node.js · PHP</span><span>React</span><span>MySQL</span></div>
+                </div>
+
+                <div class="scene" data-scene="2">
+                    <div class="scene-eyebrow"><span class="dot"></span>The result</div>
+                    <h2>From a week of work to <em>under an hour.</em></h2>
+                    <p>₹63 Cr of transactions processed. 98.4% auto-match on reconciliation. ₹4.2 lakh in GST mismatches caught that manual review missed. The system pays for itself the first month it runs.</p>
+                    <div class="scene-meta"><span>95% time saved</span><span>3 gateways unified</span><span>1 control surface</span></div>
+                </div>
+
+                <div class="scene" data-scene="3">
+                    <div class="scene-eyebrow"><span class="dot"></span>The story</div>
+                    <h2>Read the full build, <em>start to finish.</em></h2>
+                    <p>The architecture, the data decisions, what broke, what I'd change. Written in plain English for hiring managers — with the technical depth a lead engineer needs to evaluate the work.</p>
+                    <div>
+                        <a class="scene-cta" href="impact.html">
+                            Read the story
+                            <svg class="scene-cta__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                        <a class="scene-secondary" href="dashboard.html">or open the dashboard →</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="land-demo-badge">Demo portfolio — all data is synthetic</div>
+            <div class="device-stage">
+                <div class="device" id="device">
+                    <div class="device-frame">
+                        <div class="device-titlebar">
+                            <div class="traffic"><span></span><span></span><span></span></div>
+                            <div class="device-tab"><span class="lock">⚌</span> finance-console.app</div>
+                        </div>
 
-            <h1>I automated a week of finance work into a one-click report.</h1>
-            <p class="land-hero__lead">A full-stack fintech system I designed and built from scratch — automating payment reconciliation across three gateways (CCAvenue, PayPal, bank transfer), surfacing revenue insights with Python analytics, and replacing 40+ hours of monthly manual spreadsheet work.</p>
+                        <div class="device-content" id="deviceContent">
 
-            <div style="margin-bottom: 1.5rem;">
-                <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--land-on-variant);margin:0 0 0.65rem;font-family:var(--land-body);">Jump to what's most relevant for you</p>
-                <div class="land-role-bar">
-                    <a class="land-role-btn" href="impact.html">👔 Recruiter / HR — start here</a>
-                    <a class="land-role-btn" href="dashboard.html">⚙️ Technical lead / engineer</a>
-                    <a class="land-role-btn" href="graphs.html">📊 PM or data science role</a>
+                            <div class="panel panel--mess is-active" data-panel="0">
+                                <div class="mess-canvas">
+                                    <div class="mess-bg-grid"></div>
+                                    <div class="float-card float-card--cc"><span class="gw-dot"></span>CCAvenue · CSV</div>
+                                    <div class="float-card float-card--pp"><span class="gw-dot"></span>PayPal · API export</div>
+                                    <div class="float-card float-card--bnk"><span class="gw-dot"></span>Bank · NEFT</div>
+                                    <div class="float-card float-card--xls"><span class="gw-dot"></span>recon-jan.xlsx</div>
+                                    <div class="float-card float-card--csv"><span class="gw-dot"></span>refunds.csv</div>
+                                    <div class="mess-overlay">
+                                        <div class="mess-overlay__num">40+ hrs</div>
+                                        <div class="mess-overlay__lbl">Manual every month</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel--system" data-panel="1">
+                                <div class="sys-header">
+                                    <div class="sys-title">Reconciliation pipeline</div>
+                                    <div class="sys-pills"><span class="sys-pill sys-pill--live">running</span></div>
+                                </div>
+                                <div class="sys-flow">
+                                    <div class="sys-node sys-node--cc"><div class="sys-node__icon">C</div>CCAvenue</div>
+                                    <div class="sys-node sys-node--pp"><div class="sys-node__icon">P</div>PayPal</div>
+                                    <div class="sys-node sys-node--bnk"><div class="sys-node__icon">B</div>Bank</div>
+                                    <div class="sys-arrow">→</div>
+                                    <div class="sys-engine">
+                                        <div class="sys-engine__icon">⚙</div>
+                                        <div class="sys-engine__lbl">Match Engine</div>
+                                        <div class="sys-engine__sub">Python · Pandas</div>
+                                    </div>
+                                </div>
+                                <div class="sys-bars">
+                                    <div class="sys-bar"><div class="sys-bar__lbl">Matched</div><div class="sys-bar__num">2,847</div><div class="sys-bar__track"><div class="sys-bar__fill" style="width:98%"></div></div></div>
+                                    <div class="sys-bar"><div class="sys-bar__lbl">Flagged</div><div class="sys-bar__num">46</div><div class="sys-bar__track"><div class="sys-bar__fill" style="width:14%; background: linear-gradient(90deg,#e0a648,#b48246);"></div></div></div>
+                                    <div class="sys-bar"><div class="sys-bar__lbl">Auto-rate</div><div class="sys-bar__num">98.4%</div><div class="sys-bar__track"><div class="sys-bar__fill" style="width:98%"></div></div></div>
+                                </div>
+                                <div class="sys-log">
+                                    <div><span class="ok">✓</span> matched CCAvenue#2847 ↔ bank-ref TXN8821</div>
+                                    <div><span class="ok">✓</span> matched PayPal#PP-44A1 ↔ FX settlement</div>
+                                    <div>⚠ flagged GST mismatch · order #1129</div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel--results" data-panel="2">
+                                <div class="results-grid">
+                                    <div class="result-card"><div class="result-card__num" data-num data-target="63" data-prefix="₹" data-suffix=" Cr">₹63 Cr</div><div class="result-card__lbl">Revenue managed</div></div>
+                                    <div class="result-card"><div class="result-card__num" data-num data-target="98.4" data-suffix="%" data-decimals="1">98.4%</div><div class="result-card__lbl">Auto-match rate</div></div>
+                                    <div class="result-card"><div class="result-card__num" data-num data-target="95" data-suffix="%">95%</div><div class="result-card__lbl">Time saved</div></div>
+                                </div>
+                                <div class="result-trend">
+                                    <div class="result-trend__head">
+                                        <span class="result-trend__lbl">12-mo revenue</span>
+                                        <span class="result-trend__delta">▲ 27.4%</span>
+                                    </div>
+                                    <div class="result-trend__chart">
+                                        <svg viewBox="0 0 300 50" preserveAspectRatio="none">
+                                            <defs>
+                                                <linearGradient id="trendg" x1="0" x2="0" y1="0" y2="1">
+                                                    <stop offset="0%" stop-color="#0c5252" stop-opacity="0.35"/>
+                                                    <stop offset="100%" stop-color="#0c5252" stop-opacity="0"/>
+                                                </linearGradient>
+                                            </defs>
+                                            <path d="M0,38 L25,32 L50,34 L75,28 L100,30 L125,22 L150,24 L175,18 L200,16 L225,12 L250,14 L275,8 L300,6 L300,50 L0,50 Z" fill="url(#trendg)"/>
+                                            <path d="M0,38 L25,32 L50,34 L75,28 L100,30 L125,22 L150,24 L175,18 L200,16 L225,12 L250,14 L275,8 L300,6" fill="none" stroke="#0c5252" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel--story" data-panel="3">
+                                <div class="story-mark">Continue ↓</div>
+                                <div class="story-title">The full build, <em>plain-English first</em>, technical second.</div>
+                                <p class="story-sub">Architecture diagrams, the data story, hard tradeoffs, and the parts I'd rebuild today.</p>
+                                <div class="story-arrow">↓</div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="land-hero__cta">
-                <a class="land-btn land-btn--solid" href="graphs.html">Explore Charts &amp; Analytics</a>
-                <a class="land-btn land-btn--ghost" href="impact.html">Read the Impact Story</a>
-            </div>
-            <div class="land-hero__stats" aria-label="Highlights">
-                <div class="land-stat"><b>₹63 Cr</b><span>Revenue Managed</span></div>
-                <div class="land-stat"><b>95%</b><span>Time Saved on Reporting</span></div>
-                <div class="land-stat"><b>3</b><span>Gateways Unified</span></div>
-                <div class="land-stat"><b>2,400+</b><span>Transactions Reconciled</span></div>
             </div>
         </div>
-    </header>
 
-    <!-- ── About the Builder ── -->
-    <div class="land-about">
-        <div class="land-about__inner">
-            <div>
-                <div class="land-about__avatar">RS</div>
-                <h2 class="land-about__name">Rahul Srivastava</h2>
-                <p class="land-about__role">Full-Stack Engineer · Data Analyst · Fintech</p>
-                <p class="land-about__bio">I designed and built this entire platform independently — from the React frontend and Node.js/PHP APIs to a Python reconciliation engine and MySQL database on Google Cloud. It solved a real operational problem: the finance team was spending a full week every month manually reconciling payments across three gateways. This system cut that to under an hour.</p>
-                <p class="land-about__bio">I work across the full stack and enjoy the intersection of engineering, data, and product — building systems that make complex workflows feel effortless.</p>
-                <div class="land-about__links">
-                    <a class="land-about__link" href="https://www.linkedin.com/in/rahul-srivastava97/" target="_blank" rel="noopener">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="#0c5252" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-                        LinkedIn
-                    </a>
-                    <a class="land-about__link" href="https://github.com/rahulsrivastava97" target="_blank" rel="noopener">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0c5252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                        GitHub
-                    </a>
-                    <a class="land-about__link" href="impact.html">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0c5252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                        Impact &amp; ROI
-                    </a>
-                </div>
+        <div class="scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-hint__line"></div>
+        </div>
+    </div>
+</div>
+
+<section class="reveal-section">
+    <div class="ticker">
+        <div class="ticker__row">
+            <div class="ticker__item"><span>🐍</span>Python · Pandas · Reconciliation</div>
+            <div class="ticker__item"><span>⚛</span>React · TypeScript · Tauri</div>
+            <div class="ticker__item"><span>🔧</span>Node.js · PHP · REST</div>
+            <div class="ticker__item"><span>🗄</span>MySQL · SQL Analytics</div>
+            <div class="ticker__item"><span>☁</span>Google Cloud Run</div>
+            <div class="ticker__item"><span>🔐</span>WebAuthn · Passkeys</div>
+            <div class="ticker__item"><span>🤖</span>Claude Code · Cursor</div>
+            <div class="ticker__item"><span>📊</span>Prophet · ARIMA · K-Means</div>
+            <div class="ticker__item"><span>🐍</span>Python · Pandas · Reconciliation</div>
+            <div class="ticker__item"><span>⚛</span>React · TypeScript · Tauri</div>
+            <div class="ticker__item"><span>🔧</span>Node.js · PHP · REST</div>
+            <div class="ticker__item"><span>🗄</span>MySQL · SQL Analytics</div>
+            <div class="ticker__item"><span>☁</span>Google Cloud Run</div>
+            <div class="ticker__item"><span>🔐</span>WebAuthn · Passkeys</div>
+            <div class="ticker__item"><span>🤖</span>Claude Code · Cursor</div>
+            <div class="ticker__item"><span>📊</span>Prophet · ARIMA · K-Means</div>
+        </div>
+    </div>
+
+    <div class="identity">
+        <div>
+            <div class="identity__avatar">RS</div>
+            <h2 class="identity__name">Rahul Srivastava</h2>
+            <p class="identity__role">Full-stack engineer · Data analyst · Fintech</p>
+            <p class="identity__bio">I designed and built this entire platform independently — React frontend, Node and PHP APIs, a Python reconciliation engine, MySQL on Google Cloud. It solved a real operational problem: a finance team spending a full week every month reconciling payments across three gateways. This system cut that to under an hour.</p>
+            <p class="identity__bio">I work across the full stack and enjoy the intersection of engineering, data, and product — building systems that make complex workflows feel effortless. I use AI tools (Claude Code, Cursor) throughout my development workflow.</p>
+            <div class="identity__links">
+                <a class="identity__link" href="https://www.linkedin.com/in/rahul-srivastava97/" target="_blank" rel="noopener">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#0c5252"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                    LinkedIn
+                </a>
+                <a class="identity__link" href="https://github.com/rahulsrivastava97" target="_blank" rel="noopener">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0c5252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    GitHub
+                </a>
+                <a class="identity__link" href="impact.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0c5252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    Impact &amp; ROI
+                </a>
             </div>
-            <div>
-                <p class="land-stack__title">Tech Stack</p>
-                <div class="land-stack__row">
-                    <span class="land-badge land-badge--fe"><span class="land-badge--dot"></span>React</span>
-                    <span class="land-badge land-badge--fe"><span class="land-badge--dot"></span>HTML · CSS · JS</span>
-                    <span class="land-badge land-badge--fe"><span class="land-badge--dot"></span>Tauri (Desktop)</span>
-                </div>
-                <div class="land-stack__row">
-                    <span class="land-badge land-badge--be"><span class="land-badge--dot"></span>Node.js</span>
-                    <span class="land-badge land-badge--be"><span class="land-badge--dot"></span>PHP</span>
-                    <span class="land-badge land-badge--be"><span class="land-badge--dot"></span>REST APIs</span>
-                    <span class="land-badge land-badge--be"><span class="land-badge--dot"></span>WebAuthn / Passkey</span>
-                </div>
-                <div class="land-stack__row">
-                    <span class="land-badge land-badge--data"><span class="land-badge--dot"></span>Python</span>
-                    <span class="land-badge land-badge--data"><span class="land-badge--dot"></span>Pandas</span>
-                    <span class="land-badge land-badge--data"><span class="land-badge--dot"></span>MySQL</span>
-                    <span class="land-badge land-badge--data"><span class="land-badge--dot"></span>SQL Analytics</span>
-                </div>
-                <div class="land-stack__row">
-                    <span class="land-badge land-badge--infra"><span class="land-badge--dot"></span>Google Cloud</span>
-                    <span class="land-badge land-badge--infra"><span class="land-badge--dot"></span>GitHub Pages</span>
-                    <span class="land-badge land-badge--infra"><span class="land-badge--dot"></span>RBAC</span>
-                </div>
-                <div class="land-stack__legend">
-                    <span class="land-stack__legend-item"><span class="land-stack__legend-dot" style="background:#3b82f6;"></span>Frontend</span>
-                    <span class="land-stack__legend-item"><span class="land-stack__legend-dot" style="background:#059669;"></span>Backend / APIs</span>
-                    <span class="land-stack__legend-item"><span class="land-stack__legend-dot" style="background:#7c3aed;"></span>Data &amp; Database</span>
-                    <span class="land-stack__legend-item"><span class="land-stack__legend-dot" style="background:#b45309;"></span>Infrastructure</span>
-                </div>
+        </div>
+        <div>
+            <p class="stack__title">Tech stack</p>
+            <div class="stack__row">
+                <span class="badge badge--fe"><span class="d"></span>React</span>
+                <span class="badge badge--fe"><span class="d"></span>HTML · CSS · JS</span>
+                <span class="badge badge--fe"><span class="d"></span>Tauri</span>
+            </div>
+            <div class="stack__row">
+                <span class="badge badge--be"><span class="d"></span>Node.js</span>
+                <span class="badge badge--be"><span class="d"></span>PHP</span>
+                <span class="badge badge--be"><span class="d"></span>REST APIs</span>
+                <span class="badge badge--be"><span class="d"></span>WebAuthn</span>
+            </div>
+            <div class="stack__row">
+                <span class="badge badge--data"><span class="d"></span>Python</span>
+                <span class="badge badge--data"><span class="d"></span>Pandas</span>
+                <span class="badge badge--data"><span class="d"></span>MySQL</span>
+                <span class="badge badge--data"><span class="d"></span>SQL Analytics</span>
+            </div>
+            <div class="stack__row">
+                <span class="badge badge--ai"><span class="d"></span>Claude Code</span>
+                <span class="badge badge--ai"><span class="d"></span>Cursor AI</span>
+                <span class="badge badge--ai"><span class="d"></span>AI-assisted dev</span>
+            </div>
+            <div class="stack__row">
+                <span class="badge badge--inf"><span class="d"></span>Google Cloud</span>
+                <span class="badge badge--inf"><span class="d"></span>GitHub Pages</span>
+                <span class="badge badge--inf"><span class="d"></span>RBAC</span>
             </div>
         </div>
     </div>
 
-    <!-- ── Data Insights Strip ── -->
-    <div class="land-insight-strip">
-        <h2>Key insights this system uncovered</h2>
-        <div class="land-insights">
-            <div class="land-insight-card">
-                <div class="land-insight-card__num">9.8%</div>
-                <div class="land-insight-card__label">Average payment gateway fee rate</div>
-                <div class="land-insight-card__desc">Python analysis revealed CCAvenue fees were 1.4× higher than bank transfer for equivalent transaction sizes — driving a gateway routing recommendation.</div>
-            </div>
-            <div class="land-insight-card">
-                <div class="land-insight-card__num">₹4.2L</div>
-                <div class="land-insight-card__label">GST mismatch caught automatically</div>
-                <div class="land-insight-card__desc">Automated reconciliation flagged tax-rate discrepancies across 38 transactions that two months of manual review had missed entirely.</div>
-            </div>
-            <div class="land-insight-card">
-                <div class="land-insight-card__num">98.4%</div>
-                <div class="land-insight-card__label">Auto-match rate on reconciliation</div>
-                <div class="land-insight-card__desc">Multi-gateway matching logic achieves near-full automation, surfacing only the 1.6% edge cases that need a human decision.</div>
-            </div>
-            <div class="land-insight-card">
-                <div class="land-insight-card__num">29%</div>
-                <div class="land-insight-card__label">Net margin — highest-revenue event</div>
-                <div class="land-insight-card__desc">Conference-level drill-down showed ICRAI 2026 had the best margin profile, directly informing budget allocation for the next cycle.</div>
-            </div>
-        </div>
-    </div>
-
-    <section class="land-section" aria-labelledby="land-nav-title">
-        <h2 id="land-nav-title">Explore the Portfolio</h2>
-        <div class="land-grid">
-            <a class="land-tile" href="impact.html">
-                <div class="land-tile__icon" aria-hidden="true">✦</div>
-                <h3>What I Built &amp; Why It Matters</h3>
-                <p>Plain-English outcomes for any reader, plus the full architecture and data story for technical hiring managers.</p>
-                <div class="land-tile__arrow">Read the story →</div>
+    <div class="grid-section">
+        <p class="grid-eyebrow">Explore the platform</p>
+        <h2>Every part of the system, fully interactive.</h2>
+        <p class="grid-lead">All data is synthetic. Every page is a real piece of the build, not a mockup.</p>
+        <div class="tiles">
+            <a class="tile tile--featured" href="impact.html">
+                <div class="tile__icon">✦</div>
+                <h3>What I built &amp; why it matters</h3>
+                <p>Plain-English outcomes for any reader, plus the architecture and data story for technical hiring managers. <strong>Start here.</strong></p>
+                <div class="tile__arrow">Read the story →</div>
             </a>
-            <a class="land-tile" href="dashboard.html">
-                <div class="land-tile__icon" aria-hidden="true">▦</div>
-                <h3>Operations Dashboard</h3>
+            <a class="tile" href="dashboard.html">
+                <div class="tile__icon">▦</div>
+                <h3>Operations dashboard</h3>
                 <p>Live KPI snapshot across CCAvenue, PayPal, and bank transfer — the control centre I designed for the finance team.</p>
-                <div class="land-tile__arrow">Open Dashboard →</div>
+                <div class="tile__arrow">Open dashboard →</div>
             </a>
-            <a class="land-tile" href="graphs.html">
-                <div class="land-tile__icon" aria-hidden="true">▤</div>
-                <h3>Analytics &amp; Drill-Down</h3>
-                <p>12-month revenue, fee, and profit trend with per-conference drill-down. Interactive charts built on live calculated data.</p>
-                <div class="land-tile__arrow">View analytics →</div>
+            <a class="tile" href="graphs.html">
+                <div class="tile__icon">▤</div>
+                <h3>Analytics &amp; drill-down</h3>
+                <p>12-month revenue, fee, and profit trend with per-conference drill-down. Interactive charts on live calculated data.</p>
+                <div class="tile__arrow">View analytics →</div>
             </a>
-            <a class="land-tile" href="ccavenue-master.html">
-                <div class="land-tile__icon" aria-hidden="true">💳</div>
-                <h3>CCAvenue API Master</h3>
+            <a class="tile" href="ml-analysis.html">
+                <div class="tile__icon">◉</div>
+                <h3>ML analysis</h3>
+                <p>Prophet + ARIMA revenue forecasting and K-Means + DBSCAN payment clustering — synthetic demo with Chart.js and Cloud Run API panels.</p>
+                <div class="tile__arrow">Open ML analysis →</div>
+            </a>
+            <a class="tile" href="ccavenue-master.html">
+                <div class="tile__icon">💳</div>
+                <h3>CCAvenue API master</h3>
                 <p>Order grid with card-brand icons, conference tagging, verification LEDs, and a full transaction detail dialog.</p>
-                <div class="land-tile__arrow">Open grid →</div>
+                <div class="tile__arrow">Open grid →</div>
             </a>
-            <a class="land-tile" href="reports.html">
-                <div class="land-tile__icon" aria-hidden="true">⏚</div>
-                <h3>Payment Reports</h3>
-                <p>Multi-currency PayPal and bank NEFT/RTGS reports with aligned reference IDs and reconciliation status.</p>
-                <div class="land-tile__arrow">Open reports →</div>
+            <a class="tile" href="paypal-master.html">
+                <div class="tile__icon">🌐</div>
+                <h3>PayPal transaction master</h3>
+                <p>Multi-currency international payments (USD, GBP, EUR) with live INR equivalents, fee analysis, and settlement tracking.</p>
+                <div class="tile__arrow">Open PayPal master →</div>
             </a>
-            <a class="land-tile" href="portal-account.html">
-                <div class="land-tile__icon" aria-hidden="true">🛡</div>
-                <h3>Access &amp; Security</h3>
-                <p>Granular RBAC user directory, passkey authentication, and a role × page permission matrix I designed from scratch.</p>
-                <div class="land-tile__arrow">Open portal →</div>
+            <a class="tile" href="reports.html">
+                <div class="tile__icon">⏚</div>
+                <h3>Payment reports</h3>
+                <p>Cross-channel reconciliation across PayPal multi-currency and bank NEFT/RTGS, with aligned reference IDs.</p>
+                <div class="tile__arrow">Open reports →</div>
             </a>
-            <a class="land-tile" href="login.html">
-                <div class="land-tile__icon" aria-hidden="true">🔐</div>
-                <h3>Passkey Sign-In Demo</h3>
+            <a class="tile" href="portal-account.html">
+                <div class="tile__icon">🛡</div>
+                <h3>Access &amp; security</h3>
+                <p>Granular RBAC user directory, passkey authentication, and a role × page permission matrix designed from scratch.</p>
+                <div class="tile__arrow">Open portal →</div>
+            </a>
+            <a class="tile" href="login.html">
+                <div class="tile__icon">🔐</div>
+                <h3>Passkey sign-in demo</h3>
                 <p>WebAuthn passkey + Google OAuth flow — try the biometric authentication experience I implemented.</p>
-                <div class="land-tile__arrow">Try the login →</div>
+                <div class="tile__arrow">Try the login →</div>
             </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer class="land-footer">
-        <a href="https://www.linkedin.com/in/rahul-srivastava97/" target="_blank" rel="noopener">LinkedIn</a> &middot;
-        <a href="impact.html">What I Built</a> &middot;
-        <a href="dashboard.html">Dashboard</a> &middot;
-        <a href="graphs.html">Analytics</a> &middot;
-        <span style="opacity:0.55;font-size:0.85em;">All data is synthetic · Built by Rahul Srivastava</span>
-    </footer>
+<footer class="foot">
+    <a href="https://www.linkedin.com/in/rahul-srivastava97/" target="_blank" rel="noopener">LinkedIn</a> ·
+    <a href="https://github.com/rahulsrivastava97" target="_blank" rel="noopener">GitHub</a> ·
+    <a href="impact.html">Story</a> ·
+    <a href="dashboard.html">Dashboard</a> ·
+    <a href="graphs.html">Analytics</a> ·
+    <a href="ml-analysis.html">ML</a>
+    <div class="foot__notice">
+        <strong>Note:</strong> All figures, names, and transaction data on this site are entirely synthetic and for demonstration purposes only. No real financial or personal data is used. Built by Rahul Srivastava.
+    </div>
+</footer>
+
+<script>
+(function () {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const wrap     = document.getElementById('stageWrap');
+    const stage    = document.getElementById('stage');
+    const scenes   = document.querySelectorAll('.scene');
+    const panels   = document.querySelectorAll('.panel');
+    const railBtns = document.querySelectorAll('.scene-rail__item');
+    const device   = document.getElementById('device');
+    const SCENE_COUNT = scenes.length;
+
+    if (reduceMotion) {
+        scenes.forEach(s => s.classList.add('is-active'));
+        panels.forEach(p => p.classList.add('is-active'));
+        return;
+    }
+
+    let lastIdx = -1;
+    function update() {
+        const wrapRect = wrap.getBoundingClientRect();
+        const total = wrap.offsetHeight - window.innerHeight;
+        const raw = Math.min(1, Math.max(0, -wrapRect.top / total));
+        const sceneFloat = raw * SCENE_COUNT;
+        const idx = Math.min(SCENE_COUNT - 1, Math.floor(sceneFloat));
+        stage.style.setProperty('--scene-prog', raw.toFixed(4));
+        if (idx !== lastIdx) {
+            lastIdx = idx;
+            scenes.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+            panels.forEach((p, i) => p.classList.toggle('is-active', i === idx));
+            railBtns.forEach((b, i) => b.classList.toggle('is-active', i === idx));
+            if (idx === 2) animateCounts();
+        }
+    }
+
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            requestAnimationFrame(() => { update(); ticking = false; });
+            ticking = true;
+        }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+
+    railBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = parseInt(btn.dataset.go, 10);
+            const total = wrap.offsetHeight - window.innerHeight;
+            const offsetTop = wrap.offsetTop;
+            const y = offsetTop + (total * (target + 0.5) / SCENE_COUNT);
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        });
+    });
+
+    function onMove(e) {
+        const r = stage.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width  - 0.5;
+        const y = (e.clientY - r.top)  / r.height - 0.5;
+        if (device) {
+            device.style.setProperty('--mouse-x', (y * -1).toFixed(3));
+            device.style.setProperty('--mouse-y', x.toFixed(3));
+        }
+    }
+    stage.addEventListener('mousemove', onMove);
+    stage.addEventListener('mouseleave', () => {
+        if (device) {
+            device.style.setProperty('--mouse-x', '0');
+            device.style.setProperty('--mouse-y', '0');
+        }
+    });
+
+    function animateCounts() {
+        document.querySelectorAll('[data-num]').forEach(el => {
+            if (el.dataset.done) return;
+            el.dataset.done = '1';
+            const target = parseFloat(el.dataset.target);
+            const prefix = el.dataset.prefix || '';
+            const suffix = el.dataset.suffix || '';
+            const decimals = parseInt(el.dataset.decimals || '0', 10);
+            const dur = 1100;
+            const t0 = performance.now();
+            function frame(now) {
+                const t = Math.min(1, (now - t0) / dur);
+                const eased = 1 - Math.pow(1 - t, 4);
+                const v = target * eased;
+                el.textContent = prefix + (decimals ? v.toFixed(decimals) : Math.round(v).toLocaleString('en-IN')) + suffix;
+                if (t < 1) requestAnimationFrame(frame);
+                else el.textContent = prefix + (decimals ? target.toFixed(decimals) : Math.round(target).toLocaleString('en-IN')) + suffix;
+            }
+            requestAnimationFrame(frame);
+        });
+    }
+})();
+</script>
 </body>
 </html>

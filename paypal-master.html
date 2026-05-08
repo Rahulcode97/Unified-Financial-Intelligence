@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal Transaction Master — Finance Portfolio</title>
+    <meta name="description" content="PayPal multi-currency transaction grid with INR equivalents, fee analysis, and settlement status. Built by Rahul Srivastava.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/theme-portfolio.css">
+    <link rel="stylesheet" href="assets/app-shell.css">
+    <link rel="stylesheet" href="assets/dashboard-pages.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5MNCLNL933"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5MNCLNL933');
+    </script>
+    <style>
+        .pp-kpi-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1rem; margin-bottom: 1.75rem; }
+        .pp-kpi { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.1rem 1.3rem; }
+        .pp-kpi__label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 0 0 4px; }
+        .pp-kpi__val { font-size: 1.55rem; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.1; }
+        .pp-kpi__sub { font-size: 0.75rem; color: var(--text-secondary); margin: 3px 0 0; }
+        .pp-kpi__val.green { color: #059669; }
+        .pp-kpi__val.orange { color: #ea580c; }
+
+        .pp-filter-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; align-items: center; }
+        .pp-filter-btn { padding: 5px 14px; border-radius: 99px; font-size: 0.78rem; font-weight: 700; border: 1.5px solid var(--border-color); background: var(--card-bg); color: var(--text-secondary); cursor: pointer; transition: all 0.15s; font-family: inherit; }
+        .pp-filter-btn.active, .pp-filter-btn:hover { border-color: var(--primary-action); color: var(--primary-action); background: rgba(0,104,122,0.06); }
+
+        .om-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border-color); }
+        .om-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .om-table thead th { background: var(--selected-bg); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        .om-table tbody td { padding: 11px 14px; border-bottom: 1px solid var(--divider); color: var(--text-primary); }
+        .om-table tbody tr:last-child td { border-bottom: none; }
+        .om-table tbody tr:hover { background: rgba(0,104,122,0.03); }
+        .om-row { cursor: pointer; }
+        .mono { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: 12px; }
+        .badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 99px; font-size: 11px; font-weight: 700; }
+        .badge-success { background: #dcfce7; color: #166534; }
+        .badge-warning { background: #fef9c3; color: #713f12; }
+        .badge-orange { background: #ffedd5; color: #9a3412; }
+        .badge-blue { background: #dbeafe; color: #1e40af; }
+        .badge-purple { background: #ede9fe; color: #4c1d95; }
+        .badge-gray { background: #f1f5f9; color: #475569; }
+        .curr-flag { font-size: 15px; }
+        .amount-col { font-weight: 600; text-align: right; }
+        .fee-col { color: #ea580c; font-weight: 600; text-align: right; }
+        .inr-col { color: var(--primary-action); font-weight: 700; text-align: right; }
+
+        /* Channel split mini chart */
+        .pp-split-bar { display: flex; height: 8px; border-radius: 99px; overflow: hidden; margin: 6px 0 3px; }
+        .pp-split-bar > div { height: 100%; }
+
+        /* Modal — PayPal Transaction Detail 3 layout (portfolio / synthetic) */
+        .pp-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.45); z-index: 200; align-items: center; justify-content: center; padding: 12px; }
+        .pp-modal-overlay.open { display: flex; }
+        .pp-modal--td3 { position: relative; max-width: min(1080px, 96vw); width: 100%; max-height: 92vh; overflow-y: auto; border-radius: 16px; box-shadow: 0 24px 64px rgba(15,23,42,0.22); background: #FAF9F6; }
+        .pp-modal-floating-close {
+            position: absolute; top: 12px; right: 12px; z-index: 20;
+            width: 38px; height: 38px; border-radius: 999px; border: 1px solid #DDD8D1; background: #fff;
+            cursor: pointer; font-size: 22px; line-height: 1; display: flex; align-items: center; justify-content: center;
+            color: #6B6560; box-shadow: 0 2px 8px rgba(61,61,61,0.08);
+        }
+        .pp-modal-floating-close:hover { background: #F5F3EF; color: #3D3D3D; }
+        .pp-modal-body--td3 { padding: 0; margin: 0; }
+
+        /* ── TD3 off-white theme (aligned with finance transaction-detail-3.php) ── */
+        .td3-offwhite {
+            --td3-bg-primary: #FAF9F6;
+            --td3-bg-secondary: #F5F3EF;
+            --td3-bg-tertiary: #EDE9E3;
+            --td3-bg-card: #FFFFFF;
+            --td3-bg-hover: #F0EDE8;
+            --td3-text-primary: #3D3D3D;
+            --td3-text-secondary: #6B6560;
+            --td3-text-muted: #9A948E;
+            --td3-text-light: #B8B2AC;
+            --td3-border-subtle: #E8E4DE;
+            --td3-border-light: #DDD8D1;
+            --td3-border-medium: #D0CAC3;
+            --td3-accent-sage: #8B9A7B;
+            --td3-accent-sage-light: #E8EDE3;
+            --td3-accent-terracotta: #C9A689;
+            --td3-accent-terracotta-light: #F5EDE5;
+            --td3-accent-teal: #6B9080;
+            --td3-success: #7A9E7A;
+            --td3-success-light: #E8F0E8;
+            --td3-warning: #D4A574;
+            --td3-warning-light: #FAF3ED;
+            --td3-danger: #C17B7B;
+            --td3-danger-light: #F5E8E8;
+            --td3-info: #7B9DC1;
+            --td3-info-light: #E8F0F5;
+            --td3-shadow-sm: 0 1px 2px rgba(61, 61, 61, 0.04);
+            --td3-radius-sm: 6px;
+            --td3-radius-md: 10px;
+            --td3-radius-lg: 14px;
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-size: 0.9375rem;
+            color: var(--td3-text-primary);
+            background: var(--td3-bg-primary);
+            line-height: 1.6;
+            padding: 0 0 1rem;
+        }
+        .td3-offwhite .td3-header {
+            background: linear-gradient(135deg, var(--td3-bg-card) 0%, var(--td3-bg-secondary) 100%);
+            border-bottom: 1px solid var(--td3-border-subtle);
+            padding: 1.75rem 2rem 1.5rem;
+            margin: 0 0 1.25rem;
+            padding-right: 3.5rem;
+        }
+        .td3-offwhite .td3-header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+        .td3-offwhite .td3-header-brand { display: flex; align-items: center; gap: 0.75rem; }
+        .td3-offwhite .td3-header-brand .td3-icon {
+            width: 42px; height: 42px; background: var(--td3-accent-sage-light); border-radius: var(--td3-radius-md);
+            display: flex; align-items: center; justify-content: center; font-size: 1.25rem;
+        }
+        .td3-offwhite .td3-header-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 600; margin: 0; line-height: 1.3; }
+        .td3-offwhite .td3-header-subtitle { font-size: 0.8125rem; color: var(--td3-text-muted); margin-top: 0.25rem; }
+        .td3-offwhite .td3-header-meta { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+        .td3-offwhite .td3-header-meta code {
+            font-family: ui-monospace, monospace; font-size: 0.75rem; background: var(--td3-bg-tertiary);
+            padding: 0.25rem 0.5rem; border-radius: var(--td3-radius-sm); border: 1px solid var(--td3-border-light); color: var(--td3-text-secondary);
+        }
+        .td3-offwhite .td3-badge {
+            display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.375rem 0.75rem; border-radius: 999px;
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.02em;
+        }
+        .td3-offwhite .td3-badge-success { background: var(--td3-success-light); color: var(--td3-success); }
+        .td3-offwhite .td3-badge-warning { background: var(--td3-warning-light); color: #9A6B4B; }
+        .td3-offwhite .td3-badge-danger { background: var(--td3-danger-light); color: var(--td3-danger); }
+        .td3-offwhite .td3-badge-info { background: var(--td3-info-light); color: var(--td3-info); }
+        .td3-offwhite .td3-badge-muted { background: var(--td3-bg-tertiary); color: var(--td3-text-muted); }
+        .td3-offwhite .td3-badge-currency { background: var(--td3-accent-terracotta-light); color: #8B6B4F; font-weight: 700; }
+        .td3-offwhite .td3-banner {
+            display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.25rem; border-radius: var(--td3-radius-md);
+            margin: 0 1rem 1.25rem; font-size: 0.875rem; line-height: 1.5;
+        }
+        .td3-offwhite .td3-banner-warn { background: var(--td3-warning-light); border: 1px solid var(--td3-warning); color: #8B6B4F; }
+        .td3-offwhite .td3-banner-icon { flex-shrink: 0; width: 20px; height: 20px; margin-top: 0.125rem; }
+        .td3-offwhite .td3-card {
+            background: var(--td3-bg-card); border-radius: var(--td3-radius-lg); border: 1px solid var(--td3-border-subtle);
+            box-shadow: var(--td3-shadow-sm); margin: 0 1rem 1.25rem; overflow: hidden;
+        }
+        .td3-offwhite .td3-card-header {
+            display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem;
+            background: linear-gradient(180deg, var(--td3-bg-card) 0%, var(--td3-bg-secondary) 100%);
+            border-bottom: 1px solid var(--td3-border-subtle);
+        }
+        .td3-offwhite .td3-card-title {
+            display: flex; align-items: center; gap: 0.625rem; font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem; font-weight: 600; margin: 0;
+        }
+        .td3-offwhite .td3-card-title-icon {
+            width: 28px; height: 28px; background: var(--td3-accent-sage-light); border-radius: var(--td3-radius-sm);
+            display: flex; align-items: center; justify-content: center; font-size: 0.875rem;
+        }
+        .td3-offwhite .td3-card-body { padding: 1.25rem 1.5rem; }
+        .td3-offwhite .td3-financial-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.875rem; }
+        .td3-offwhite .td3-financial-table th {
+            background: var(--td3-bg-secondary); color: var(--td3-text-secondary); font-weight: 600; font-size: 0.6875rem;
+            text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 0.5rem; text-align: center; border-bottom: 1px solid var(--td3-border-medium);
+        }
+        .td3-offwhite .td3-financial-table td {
+            padding: 0.875rem 0.5rem; text-align: center; border-bottom: 1px solid var(--td3-border-subtle);
+        }
+        .td3-offwhite .td3-financial-table tr:last-child td { border-bottom: none; }
+        .td3-offwhite .td3-financial-table tr:nth-child(even) { background: var(--td3-bg-secondary); }
+        .td3-offwhite .td3-financial-table .td3-amount-highlight { font-weight: 600; }
+        .td3-offwhite .td3-financial-table .td3-amount-deduct { color: var(--td3-danger); font-weight: 500; }
+        .td3-offwhite .td3-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.875rem; }
+        .td3-offwhite .td3-table th, .td3-offwhite .td3-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--td3-border-subtle); }
+        .td3-offwhite .td3-table th {
+            background: var(--td3-bg-secondary); font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--td3-text-secondary);
+        }
+        .td3-offwhite .td3-table td:first-child { color: var(--td3-text-secondary); font-weight: 500; width: 40%; }
+        .td3-offwhite .td3-table tr:last-child td { border-bottom: none; }
+        .td3-offwhite .td3-table-compact th, .td3-offwhite .td3-table-compact td { padding: 0.625rem 0.75rem; }
+        .td3-offwhite .td3-two-col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 1.25rem; margin: 0 1rem 1.25rem; }
+        @media (max-width: 900px) { .td3-offwhite .td3-two-col { grid-template-columns: 1fr; } }
+        .td3-offwhite .td3-two-col .td3-card { margin: 0; height: 100%; }
+        .td3-offwhite .td3-paper-title { font-weight: 500; line-height: 1.5; }
+        .td3-offwhite .td3-missing { color: var(--td3-text-muted); }
+        .td3-offwhite .td3-param-invalid { color: var(--td3-text-muted); font-style: italic; }
+        .td3-offwhite .td3-text-muted { color: var(--td3-text-muted); }
+        .td3-offwhite .td3-conf-found { border-left: 3px solid var(--td3-success); }
+        .td3-offwhite .td3-conf-header {
+            display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem;
+            background: linear-gradient(180deg, var(--td3-success-light) 0%, var(--td3-bg-card) 100%);
+            border-bottom: 1px solid var(--td3-border-subtle); flex-wrap: wrap; gap: 0.75rem;
+        }
+        .td3-offwhite .td3-conf-title {
+            display: flex; align-items: center; gap: 0.5rem; font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem; font-weight: 600; color: var(--td3-success); margin: 0;
+        }
+        .td3-offwhite .td3-audit-section { position: relative; }
+        .td3-offwhite .td3-audit-header {
+            display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem;
+            background: linear-gradient(180deg, var(--td3-bg-card) 0%, var(--td3-bg-secondary) 100%);
+            border-bottom: 1px solid var(--td3-border-subtle); flex-wrap: wrap; gap: 0.75rem;
+        }
+        .td3-offwhite .td3-audit-header-left { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+        .td3-offwhite .td3-audit-header-title {
+            display: flex; align-items: center; gap: 0.5rem; font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem; font-weight: 600; margin: 0;
+        }
+        .td3-offwhite .td3-audit-table-wrap { overflow-x: auto; background: var(--td3-bg-card); }
+        .td3-offwhite .td3-audit-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.8125rem; }
+        .td3-offwhite .td3-audit-table th {
+            background: var(--td3-bg-secondary); font-size: 0.625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+            padding: 0.625rem 0.45rem; text-align: center; white-space: nowrap; border-bottom: 1px solid var(--td3-border-medium);
+        }
+        .td3-offwhite .td3-audit-table td { padding: 0.625rem 0.45rem; text-align: center; border-bottom: 1px solid var(--td3-border-subtle); }
+        .td3-offwhite .td3-audit-table tr:last-child td { border-bottom: none; }
+        .td3-offwhite .td3-audit-table tr.td3-row-payment { background: var(--td3-success-light); }
+        .td3-offwhite .td3-audit-table tr.td3-row-payment-current {
+            background: linear-gradient(90deg, var(--td3-success-light) 0%, rgba(122, 158, 122, 0.15) 100%);
+            border-left: 3px solid var(--td3-success);
+        }
+        .td3-offwhite .td3-audit-table tr.td3-row-withdrawal { background: var(--td3-warning-light); }
+        .td3-offwhite .td3-audit-table .td3-num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+        .td3-offwhite .td3-audit-table .td3-name-cell { max-width: 140px; font-size: 0.75rem; line-height: 1.4; text-align: center; }
+        .td3-offwhite .td3-type-pill {
+            display: inline-flex; align-items: center; justify-content: center; padding: 0.375rem 0.625rem; border-radius: 999px;
+            font-size: 0.6875rem; font-weight: 600; line-height: 1.2; text-align: center; white-space: normal; max-width: 110px;
+        }
+        .td3-offwhite .td3-type-pill-payment { background: var(--td3-success-light); color: var(--td3-success); }
+        .td3-offwhite .td3-type-pill-withdrawal { background: var(--td3-warning-light); color: #9A6B4B; }
+        .td3-offwhite .td3-audit-table code { font-size: 0.6875rem; background: var(--td3-bg-tertiary); padding: 0.125rem 0.35rem; border-radius: 4px; }
+        .td3-offwhite .td3-toggle-btn {
+            display: inline-flex; align-items: center; gap: 0.375rem; padding: 0.5rem 0.875rem; font-size: 0.8125rem; font-weight: 500;
+            color: var(--td3-text-secondary); background: var(--td3-bg-card); border: 1px solid var(--td3-border-light);
+            border-radius: var(--td3-radius-sm); cursor: pointer; transition: all 0.2s ease;
+        }
+        .td3-offwhite .td3-toggle-btn:hover { background: var(--td3-bg-hover); color: var(--td3-text-primary); }
+        .td3-offwhite .td3-toggle-btn svg { width: 14px; height: 14px; transition: transform 0.2s ease; }
+        .td3-offwhite .td3-ids-checkbox { position: absolute; opacity: 0; width: 0; height: 0; }
+        .td3-offwhite .td3-ids-checkbox ~ .td3-audit-section .td3-col-id { display: none !important; }
+        .td3-offwhite .td3-ids-checkbox:checked ~ .td3-audit-section .td3-col-id { display: table-cell !important; }
+        .td3-offwhite .td3-ids-checkbox:checked ~ .td3-audit-section .td3-audit-table { min-width: 820px; }
+        .td3-offwhite .td3-ids-checkbox:checked ~ .td3-audit-section .td3-toggle-btn svg { transform: rotate(180deg); }
+        .td3-offwhite .td3-ids-checkbox ~ .td3-audit-section .td3-txt-hide { display: none; }
+        .td3-offwhite .td3-ids-checkbox:checked ~ .td3-audit-section .td3-txt-hide { display: inline; }
+        .td3-offwhite .td3-ids-checkbox:checked ~ .td3-audit-section .td3-txt-show { display: none; }
+        .td3-offwhite .td3-withdrawal-table .td3-num { text-align: right; }
+        .td3-offwhite .td3-actions {
+            display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; padding: 1.25rem 1.5rem;
+            background: var(--td3-bg-secondary); border-top: 1px solid var(--td3-border-subtle); margin: 0 1rem;
+            border-radius: 0 0 var(--td3-radius-md) var(--td3-radius-md);
+        }
+        .td3-offwhite .td3-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1.25rem; font-size: 0.875rem; font-weight: 600;
+            border-radius: var(--td3-radius-md); border: none; cursor: pointer; text-decoration: none; transition: all 0.2s ease;
+        }
+        .td3-offwhite .td3-btn-primary { background: var(--td3-accent-sage); color: #fff; }
+        .td3-offwhite .td3-btn-primary:hover { opacity: 0.95; transform: translateY(-1px); }
+        .td3-offwhite .td3-btn-secondary { background: var(--td3-bg-card); color: var(--td3-text-primary); border: 1px solid var(--td3-border-light); }
+        .td3-offwhite .td3-btn-secondary:hover { background: var(--td3-bg-hover); }
+        .td3-offwhite .td3-btn-sm { padding: 0.5rem 1rem; font-size: 0.8125rem; }
+        .td3-offwhite .td3-portfolio-note { font-size: 0.78rem; color: var(--td3-text-muted); margin-left: auto; }
+        @media (max-width: 768px) {
+            .td3-offwhite .td3-header { padding: 1.25rem 1rem; padding-right: 3rem; }
+            .td3-offwhite .td3-banner { margin-left: 0.75rem; margin-right: 0.75rem; }
+            .td3-offwhite .td3-card { margin-left: 0.75rem; margin-right: 0.75rem; }
+            .td3-offwhite .td3-two-col { margin-left: 0.75rem; margin-right: 0.75rem; }
+            .td3-offwhite .td3-actions { margin-left: 0.75rem; margin-right: 0.75rem; }
+            .td3-offwhite .td3-portfolio-note { margin-left: 0; width: 100%; }
+        }
+
+        .pp-totals-row { background: rgba(0,104,122,0.04); font-weight: 700; }
+        .pp-totals-row td { border-top: 2px solid rgba(0,104,122,0.15) !important; }
+    </style>
+</head>
+<body class="fd-chrome">
+<div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+        <div class="sidebar-logo">
+            <div><div class="logo-text">Finance</div><div class="logo-sub">Dashboard</div></div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">App</div>
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 7.5L9 2l6 5.5V16H3V7.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="6.5" height="6.5" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                <span class="nav-label">Dashboard</span>
+            </a>
+            <a href="graphs.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 15V9M7 15V3M12 15v-5M17 15V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                <span class="nav-label">Analytics</span>
+            </a>
+            <a href="ml-analysis.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M3 15c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                <span class="nav-label">ML Analysis</span>
+            </a>
+            <a href="impact.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 12l3.5-3.5L9 12l3-3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 6H17v3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="nav-label">What I Built</span>
+            </a>
+            <a href="ccavenue-master.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 4.5h12v9H3v-9z" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                <span class="nav-label">CCAvenue API Master</span>
+            </a>
+            <a href="paypal-master.html" class="nav-item active">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-width="1.5"/><path d="M6 9h6M9 6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                <span class="nav-label">PayPal Master</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.5 14.5V3.5L6 6l3.5-2.5L13 6l3.5-2.5v11" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+                <span class="nav-label">Payment Reports</span>
+            </a>
+            <a href="portal-account.html" class="nav-item">
+                <span class="nav-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="6" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                <span class="nav-label">Account &amp; Access</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar-placeholder">RS</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name">R. Srivastava</div>
+                    <div class="sidebar-user-role">Finance · Operations</div>
+                </div>
+            </div>
+            <a href="login.html" class="nav-item nav-item--logout" style="margin-top:10px">
+                <span class="nav-label">Sign Out</span>
+            </a>
+        </div>
+    </aside>
+    <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar">‹</button>
+    <div class="main-content">
+        <header class="header">
+            <div class="header-left" style="display:flex;align-items:center;gap:8px">
+                <button type="button" class="fd-mobile-menu" id="mobileMenuBtn" aria-label="Open menu">☰</button>
+                <nav class="breadcrumb">
+                    <a href="index.html" style="color:var(--text-secondary);text-decoration:none">Home</a>
+                    <span class="sep">/</span>
+                    <span class="current">PayPal Transaction Master</span>
+                </nav>
+            </div>
+            <div class="header-right" style="font-size:13px;color:var(--text-muted);"><span id="live-date"></span></div>
+        </header>
+        <div class="page-content">
+
+            <div class="dash-hero" style="margin-bottom:20px">
+                <h1>PayPal — Transaction Master</h1>
+                <p>Multi-currency international payments with real-time INR equivalents, fee analysis, and settlement tracking. Exchange rates: <strong>USD ₹84.00 · GBP ₹107.66 · EUR ₹91.00</strong> (Apr 2026 indicative). PayPal fee: 4.4% international.</p>
+            </div>
+
+            <!-- KPI row -->
+            <div class="pp-kpi-row">
+                <div class="pp-kpi">
+                    <p class="pp-kpi__label">Total Received (INR equiv)</p>
+                    <p class="pp-kpi__val">₹1,97,712</p>
+                    <p class="pp-kpi__sub">12 transactions · FY 2025–26</p>
+                </div>
+                <div class="pp-kpi">
+                    <p class="pp-kpi__label">Total PayPal Fees</p>
+                    <p class="pp-kpi__val orange">₹8,700</p>
+                    <p class="pp-kpi__sub">Avg 4.40% per transaction</p>
+                </div>
+                <div class="pp-kpi">
+                    <p class="pp-kpi__label">Net Settlement (INR)</p>
+                    <p class="pp-kpi__val green">₹1,89,012</p>
+                    <p class="pp-kpi__sub">After PayPal fees deducted</p>
+                </div>
+                <div class="pp-kpi">
+                    <p class="pp-kpi__label">Currency Mix</p>
+                    <p class="pp-kpi__val" style="font-size:1rem;padding-top:4px;">
+                        <span class="badge badge-blue">USD 58%</span>
+                        <span class="badge badge-purple" style="margin-left:4px;">GBP 26%</span>
+                        <span class="badge badge-warning" style="margin-left:4px;">EUR 16%</span>
+                    </p>
+                    <div class="pp-split-bar" style="margin-top:10px;">
+                        <div style="width:58%;background:#3b82f6;"></div>
+                        <div style="width:26%;background:#7c3aed;"></div>
+                        <div style="width:16%;background:#d97706;"></div>
+                    </div>
+                    <p class="pp-kpi__sub">By INR value · 3 currencies</p>
+                </div>
+                <div class="pp-kpi">
+                    <p class="pp-kpi__label">Settlement Rate</p>
+                    <p class="pp-kpi__val green">100%</p>
+                    <p class="pp-kpi__sub">All txns settled · 0 disputes</p>
+                </div>
+            </div>
+
+            <!-- Filter bar -->
+            <div class="pp-filter-bar">
+                <span style="font-size:12px;font-weight:700;color:var(--text-muted);margin-right:4px;">FILTER:</span>
+                <button class="pp-filter-btn active" onclick="filterPP('all', this)">All</button>
+                <button class="pp-filter-btn" onclick="filterPP('USD', this)">🇺🇸 USD</button>
+                <button class="pp-filter-btn" onclick="filterPP('GBP', this)">🇬🇧 GBP</button>
+                <button class="pp-filter-btn" onclick="filterPP('EUR', this)">🇪🇺 EUR</button>
+                <button class="pp-filter-btn" onclick="filterPP('ICRAI', this)">ICRAI 2026</button>
+                <button class="pp-filter-btn" onclick="filterPP('NCME', this)">NCME 2026</button>
+                <button class="pp-filter-btn" onclick="filterPP('WCM', this)">WCM 2026</button>
+            </div>
+
+            <!-- Transaction grid -->
+            <div class="om-table-wrap">
+                <table class="om-table" id="ppTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Transaction ID</th>
+                            <th>Paper ID</th>
+                            <th>Conference</th>
+                            <th>Currency</th>
+                            <th>Gross</th>
+                            <th>Fee (4.4%)</th>
+                            <th>Net (foreign)</th>
+                            <th>Exch Rate</th>
+                            <th>Net (INR ₹)</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ppTableBody">
+                        <!-- USD transactions -->
+                        <tr class="om-row" data-currency="USD" data-conf="ICRAI" onclick="openPPModal('PP-8XK99102')">
+                            <td>22-Apr-26</td>
+                            <td class="mono">8XK99102RN778432N</td>
+                            <td>10482</td>
+                            <td><span class="badge badge-blue">ICRAI 2026</span></td>
+                            <td><span class="curr-flag">🇺🇸</span> USD</td>
+                            <td class="amount-col">420.00</td>
+                            <td class="fee-col">18.48</td>
+                            <td class="amount-col">401.52</td>
+                            <td style="text-align:right;color:var(--text-muted);">84.00</td>
+                            <td class="inr-col">₹33,727.68</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                        </tr>
+                        <tr class="om-row" data-currency="USD" data-conf="NCME" onclick="openPPModal('PP-4VB88201')">
+                            <td>20-Apr-26</td>
+                            <td class="mono">4VB88201KL992113M</td>
+                            <td>21005</td>
+                            <td><span class="badge badge-purple">NCME 2026</span></td>
+                            <td><span class="curr-flag">🇺🇸</span> USD</td>
+                            <td class="amount-col">199.00</td>
+                            <td class="fee-col">8.76</td>
+                            <td class="amount-col">190.24</td>
+                            <td style="text-align:right;color:var(--text-muted);">84.00</td>
+                            <td class="inr-col">₹15,980.16</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                        </tr>
+                        <tr class="om-row" data-currency="USD" data-conf="WCM" onclick="openPPModal('PP-7RT55309')">
+                            <td>14-Apr-26</td>
+                            <td class="mono">7RT55309WW441209B</td>
+                            <td>30114</td>
+                            <td><span class="badge badge-success">WCM 2026</span></td>
+                            <td><span class="curr-flag">🇺🇸</span> USD</td>
+                            <td class="amount-col">275.00</td>
+                            <td class="fee-col">12.10</td>
+                            <td class="amount-col">262.90</td>
+                            <td style="text-align:right;color:var(--text-muted);">84.00</td>
+                            <td class="inr-col">₹22,083.60</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                        </tr>
+                        <tr class="om-row" data-currency="USD" data-conf="ICRAI" onclick="openPPModal('PP-5KL22810')">
+                            <td>09-Apr-26</td>
+                            <td class="mono">5KL22810PP993301C</td>
+                            <td>18890</td>
+                            <td><span class="badge badge-blue">ICRAI 2026</span></td>
+                            <td><span class="curr-flag">🇺🇸</span> USD</td>
+                            <td class="amount-col">350.00</td>
+                            <td class="fee-col">15.40</td>
+                            <td class="amount-col">334.60</td>
+                            <td style="text-align:right;color:var(--text-muted);">84.00</td>
+                            <td class="inr-col">₹28,106.40</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                        </tr>
+                        <tr class="om-row" data-currency="USD" data-conf="NCME" onclick="openPPModal('PP-3MN11402')">
+                            <td>03-Apr-26</td>
+                            <td class="mono">3MN11402QQ771100D</td>
+                            <td>9901</td>
+                            <td><span class="badge badge-purple">NCME 2026</span></td>
+                            <td><span class="curr-flag">🇺🇸</span> USD</td>
+                            <td class="amount-col">149.00</td>
+                            <td class="fee-col">6.56</td>
+                            <td class="amount-col">142.44</td>
+                            <td style="text-align:right;color:var(--text-muted);">84.00</td>
+                            <td class="inr-col">₹11,964.96</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                        </tr>
+                        <!-- USD sub-total -->
+                        <tr class="pp-totals-row" data-currency="USD-total" data-conf="TOTAL">
+                            <td colspan="5" style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);">USD Sub-total</td>
+                            <td class="amount-col">1,393.00</td>
+                            <td class="fee-col">61.30</td>
+                            <td class="amount-col">1,331.70</td>
+                            <td></td>
+                            <td class="inr-col">₹1,11,862.80</td>
+                            <td></td>
+                        </tr>
+                        <!-- GBP transactions -->
+                        <tr class="om-row" data-currency="GBP" data-conf="ICRAI" onclick="openPPModal('PP-2QC44188')">
+                            <td>18-Apr-26</td>
+                            <td class="mono">2QC44188HY110044T</td>
+                            <td>8832</td>
+                            <td><span class="badge badge-blue">ICRAI 2026</span></td>
+                            <td><span class="curr-flag">🇬🇧</span> GBP</td>
+                            <td class="amount-col">310.00</td>
+                            <td class="fee-col">13.64</td>
+                            <td class="amount-col">296.36</td>
+                            <td style="text-align:right;color:var(--text-muted);">107.66</td>
+                            <td class="inr-col">₹31,910.32</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                        </tr>
+                        <tr class="om-row" data-currency="GBP" data-conf="WCM" onclick="openPPModal('PP-6HN77320')">
+                            <td>11-Apr-26</td>
+                            <td class="mono">6HN77320GG554422U</td>
+                            <td>15503</td>
+                            <td><span class="badge badge-success">WCM 2026</span></td>
+                            <td><span class="curr-flag">🇬🇧</span> GBP</td>
+                            <td class="amount-col">220.00</td>
+                            <td class="fee-col">9.68</td>
+                            <td class="amount-col">210.32</td>
+                            <td style="text-align:right;color:var(--text-muted);">107.66</td>
+                            <td class="inr-col">₹22,643.04</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                        </tr>
+                        <tr class="om-row" data-currency="GBP" data-conf="NCME" onclick="openPPModal('PP-1AK88214')">
+                            <td>05-Apr-26</td>
+                            <td class="mono">1AK88214PP002211V</td>
+                            <td>6620</td>
+                            <td><span class="badge badge-purple">NCME 2026</span></td>
+                            <td><span class="curr-flag">🇬🇧</span> GBP</td>
+                            <td class="amount-col">180.00</td>
+                            <td class="fee-col">7.92</td>
+                            <td class="amount-col">172.08</td>
+                            <td style="text-align:right;color:var(--text-muted);">107.66</td>
+                            <td class="inr-col">₹18,530.35</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                        </tr>
+                        <!-- GBP sub-total -->
+                        <tr class="pp-totals-row" data-currency="GBP-total" data-conf="TOTAL">
+                            <td colspan="5" style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);">GBP Sub-total</td>
+                            <td class="amount-col">710.00</td>
+                            <td class="fee-col">31.24</td>
+                            <td class="amount-col">678.76</td>
+                            <td></td>
+                            <td class="inr-col">₹73,083.71</td>
+                            <td></td>
+                        </tr>
+                        <!-- EUR transactions -->
+                        <tr class="om-row" data-currency="EUR" data-conf="ICRAI" onclick="openPPModal('PP-9PL33077')">
+                            <td>15-Apr-26</td>
+                            <td class="mono">9PL33077JM660055U</td>
+                            <td>12009</td>
+                            <td><span class="badge badge-blue">ICRAI 2026</span></td>
+                            <td><span class="curr-flag">🇪🇺</span> EUR</td>
+                            <td class="amount-col">185.00</td>
+                            <td class="fee-col">8.14</td>
+                            <td class="amount-col">176.86</td>
+                            <td style="text-align:right;color:var(--text-muted);">91.00</td>
+                            <td class="inr-col">₹16,094.26</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                        </tr>
+                        <tr class="om-row" data-currency="EUR" data-conf="WCM" onclick="openPPModal('PP-8BT44091')">
+                            <td>07-Apr-26</td>
+                            <td class="mono">8BT44091EE883311W</td>
+                            <td>22814</td>
+                            <td><span class="badge badge-success">WCM 2026</span></td>
+                            <td><span class="curr-flag">🇪🇺</span> EUR</td>
+                            <td class="amount-col">150.00</td>
+                            <td class="fee-col">6.60</td>
+                            <td class="amount-col">143.40</td>
+                            <td style="text-align:right;color:var(--text-muted);">91.00</td>
+                            <td class="inr-col">₹13,049.40</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                        </tr>
+                        <tr class="om-row" data-currency="EUR" data-conf="NCME" onclick="openPPModal('PP-4CW22190')">
+                            <td>01-Apr-26</td>
+                            <td class="mono">4CW22190LL994400X</td>
+                            <td>7733</td>
+                            <td><span class="badge badge-purple">NCME 2026</span></td>
+                            <td><span class="curr-flag">🇪🇺</span> EUR</td>
+                            <td class="amount-col">140.00</td>
+                            <td class="fee-col">6.16</td>
+                            <td class="amount-col">133.84</td>
+                            <td style="text-align:right;color:var(--text-muted);">91.00</td>
+                            <td class="inr-col">₹12,179.44</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                        </tr>
+                        <!-- EUR sub-total -->
+                        <tr class="pp-totals-row" data-currency="EUR-total" data-conf="TOTAL">
+                            <td colspan="5" style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);">EUR Sub-total</td>
+                            <td class="amount-col">475.00</td>
+                            <td class="fee-col">20.90</td>
+                            <td class="amount-col">454.10</td>
+                            <td></td>
+                            <td class="inr-col">₹41,323.10</td>
+                            <td></td>
+                        </tr>
+                        <!-- GRAND TOTAL -->
+                        <tr style="background:rgba(0,104,122,0.08);font-weight:800;">
+                            <td colspan="5" style="font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--primary-action);">Grand Total — All Currencies</td>
+                            <td class="amount-col" style="color:var(--primary-action);">—</td>
+                            <td class="fee-col">₹8,699</td>
+                            <td class="amount-col">—</td>
+                            <td></td>
+                            <td class="inr-col" style="font-size:1rem;">₹2,26,269.61</td>
+                            <td><span class="badge badge-success">12 / 12</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Summary analysis panel -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.5rem;">
+                <div class="dash-card" style="border-radius:14px;padding:1.25rem 1.5rem;">
+                    <h3 style="font-size:13px;font-weight:700;color:var(--text-primary);margin:0 0 12px;">Fee Breakdown by Currency</h3>
+                    <table style="width:100%;font-size:13px;border-collapse:collapse;">
+                        <thead><tr style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;">
+                            <th style="text-align:left;padding:4px 0;">Currency</th><th style="text-align:right;padding:4px 0;">Total Fees</th><th style="text-align:right;padding:4px 0;">% of INR net</th>
+                        </tr></thead>
+                        <tbody>
+                            <tr><td style="padding:5px 0;">🇺🇸 USD</td><td style="text-align:right;color:#ea580c;font-weight:600;">₹5,149.20</td><td style="text-align:right;color:var(--text-muted);">4.40%</td></tr>
+                            <tr><td style="padding:5px 0;">🇬🇧 GBP</td><td style="text-align:right;color:#ea580c;font-weight:600;">₹3,364.29</td><td style="text-align:right;color:var(--text-muted);">4.40%</td></tr>
+                            <tr><td style="padding:5px 0;">🇪🇺 EUR</td><td style="text-align:right;color:#ea580c;font-weight:600;">₹1,899.00</td><td style="text-align:right;color:var(--text-muted);">4.40%</td></tr>
+                            <tr style="border-top:1px solid var(--border-color);font-weight:700;"><td style="padding:6px 0;">Total</td><td style="text-align:right;color:#ea580c;">₹10,412.49</td><td style="text-align:right;">4.40%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="dash-card" style="border-radius:14px;padding:1.25rem 1.5rem;">
+                    <h3 style="font-size:13px;font-weight:700;color:var(--text-primary);margin:0 0 12px;">Revenue by Conference (INR)</h3>
+                    <table style="width:100%;font-size:13px;border-collapse:collapse;">
+                        <thead><tr style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;">
+                            <th style="text-align:left;padding:4px 0;">Conference</th><th style="text-align:right;padding:4px 0;">Net INR</th><th style="text-align:right;padding:4px 0;">Share</th>
+                        </tr></thead>
+                        <tbody>
+                            <tr><td style="padding:5px 0;"><span class="badge badge-blue">ICRAI 2026</span></td><td style="text-align:right;font-weight:600;color:var(--primary-action);">₹1,09,838.66</td><td style="text-align:right;color:var(--text-muted);">58%</td></tr>
+                            <tr><td style="padding:5px 0;"><span class="badge badge-purple">NCME 2026</span></td><td style="text-align:right;font-weight:600;color:var(--primary-action);">₹58,654.91</td><td style="text-align:right;color:var(--text-muted);">31%</td></tr>
+                            <tr><td style="padding:5px 0;"><span class="badge badge-success">WCM 2026</span></td><td style="text-align:right;font-weight:600;color:var(--primary-action);">₹57,776.04</td><td style="text-align:right;color:var(--text-muted);">31%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="dash-card" style="border-radius:14px;padding:1.25rem 1.5rem;">
+                    <h3 style="font-size:13px;font-weight:700;color:var(--text-primary);margin:0 0 12px;">vs. CCAvenue Cost Comparison</h3>
+                    <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0 0 10px;">PayPal charges <strong style="color:#ea580c;">4.4%</strong> per international transaction vs CCAvenue's <strong style="color:#059669;">1.9%</strong> for domestic INR.</p>
+                    <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;">For equivalent INR value, routing international delegates through CCAvenue's foreign currency acceptance would save approximately <strong style="color:var(--primary-action);">₹4,900/quarter</strong> in gateway fees.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal — layout mirrors finance PayPal Transaction Detail 3 (synthetic data) -->
+<div class="pp-modal-overlay" id="ppModalOverlay" onclick="if(event.target===this) closePPModal()">
+    <div class="pp-modal--td3" role="dialog" aria-modal="true" aria-labelledby="td3HeaderTitle" onclick="event.stopPropagation()">
+        <button type="button" class="pp-modal-floating-close" onclick="closePPModal()" aria-label="Close">×</button>
+        <div class="pp-modal-body--td3" id="ppModalBody"></div>
+    </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+(function () {
+var PP_DETAILS = {
+    'PP-8XK99102': { id:'8XK99102RN778432N', paper:'10482', conf:'ICRAI 2026', curr:'USD', gross:'420.00', fee:'18.48', net:'401.52', rate:'84.00', inr:'₹33,727.68', mode:'PayPal Balance', name:'Dr. R. Mehta', email:'r.mehta@univ.ac.in', date:'22 Apr 2026, 02:14 PM', settle:'24 Apr 2026' },
+    'PP-4VB88201': { id:'4VB88201KL992113M', paper:'21005', conf:'NCME 2026', curr:'USD', gross:'199.00', fee:'8.76', net:'190.24', rate:'84.00', inr:'₹15,980.16', mode:'Credit Card', name:'Prof. S. Kumar', email:'s.kumar@iit.ac.in', date:'20 Apr 2026, 11:08 AM', settle:'22 Apr 2026' },
+    'PP-7RT55309': { id:'7RT55309WW441209B', paper:'30114', conf:'WCM 2026', curr:'USD', gross:'275.00', fee:'12.10', net:'262.90', rate:'84.00', inr:'₹22,083.60', mode:'Debit Card', name:'A. Williams', email:'a.williams@research.org', date:'14 Apr 2026, 09:55 AM', settle:'16 Apr 2026' },
+    'PP-5KL22810': { id:'5KL22810PP993301C', paper:'18890', conf:'ICRAI 2026', curr:'USD', gross:'350.00', fee:'15.40', net:'334.60', rate:'84.00', inr:'₹28,106.40', mode:'PayPal Balance', name:'Dr. J. Park', email:'j.park@kaist.edu', date:'09 Apr 2026, 03:22 PM', settle:'11 Apr 2026' },
+    'PP-3MN11402': { id:'3MN11402QQ771100D', paper:'9901', conf:'NCME 2026', curr:'USD', gross:'149.00', fee:'6.56', net:'142.44', rate:'84.00', inr:'₹11,964.96', mode:'Credit Card', name:'M. Patel', email:'m.patel@gujarat.edu.in', date:'03 Apr 2026, 08:40 AM', settle:'05 Apr 2026' },
+    'PP-2QC44188': { id:'2QC44188HY110044T', paper:'8832', conf:'ICRAI 2026', curr:'GBP', gross:'310.00', fee:'13.64', net:'296.36', rate:'107.66', inr:'₹31,910.32', mode:'Credit Card', name:'Dr. E. Clarke', email:'e.clarke@ucl.ac.uk', date:'18 Apr 2026, 04:11 PM', settle:'20 Apr 2026' },
+    'PP-6HN77320': { id:'6HN77320GG554422U', paper:'15503', conf:'WCM 2026', curr:'GBP', gross:'220.00', fee:'9.68', net:'210.32', rate:'107.66', inr:'₹22,643.04', mode:'PayPal Balance', name:'S. Thompson', email:'s.thompson@ox.ac.uk', date:'11 Apr 2026, 10:19 AM', settle:'13 Apr 2026' },
+    'PP-1AK88214': { id:'1AK88214PP002211V', paper:'6620', conf:'NCME 2026', curr:'GBP', gross:'180.00', fee:'7.92', net:'172.08', rate:'107.66', inr:'₹18,530.35', mode:'Debit Card', name:'F. Brown', email:'f.brown@cambridge.ac.uk', date:'05 Apr 2026, 01:44 PM', settle:'07 Apr 2026' },
+    'PP-9PL33077': { id:'9PL33077JM660055U', paper:'12009', conf:'ICRAI 2026', curr:'EUR', gross:'185.00', fee:'8.14', net:'176.86', rate:'91.00', inr:'₹16,094.26', mode:'Credit Card', name:'Dr. M. Müller', email:'m.muller@tum.de', date:'15 Apr 2026, 11:05 AM', settle:'17 Apr 2026' },
+    'PP-8BT44091': { id:'8BT44091EE883311W', paper:'22814', conf:'WCM 2026', curr:'EUR', gross:'150.00', fee:'6.60', net:'143.40', rate:'91.00', inr:'₹13,049.40', mode:'PayPal Balance', name:'A. Dupont', email:'a.dupont@sorbonne.fr', date:'07 Apr 2026, 09:33 AM', settle:'09 Apr 2026' },
+    'PP-4CW22190': { id:'4CW22190LL994400X', paper:'7733', conf:'NCME 2026', curr:'EUR', gross:'140.00', fee:'6.16', net:'133.84', rate:'91.00', inr:'₹12,179.44', mode:'Credit Card', name:'L. Rossi', email:'l.rossi@polimi.it', date:'01 Apr 2026, 02:10 PM', settle:'03 Apr 2026' }
+};
+
+function escapeHtml(s) {
+    return String(s == null ? '' : s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, function () { return '&lt;'; })
+        .replace(/>/g, function () { return '&gt;'; })
+        .replace(/"/g, '&quot;');
+}
+
+function parseInr(inrStr) {
+    var n = parseFloat(String(inrStr).replace(/[₹,\s]/g, ''));
+    return isNaN(n) ? 0 : n;
+}
+
+function ppFmtForeign(val, curr) {
+    var symbols = { USD: '$', GBP: '£', EUR: '€', INR: '₹' };
+    var sym = symbols[curr] || '';
+    var n = Number(val);
+    return sym + n.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function ppFmtInr(val) {
+    var n = Number(val);
+    var neg = n < 0;
+    var abs = Math.abs(n);
+    var s = '₹' + abs.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return neg ? ('−' + s) : s;
+}
+
+var MONTHS = { Jan:'01', Feb:'02', Mar:'03', Apr:'04', May:'05', Jun:'06', Jul:'07', Aug:'08', Sep:'09', Oct:'10', Nov:'11', Dec:'12' };
+var MONTH_IX = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+
+function ppToDDMMYYYY(settleStr) {
+    var p = String(settleStr).trim().split(/\s+/);
+    if (p.length < 3) return settleStr;
+    var d = String(p[0]).padStart(2, '0');
+    var m = MONTHS[p[1]] || '01';
+    return d + '-' + m + '-' + p[2];
+}
+
+function ppAddDaysStr(settleStr, addDays) {
+    var p = String(settleStr).trim().split(/\s+/);
+    if (p.length < 3) return settleStr;
+    var dt = new Date(parseInt(p[2], 10), MONTH_IX[p[1]] || 0, parseInt(p[0], 10));
+    dt.setDate(dt.getDate() + addDays);
+    var mm = String(dt.getMonth() + 1).padStart(2, '0');
+    return String(dt.getDate()).padStart(2, '0') + '-' + mm + '-' + dt.getFullYear();
+}
+
+function ppDateCellFromDetailDate(dateStr) {
+    var part = String(dateStr).split(',')[0].trim().split(/\s+/);
+    if (part.length < 3) return '';
+    return String(part[0]).padStart(2, '0') + '-' + (MONTHS[part[1]] || '') + '-' + part[2];
+}
+
+function ppNameTwoLines(name) {
+    name = String(name || '').trim();
+    var parts = name.split(/\s+/).filter(Boolean);
+    if (parts.length <= 1) return escapeHtml(name);
+    var mid = Math.ceil(parts.length / 2);
+    return escapeHtml(parts.slice(0, mid).join(' ')) + '<br>' + escapeHtml(parts.slice(mid).join(' '));
+}
+
+function enrichPayPalDemo(d) {
+    var gross = parseFloat(d.gross);
+    var fee = parseFloat(d.fee);
+    var net = parseFloat(d.net);
+    var rate = parseFloat(d.rate);
+    var feePct = gross > 0 ? ((Math.abs(fee) / gross) * 100).toFixed(2) : '4.40';
+    var bankInr = parseInr(d.inr);
+    var refId = 'REF-' + d.id.replace(/[^A-Za-z0-9]/g, '').slice(0, 12).toUpperCase();
+    var wdId = 'WD-' + d.id.replace(/[^A-Za-z0-9]/g, '').slice(0, 14).toUpperCase();
+    var withdrawDd = ppToDDMMYYYY(d.settle);
+    var receiveDd = ppAddDaysStr(d.settle, 2);
+    var itemTitle = d.paper + ' — Synthetic delegate registration | ' + d.conf;
+    var dbTitle = 'Machine Learning & Policy — Demo submission (Paper ' + d.paper + ')';
+    var authors = d.name + ', Demo Co-Author';
+    var city = d.curr === 'USD' ? 'Boston' : (d.curr === 'GBP' ? 'London' : 'Munich');
+    var country = d.curr === 'USD' ? 'US' : (d.curr === 'GBP' ? 'GB' : 'DE');
+    return {
+        gross: gross, fee: fee, net: net, rate: rate, feePct: feePct, bankInr: bankInr,
+        refId: refId, wdId: wdId, withdrawDd: withdrawDd, receiveDd: receiveDd,
+        itemTitle: itemTitle, dbTitle: dbTitle, authors: authors,
+        inrGross: gross * rate, inrFee: fee * rate, inrNet: net * rate,
+        city: city, country: country
+    };
+}
+
+function buildTd3ModalHtml(d) {
+    var x = enrichPayPalDemo(d);
+    var payDateCell = ppDateCellFromDetailDate(d.date);
+
+    var finInrRow = '';
+    if (x.rate > 0) {
+        finInrRow =
+            '<tr>' +
+            '<td><span class="td3-badge td3-badge-currency">INR</span></td>' +
+            '<td class="td3-amount-highlight">' + ppFmtInr(x.inrGross) + '</td>' +
+            '<td>' + ppFmtInr(0) + '</td>' +
+            '<td class="td3-amount-deduct">' + escapeHtml(x.feePct) + '%</td>' +
+            '<td class="td3-amount-deduct">' + ppFmtInr(Math.abs(x.inrFee)) + '</td>' +
+            '<td class="td3-amount-highlight">' + ppFmtInr(x.inrNet) + '</td>' +
+            '<td>' + escapeHtml(Number(x.rate).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })) + '</td>' +
+            '<td>' + escapeHtml(x.withdrawDd) + '</td>' +
+            '<td>' + escapeHtml(x.receiveDd) + '</td>' +
+            '<td>' + ppFmtInr(x.bankInr) + '</td>' +
+            '</tr>';
+    }
+
+    var html = '';
+    html += '<div class="td3-offwhite cc-api-detail">';
+    html += '<div class="td3-header">';
+    html += '<div class="td3-header-top">';
+    html += '<div class="td3-header-brand">';
+    html += '<div class="td3-icon" aria-hidden="true">💰</div>';
+    html += '<div>';
+    html += '<h1 class="td3-header-title" id="td3HeaderTitle">PayPal Transaction Detail</h1>';
+    html += '<div class="td3-header-subtitle">Payment audit trail — synthetic portfolio demonstration (not live data)</div>';
+    html += '</div></div>';
+    html += '<div class="td3-header-meta">';
+    html += '<code>' + escapeHtml(d.id) + '</code>';
+    html += '<code>' + escapeHtml(x.refId) + '</code>';
+    html += '<span class="td3-badge td3-badge-success">Exact match</span>';
+    html += '</div></div></div>';
+
+    html += '<div class="td3-banner td3-banner-warn">';
+    html += '<svg class="td3-banner-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">';
+    html += '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>';
+    html += '</svg>';
+    html += '<div><strong>Demo content</strong> — figures mirror the internal Transaction Detail 3 layout; payload is generated for this portfolio only.</div>';
+    html += '</div>';
+
+    html += '<div class="td3-card">';
+    html += '<div class="td3-card-header"><h4 class="td3-card-title"><span class="td3-card-title-icon" aria-hidden="true">📊</span>Financial Summary Comparison</h4></div>';
+    html += '<div class="td3-card-body" style="padding:0;"><div style="overflow-x:auto;">';
+    html += '<table class="td3-financial-table"><thead><tr>';
+    html += '<th>Currency</th><th>Order Amount</th><th>Discount</th><th>Fee %</th><th>PG Amount</th><th>Payable</th><th>Conv. Rate</th>';
+    html += '<th>Withdrawal Date</th><th>Receive Date</th><th>Bank Amount</th>';
+    html += '</tr></thead><tbody>';
+    html += '<tr>';
+    html += '<td><span class="td3-badge td3-badge-currency">' + escapeHtml(d.curr) + '</span></td>';
+    html += '<td class="td3-amount-highlight">' + ppFmtForeign(x.gross, d.curr) + '</td>';
+    html += '<td>' + ppFmtForeign(0, d.curr) + '</td>';
+    html += '<td class="td3-amount-deduct">' + escapeHtml(x.feePct) + '%</td>';
+    html += '<td class="td3-amount-deduct">' + ppFmtForeign(Math.abs(x.fee), d.curr) + '</td>';
+    html += '<td class="td3-amount-highlight">' + ppFmtForeign(x.net, d.curr) + '</td>';
+    html += '<td>' + (x.rate > 0 ? escapeHtml(Number(x.rate).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })) : 'N/A') + '</td>';
+    html += '<td>' + escapeHtml(x.withdrawDd) + '</td>';
+    html += '<td>' + escapeHtml(x.receiveDd) + '</td>';
+    html += '<td>' + ppFmtInr(x.bankInr) + '</td>';
+    html += '</tr>';
+    html += finInrRow;
+    html += '</tbody></table></div></div></div>';
+
+    html += '<div class="td3-two-col">';
+    html += '<div class="td3-card"><div class="td3-card-header"><h4 class="td3-card-title"><span class="td3-card-title-icon" aria-hidden="true">👤</span>Customer (Billing)</h4></div>';
+    html += '<div class="td3-card-body" style="padding:0;"><table class="td3-table td3-table-compact"><tbody>';
+    html += '<tr><td>Name</td><td><strong>' + escapeHtml(d.name) + '</strong></td></tr>';
+    html += '<tr><td>Phone</td><td>+1 (555) 010-9920</td></tr>';
+    html += '<tr><td>Address</td><td>42 Synthetic Way, Suite 7</td></tr>';
+    html += '<tr><td>City</td><td>' + escapeHtml(x.city) + '</td></tr>';
+    html += '<tr><td>State</td><td>N/A</td></tr>';
+    html += '<tr><td>Zip Code</td><td>000000</td></tr>';
+    html += '<tr><td>Country</td><td>' + escapeHtml(x.country) + '</td></tr>';
+    html += '<tr><td>Registration Category</td><td><span id="td3RegistrationCategoryDisplay">Author (Early Bird)</span></td></tr>';
+    html += '<tr><td>Attendance Mode</td><td><span id="td3AttendanceDisplay">In-person (demo)</span></td></tr>';
+    html += '<tr><td>Receipt No</td><td>RCP-DEMO-' + escapeHtml(d.paper) + '</td></tr>';
+    html += '<tr><td>Verified Finance</td><td><span class="td3-badge td3-badge-success">Verified</span></td></tr>';
+    html += '</tbody></table></div></div>';
+
+    html += '<div class="td3-card"><div class="td3-card-header"><h4 class="td3-card-title"><span class="td3-card-title-icon" aria-hidden="true">📅</span>Order Dates</h4></div>';
+    html += '<div class="td3-card-body" style="padding:0;"><table class="td3-table td3-table-compact"><tbody>';
+    html += '<tr><td>Transaction initiation date</td><td>' + escapeHtml(d.date) + '</td></tr>';
+    html += '<tr><td>Transaction updated date</td><td>' + escapeHtml(d.date) + '</td></tr>';
+    html += '<tr><td>Withdrawal date</td><td>' + escapeHtml(x.withdrawDd) + '</td></tr>';
+    html += '<tr><td>Receive date</td><td>' + escapeHtml(x.receiveDd) + '</td></tr>';
+    html += '</tbody></table></div></div></div>';
+
+    html += '<div class="td3-card"><div class="td3-card-header"><h4 class="td3-card-title"><span class="td3-card-title-icon" aria-hidden="true">🎓</span>Conference &amp; Paper Details</h4></div>';
+    html += '<div class="td3-card-body" style="padding:0;"><table class="td3-table td3-table-compact"><tbody>';
+    html += '<tr><td>Conference</td><td><span class="td3-badge td3-badge-success">' + escapeHtml(d.conf) + '</span></td></tr>';
+    html += '<tr><td>Paper ID (from payment fields)</td><td><strong>' + escapeHtml(d.paper) + '</strong></td></tr>';
+    html += '<tr><td>Item Title</td><td class="td3-paper-title">' + escapeHtml(x.itemTitle) + '</td></tr>';
+    html += '<tr><td>Item code</td><td>' + escapeHtml(d.paper) + '</td></tr>';
+    html += '<tr><td>Author contact</td><td>' + escapeHtml(d.name) + '</td></tr>';
+    html += '<tr><td>Email</td><td><a href="mailto:' + escapeHtml(d.email) + '">' + escapeHtml(d.email) + '</a></td></tr>';
+    html += '<tr><td>Best title match score</td><td>94.2%</td></tr>';
+    html += '<tr><td>Shipping address</td><td>42 Synthetic Way, ' + escapeHtml(x.city) + ', ' + escapeHtml(x.country) + '</td></tr>';
+    html += '<tr><td>Reference ID</td><td><code>' + escapeHtml(x.refId) + '</code></td></tr>';
+    html += '</tbody></table></div></div>';
+
+    html += '<div class="td3-card td3-conf-found">';
+    html += '<div class="td3-conf-header"><div style="display:flex;flex-direction:column;gap:6px;">';
+    html += '<h4 class="td3-conf-title"><span aria-hidden="true">✓</span>Conference submission found — title similarity 94.2%</h4>';
+    html += '</div>';
+    html += '<span class="td3-btn td3-btn-secondary td3-btn-sm" style="cursor:default;opacity:0.85;">View Full Details →</span></div>';
+    html += '<div class="td3-card-body" style="padding:0;"><table class="td3-table td3-table-compact"><tbody>';
+    html += '<tr><td>Submission ID</td><td><strong>' + escapeHtml(d.paper) + '</strong></td></tr>';
+    html += '<tr><td>Paper title</td><td class="td3-paper-title"><strong>' + escapeHtml(x.dbTitle) + '</strong></td></tr>';
+    html += '<tr><td>Authors</td><td>' + escapeHtml(x.authors) + '</td></tr>';
+    html += '<tr><td>Decision</td><td><span class="td3-badge td3-badge-success">Accept (demo)</span></td></tr>';
+    html += '<tr><td>Verification status</td><td><span class="td3-badge td3-badge-success">Verified (demo)</span></td></tr>';
+    html += '</tbody></table></div></div>';
+
+    var chkId = 'td3ShowIdsDemo';
+    html += '<input type="checkbox" id="' + chkId + '" class="td3-ids-checkbox" autocomplete="off">';
+    html += '<div class="td3-card td3-audit-section">';
+    html += '<div class="td3-audit-header"><div class="td3-audit-header-left">';
+    html += '<h4 class="td3-audit-header-title"><span aria-hidden="true">📋</span>Audit Trail</h4>';
+    html += '<span class="td3-badge td3-badge-success">Exact match</span>';
+    html += '<span class="td3-text-muted" style="font-size:0.8125rem;">exact</span>';
+    html += '</div>';
+    html += '<label for="' + chkId + '" class="td3-toggle-btn">';
+    html += '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>';
+    html += '<span class="td3-txt-show">Show IDs</span><span class="td3-txt-hide">Hide IDs</span>';
+    html += '</label></div>';
+    html += '<div class="td3-audit-table-wrap"><table class="td3-audit-table"><thead><tr>';
+    html += '<th>Date</th><th>Name</th><th class="td3-col-id">Transaction ID</th><th class="td3-col-id">Reference ID</th><th>Type</th><th class="td3-col-id">Code</th>';
+    html += '<th>Curr</th><th class="td3-num">Gross</th><th class="td3-num">Fees</th><th class="td3-num">Net</th><th class="td3-num">Balance</th>';
+    html += '<th class="td3-num">INR Gross</th><th class="td3-num">INR Fees</th><th class="td3-num">INR Net</th>';
+    html += '</tr></thead><tbody>';
+
+    html += '<tr class="td3-row-payment-current">';
+    html += '<td>' + escapeHtml(payDateCell) + '</td>';
+    html += '<td class="td3-name-cell">' + ppNameTwoLines(d.name) + '</td>';
+    html += '<td class="td3-col-id"><code>' + escapeHtml(d.id) + '</code></td>';
+    html += '<td class="td3-col-id">' + escapeHtml(x.refId) + '</td>';
+    html += '<td><span class="td3-type-pill td3-type-pill-payment">Website<br>Payment</span></td>';
+    html += '<td class="td3-col-id">T0006</td>';
+    html += '<td>' + escapeHtml(d.curr) + '</td>';
+    html += '<td class="td3-num">' + ppFmtForeign(x.gross, d.curr) + '</td>';
+    html += '<td class="td3-num">−' + ppFmtForeign(Math.abs(x.fee), d.curr) + '</td>';
+    html += '<td class="td3-num">' + ppFmtForeign(x.net, d.curr) + '</td>';
+    html += '<td class="td3-num">' + ppFmtForeign(x.net, d.curr) + '</td>';
+    html += '<td class="td3-num">' + ppFmtInr(x.inrGross) + '</td>';
+    html += '<td class="td3-num">−' + ppFmtInr(Math.abs(x.inrFee)) + '</td>';
+    html += '<td class="td3-num">' + ppFmtInr(x.inrNet) + '</td>';
+    html += '</tr>';
+
+    html += '<tr class="td3-row-withdrawal">';
+    html += '<td>' + escapeHtml(x.withdrawDd) + '</td>';
+    html += '<td class="td3-name-cell"></td>';
+    html += '<td class="td3-col-id"><code>' + escapeHtml(x.wdId) + '</code></td>';
+    html += '<td class="td3-col-id">' + escapeHtml(x.refId) + '</td>';
+    html += '<td><span class="td3-type-pill td3-type-pill-withdrawal">User<br>Initiated<br>Withdrawal</span></td>';
+    html += '<td class="td3-col-id">T0403</td>';
+    html += '<td>INR</td>';
+    html += '<td class="td3-num">' + ppFmtInr(x.bankInr) + '</td>';
+    html += '<td class="td3-num">' + ppFmtInr(0) + '</td>';
+    html += '<td class="td3-num">' + ppFmtInr(-x.bankInr) + '</td>';
+    html += '<td class="td3-num">' + ppFmtInr(-x.bankInr) + '</td>';
+    html += '<td class="td3-num"></td><td class="td3-num"></td><td class="td3-num"></td>';
+    html += '</tr>';
+
+    html += '</tbody></table></div></div>';
+
+    html += '<div class="td3-card"><div class="td3-card-header"><h4 class="td3-card-title"><span class="td3-card-title-icon" aria-hidden="true">🏦</span>Related Withdrawal Rows</h4></div>';
+    html += '<div class="td3-card-body" style="padding:0;"><div style="overflow-x:auto;">';
+    html += '<table class="td3-table td3-table-compact td3-withdrawal-table"><thead><tr>';
+    html += '<th>Date</th><th>Code</th><th class="td3-col-id">Transaction ID</th><th class="td3-col-id">Reference ID</th><th>Currency</th><th class="td3-num">Amount</th><th class="td3-num">Ending Balance</th>';
+    html += '</tr></thead><tbody>';
+    html += '<tr><td>' + escapeHtml(d.settle) + ', 10:00</td><td>T0403</td><td class="td3-col-id"><code>' + escapeHtml(x.wdId) + '</code></td>';
+    html += '<td class="td3-col-id">' + escapeHtml(x.refId) + '</td><td>INR</td><td class="td3-num">' + ppFmtInr(-x.bankInr) + '</td><td class="td3-num">' + ppFmtForeign(x.net, d.curr) + '</td></tr>';
+    html += '</tbody></table></div></div></div>';
+
+    html += '<div class="td3-actions">';
+    html += '<button type="button" class="td3-btn td3-btn-primary" onclick="closePPModal()">Close detail</button>';
+    html += '<span class="td3-portfolio-note">Portfolio demo · styling reference: Transaction Detail 3 (PayPal)</span>';
+    html += '</div>';
+
+    html += '</div>';
+    return html;
+}
+
+window.openPPModal = function (ref) {
+    var d = PP_DETAILS[ref];
+    if (!d) return;
+    document.getElementById('ppModalBody').innerHTML = buildTd3ModalHtml(d);
+    document.getElementById('ppModalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+};
+
+window.closePPModal = function () {
+    document.getElementById('ppModalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+};
+
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') window.closePPModal();
+});
+
+window.filterPP = function (val, btn) {
+    document.querySelectorAll('.pp-filter-btn').forEach(function (b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('#ppTableBody tr').forEach(function (row) {
+        if (val === 'all') { row.style.display = ''; return; }
+        var curr = row.dataset.currency || '';
+        var conf = row.dataset.conf || '';
+        var show = curr === val || conf.toUpperCase().indexOf(val) >= 0 || curr.endsWith('-total');
+        if (curr.endsWith('-total') && val !== 'all') { row.style.display = 'none'; return; }
+        row.style.display = show ? '' : 'none';
+    });
+};
+})();
+</script>
+</body>
+</html>
