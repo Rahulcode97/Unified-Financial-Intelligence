@@ -41,3 +41,20 @@
 .gfx-pill.is-active { background: #0c5252; color: #fff; }
 .gfx-pill--all { background: #fff; border-color: #cbd5e1; }
 @media (max-width: 700px) { .gfx-canvas, .gfx-canvas--tall { height: 220px; } }
+
+@media (max-width: 900px) {
+    .gfx-wrap { min-width: 0; }
+    .gfx-hero h1 { font-size: 1.35rem; }
+    .gfx-hero p { font-size: 0.85rem; max-width: none; }
+    .gfx-kpi-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .gfx-card { padding: 1rem; }
+    .gfx-drill {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 1rem;
+    }
+    .gfx-table { min-width: 480px; }
+}
+@media (max-width: 480px) {
+    .gfx-kpi-row { grid-template-columns: 1fr; }
+}

@@ -18,6 +18,14 @@
       gtag('js', new Date());
       gtag('config', 'G-5MNCLNL933');
     </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "wz8ru0m1ax");
+    </script>
     <style>
         /* ─── Layout ─── */
         .ml-page { max-width: 1040px; margin: 0 auto; padding: 0 clamp(1rem,4vw,2.5rem) 4rem; }
@@ -162,6 +170,56 @@
         @media (max-width: 600px) {
             .ml-arch__flow { gap: 8px; justify-content: center; }
             .arch-arrow { min-width: 20px; }
+        }
+
+        @media (max-width: 900px) {
+            .ml-page {
+                padding: 0 0 2.5rem;
+            }
+            .ml-hero {
+                padding: 1.5rem 0 1.25rem;
+                margin-bottom: 1.75rem;
+            }
+            .ml-hero h1 { font-size: 1.45rem; }
+            .ml-hero__lead { font-size: 0.92rem; max-width: none; }
+            .ml-arch {
+                padding: 1rem 1.1rem;
+            }
+            .ml-section__header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .ml-section__desc { max-width: none; }
+            .ml-api-panel__header,
+            .ml-api-panel__body {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .ml-code-header {
+                flex-wrap: wrap;
+                gap: 8px;
+                padding: 10px 12px;
+            }
+            pre.ml-code {
+                font-size: 11px;
+                padding: 1rem;
+            }
+            .ml-compare-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -4px 1.25rem;
+                padding: 0 4px;
+            }
+            .ml-compare { min-width: 520px; }
+            .feat-row {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .feat-label {
+                min-width: 0;
+                flex: 1 1 100%;
+            }
+            .ml-chart-wrap { height: 240px; }
         }
     </style>
 </head>
@@ -478,6 +536,7 @@ results = {
                 <div class="ml-chart-card" style="margin-bottom:1rem;">
                     <h3>Model Comparison — Held-Out Test Set (3 Months)</h3>
                     <p>Lower MAE and RMSE = better. Prophet outperforms ARIMA by 40% on MAE due to its explicit conference seasonality component.</p>
+                    <div class="ml-compare-wrap">
                     <table class="ml-compare">
                         <thead><tr><th>Model</th><th>MAE (₹)</th><th>RMSE (₹)</th><th>MAPE</th><th>Verdict</th></tr></thead>
                         <tbody>
@@ -485,6 +544,7 @@ results = {
                             <tr><td>ARIMA (2,1,1)</td><td>₹2,08,000</td><td>₹2,74,000</td><td>13.9%</td><td><span class="arch-badge" style="background:var(--selected-bg);color:var(--text-muted);">Baseline</span></td></tr>
                         </tbody>
                     </table>
+                    </div>
                 </div>
 
                 <!-- Forecast chart -->

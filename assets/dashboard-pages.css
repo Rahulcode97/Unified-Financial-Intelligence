@@ -25,7 +25,15 @@
     margin-bottom: 28px;
 }
 .dash-hero h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); }
-.dash-hero p { color: var(--text-secondary); margin-top: 8px; font-size: 15px; }
+.dash-hero p {
+    color: var(--text-secondary);
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
 
 .toolkit-grid {
     display: grid;
@@ -43,7 +51,14 @@
     border-color: rgba(0, 104, 122, 0.25);
 }
 .toolkit-panel h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
-.toolkit-panel p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.toolkit-panel p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
 .toolkit-panel .ico { font-size: 28px; margin-bottom: 12px; opacity: 0.85; }
 
 .recent-card {
@@ -185,7 +200,15 @@
     background: #fff; border: 1px solid var(--border-color); border-radius: 14px; padding: 22px; margin-bottom: 22px;
 }
 .rpt-panel h2 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
-.rpt-panel .sub { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; }
+.rpt-panel .sub {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.55;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
 .rpt-paypal-bank { border-left: 4px solid #0d9488; }
 .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .data-table th { text-align: left; padding: 10px 12px; background: #f5f3f0; border-bottom: 2px solid var(--border-color); }
@@ -202,3 +225,113 @@
 .pam-matrix th:first-child, .pam-matrix td:first-child { text-align: left; min-width: 200px; }
 .pam-key { display: block; font-size: 10px; color: var(--text-muted); font-family: ui-monospace, monospace; }
 .pam-check { color: #059669; font-weight: 700; }
+
+/* ── Mobile layout (app pages — desktop unchanged above 900px) ── */
+@media (max-width: 900px) {
+    .om-container,
+    .om-premium-ui {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .dash-hero { margin-bottom: 20px; }
+    .dash-hero h1 { font-size: 22px; line-height: 1.25; }
+    .dash-hero p { font-size: 14px; overflow-wrap: anywhere; }
+
+    .ds-stat-grid { grid-template-columns: 1fr; gap: 12px; }
+    .ds-stat-card { padding: 16px; }
+    .ds-stat-value { font-size: 20px; word-break: break-word; }
+
+    .ds-page-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding-bottom: 12px;
+    }
+    .ds-page-title { font-size: 20px; line-height: 1.25; }
+    .ds-page-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .ds-page-actions .ds-btn { flex: 1 1 auto; justify-content: center; }
+
+    .ds-filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 12px;
+    }
+    .ds-filter-group {
+        width: 100%;
+        min-width: 0 !important;
+    }
+    .ds-filter-bar input[type="search"],
+    .ds-filter-bar .ds-input {
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    .ds-table-wrap,
+    .om-table-wrap {
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .ds-pagination {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .ds-pagination-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .toolkit-grid { grid-template-columns: 1fr; gap: 12px; }
+    .toolkit-panel { padding: 18px; }
+
+    .recent-card {
+        padding: 16px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .data-table { min-width: 520px; }
+
+    .rpt-panel {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+    .rpt-panel:has(> .data-table) {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .rpt-panel > .data-table {
+        min-width: 560px;
+    }
+    .rpt-panel .sub { font-size: 12px; }
+
+    .pam-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pam-table-wrap {
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tx-modal-overlay {
+        padding: 0;
+        align-items: flex-end;
+    }
+    .tx-modal {
+        max-width: 100%;
+        max-height: 92vh;
+        border-radius: 16px 16px 0 0;
+    }
+    .tx-modal__head,
+    .tx-modal__body {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .tx-modal__head h2 { font-size: 16px; }
+}

@@ -85,6 +85,32 @@
     font-weight: 700;
 }
 
+.imp-plain-box {
+    background: rgba(12, 82, 82, 0.04);
+    border: 1px solid rgba(12, 82, 82, 0.12);
+    border-radius: 14px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.75rem;
+}
+.imp-plain-box__label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #0c5252;
+    margin: 0 0 0.6rem;
+    font-family: var(--imp-sans);
+}
+.imp-plain-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+
 .imp-erp-strip p {
     text-align: justify;
     hyphens: auto;
@@ -283,4 +309,31 @@
 }
 .imp-arch tbody tr:nth-child(even) td {
     background: rgba(248, 250, 252, 0.7);
+}
+
+@media (max-width: 900px) {
+    .imp-hero {
+        margin: 0 0 1.5rem;
+        padding: 1.25rem 1rem;
+    }
+    .imp-erp-strip {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .imp-plain-box {
+        padding: 1.15rem 1rem;
+    }
+    .imp-arch__head {
+        padding: 1rem;
+    }
+    .imp-arch th,
+    .imp-arch td {
+        padding: 0.75rem 0.85rem;
+        font-size: 0.82rem;
+    }
+    .imp-arch thead th:first-child,
+    .imp-arch tbody th[scope="row"] {
+        max-width: none;
+        width: 34%;
+    }
 }

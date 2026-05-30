@@ -38,6 +38,10 @@ body.fd-chrome {
     min-height: 100vh;
     margin: 0;
 }
+@media (max-width: 900px) {
+    body.fd-chrome { overflow-x: hidden; }
+    body.fd-chrome.fd-nav-open { overflow: hidden; }
+}
 * { box-sizing: border-box; }
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--scrollbar-track); }

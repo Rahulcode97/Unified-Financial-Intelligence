@@ -18,6 +18,14 @@
       gtag('js', new Date());
       gtag('config', 'G-5MNCLNL933');
     </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "wz8ru0m1ax");
+    </script>
     <style>
         .pp-kpi-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1rem; margin-bottom: 1.75rem; }
         .pp-kpi { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.1rem 1.3rem; }
@@ -273,6 +281,17 @@
 
         .pp-totals-row { background: rgba(0,104,122,0.04); font-weight: 700; }
         .pp-totals-row td { border-top: 2px solid rgba(0,104,122,0.15) !important; }
+
+        @media (max-width: 900px) {
+            .pp-kpi-row { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+            .pp-kpi { padding: 0.95rem 1rem; }
+            .pp-kpi__val { font-size: 1.25rem; }
+            .dash-hero p { overflow-wrap: anywhere; }
+            .om-table-wrap { max-width: 100%; -webkit-overflow-scrolling: touch; }
+        }
+        @media (max-width: 480px) {
+            .pp-kpi-row { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body class="fd-chrome">
