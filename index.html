@@ -76,6 +76,47 @@
         .nav-cta:hover { background: var(--teal-900) !important; transform: translateY(-1px); }
         @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
 
+        .leadership-spotlight {
+            position: relative; z-index: 99;
+            padding: 72px clamp(16px, 4vw, 32px) 0;
+            pointer-events: none;
+        }
+        .leadership-spotlight__inner {
+            pointer-events: auto;
+            max-width: 1180px; margin: 0 auto;
+            display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px;
+            padding: 12px 16px 12px 14px;
+            background: linear-gradient(135deg, rgba(12,82,82,0.08), rgba(45,106,106,0.05));
+            border: 1px solid rgba(12,82,82,0.14);
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(12,82,82,0.06);
+        }
+        .leadership-spotlight__badge {
+            font: 800 0.65rem/1 "Source Sans 3", sans-serif;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: #fff; background: var(--teal-700);
+            padding: 6px 10px; border-radius: 999px; flex-shrink: 0;
+        }
+        .leadership-spotlight p {
+            flex: 1; min-width: min(100%, 280px);
+            margin: 0;
+            font: 500 0.88rem/1.55 "Source Sans 3", sans-serif;
+            color: var(--ink-soft);
+        }
+        .leadership-spotlight a {
+            font: 700 0.8rem/1 "Source Sans 3", sans-serif;
+            color: var(--teal-700); text-decoration: none;
+            white-space: nowrap; padding: 8px 12px;
+            border-radius: 999px; background: rgba(255,255,255,0.85);
+            border: 1px solid rgba(12,82,82,0.12);
+            transition: background .15s, transform .15s;
+        }
+        .leadership-spotlight a:hover { background: #fff; transform: translateY(-1px); }
+        @media (max-width: 720px) {
+            .leadership-spotlight { padding-top: 68px; }
+            .leadership-spotlight__inner { flex-direction: column; align-items: flex-start; }
+        }
+
         /* ── STAGE — pinned region ── */
         .stage-wrap { position: relative; height: 480vh; }
         .stage {
@@ -611,8 +652,9 @@
         .stack-group--be .stack-group__label::before { background: #059669; }
         .stack-group--data .stack-group__label::before { background: #7c3aed; }
         .stack-group--cloud .stack-group__label::before { background: #4285F4; }
+        .stack-group--platforms .stack-group__label::before { background: #0ea5e9; }
         .stack-group--devops .stack-group__label::before { background: #2563eb; }
-        .stack-group--ai .stack-group__label::before { background: #ea580c; }
+        .stack-group--ai .stack-group__label::before { background: #9333ea; }
         .stack-group__list {
             list-style: none; margin: 0; padding: 0;
             display: grid; grid-template-columns: 1fr 1fr; gap: 7px 8px;
@@ -728,12 +770,22 @@
             <span>Finance Console</span>
         </div>
         <div class="nav-links">
+            <a href="leadership.html">Leadership</a>
+            <a href="ai-integration.html">AI</a>
             <a href="impact.html">Story</a>
             <a href="dashboard.html">Dashboard</a>
             <a href="graphs.html">Analytics</a>
             <a href="ml-analysis.html">ML</a>
-            <a class="nav-cta" href="impact.html">Read the story →</a>
+            <a class="nav-cta" href="leadership.html">How I build teams →</a>
         </div>
+    </div>
+</div>
+
+<div class="leadership-spotlight">
+    <div class="leadership-spotlight__inner">
+        <span class="leadership-spotlight__badge">Leadership</span>
+        <p>Led technical hiring for the data/AI function — screened 10+ candidates and made final hiring decisions for 2 engineering hires, defining the technical bar for the role. Now training new hires and leading the next wave of projects.</p>
+        <a href="leadership.html">How I build teams →</a>
     </div>
 </div>
 
@@ -889,6 +941,9 @@
 <section class="reveal-section">
     <div class="ticker">
         <div class="ticker__row">
+            <div class="ticker__item"><span class="ticker__icon ticker__icon--dual" aria-hidden="true"><img src="assets/logos/openai.svg" alt="" width="18" height="18" loading="lazy" decoding="async"><img src="assets/logos/googlegemini.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>OpenAI · Gemini · Vertex AI</div>
+            <div class="ticker__item"><span class="ticker__icon ticker__icon--dual" aria-hidden="true"><img src="assets/logos/telegram.svg" alt="" width="18" height="18" loading="lazy" decoding="async"><img src="assets/logos/whatsapp.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Telegram · WhatsApp</div>
+            <div class="ticker__item"><span class="ticker__icon ticker__icon--dual" aria-hidden="true"><img src="assets/logos/zohocatalyst.svg" alt="" width="18" height="18" loading="lazy" decoding="async"><img src="assets/logos/googleworkspace.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Zoho Catalyst · Google Workspace</div>
             <div class="ticker__item"><span class="ticker__icon" aria-hidden="true"><img src="assets/logos/python.svg" alt="" width="22" height="22" loading="lazy" decoding="async"></span>Python · Pandas · Reconciliation</div>
             <div class="ticker__item"><span class="ticker__icon" aria-hidden="true"><img src="assets/logos/react.svg" alt="" width="22" height="22" loading="lazy" decoding="async"></span>React · TypeScript · Tauri</div>
             <div class="ticker__item"><span class="ticker__icon" aria-hidden="true"><img src="assets/logos/nodejs.svg" alt="" width="22" height="22" loading="lazy" decoding="async"></span>Node.js · PHP · REST</div>
@@ -897,6 +952,9 @@
             <div class="ticker__item"><span class="ticker__icon" aria-hidden="true"><img src="assets/logos/passkey.svg" alt="" width="22" height="22" loading="lazy" decoding="async"></span>WebAuthn · Passkeys</div>
             <div class="ticker__item"><span class="ticker__icon ticker__icon--dual" aria-hidden="true"><img src="assets/logos/anthropic.svg" alt="" width="18" height="18" loading="lazy" decoding="async"><img src="assets/logos/cursor.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Claude Code · Cursor</div>
             <div class="ticker__item"><span class="ticker__icon" aria-hidden="true"><img src="assets/logos/pandas.svg" alt="" width="22" height="22" loading="lazy" decoding="async"></span>Prophet · ARIMA · K-Means</div>
+            <div class="ticker__item"><span class="ticker__icon ticker__icon--dual" aria-hidden="true"><img src="assets/logos/openai.svg" alt="" width="18" height="18" loading="lazy" decoding="async"><img src="assets/logos/googlegemini.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>OpenAI · Gemini · Vertex AI</div>
+            <div class="ticker__item"><span class="ticker__icon ticker__icon--dual" aria-hidden="true"><img src="assets/logos/telegram.svg" alt="" width="18" height="18" loading="lazy" decoding="async"><img src="assets/logos/whatsapp.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Telegram · WhatsApp</div>
+            <div class="ticker__item"><span class="ticker__icon ticker__icon--dual" aria-hidden="true"><img src="assets/logos/zohocatalyst.svg" alt="" width="18" height="18" loading="lazy" decoding="async"><img src="assets/logos/googleworkspace.svg" alt="" width="18" height="18" loading="lazy" decoding="async"></span>Zoho Catalyst · Google Workspace</div>
             <div class="ticker__item"><span class="ticker__icon" aria-hidden="true"><img src="assets/logos/python.svg" alt="" width="22" height="22" loading="lazy" decoding="async"></span>Python · Pandas · Reconciliation</div>
             <div class="ticker__item"><span class="ticker__icon" aria-hidden="true"><img src="assets/logos/react.svg" alt="" width="22" height="22" loading="lazy" decoding="async"></span>React · TypeScript · Tauri</div>
             <div class="ticker__item"><span class="ticker__icon" aria-hidden="true"><img src="assets/logos/nodejs.svg" alt="" width="22" height="22" loading="lazy" decoding="async"></span>Node.js · PHP · REST</div>
@@ -912,8 +970,9 @@
         <div class="identity__avatar">RS</div>
         <h2 class="identity__name">Rahul Srivastava</h2>
         <p class="identity__role">Full-stack engineer · Data analyst · Fintech</p>
-        <p class="identity__bio">I designed and built this entire platform independently — React frontend, Node and PHP APIs, a Python reconciliation engine, MySQL on Google Cloud. It solved a real operational problem: a finance team spending a full week every month reconciling payments across three gateways. This system cut that to under an hour.</p>
-        <p class="identity__bio">I work across the full stack and enjoy the intersection of engineering, data, and product — building systems that make complex workflows feel effortless. I use AI tools (Claude Code, Cursor) throughout my development workflow.</p>
+        <p class="identity__bio">I design and build full-stack systems independently — React frontends, Node/PHP APIs, Python data pipelines, MySQL on Google Cloud — solving real operational bottlenecks. One system cut a finance team's monthly payment reconciliation across three gateways from a full week to under an hour.</p>
+        <p class="identity__bio">I've since moved deeper into applied AI: building an MCP-style tool-calling architecture that lets LLMs safely query internal systems and trigger actions (like generating and returning charts), and shipping a multi-LLM chatbot (OpenAI, Gemini, Anthropic) with a Telegram interface so leadership can get answers and visual reports on the go — scoped, secure, and running for pennies a day.</p>
+        <p class="identity__bio">I work across the full stack and at the intersection of engineering, data, and AI — building systems that make complex workflows feel effortless, while owning technical decisions around cost, infrastructure, and hiring. I use AI tools (Claude Code, Cursor) throughout my development workflow.</p>
         <div class="identity__links">
             <a class="identity__link" href="https://www.linkedin.com/in/rahul-srivastava97/" target="_blank" rel="noopener">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="#0c5252"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
@@ -922,6 +981,10 @@
             <a class="identity__link" href="https://github.com/rahulsrivastava97" target="_blank" rel="noopener">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0c5252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                 GitHub
+            </a>
+            <a class="identity__link" href="leadership.html">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0c5252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Leadership
             </a>
             <a class="identity__link" href="impact.html">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0c5252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
@@ -968,22 +1031,24 @@
                 </ul>
             </div>
 
-            <div class="stack-group stack-group--cloud">
-                <p class="stack-group__label">Cloud &amp; Infrastructure</p>
+            <div class="stack-group stack-group--platforms">
+                <p class="stack-group__label">Cloud Platforms</p>
                 <ul class="stack-group__list">
-                    <li class="stack-item"><img src="assets/logos/firebase.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Firebase</span></li>
-                    <li class="stack-item"><img src="assets/logos/aws.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>AWS</span></li>
                     <li class="stack-item"><img src="assets/logos/googlecloud.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Google Cloud</span></li>
-                    <li class="stack-item"><img src="assets/logos/googlecloudrun.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Cloud Run</span></li>
-                    <li class="stack-item"><img src="assets/logos/docker.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Docker</span></li>
-                    <li class="stack-item"><img src="assets/logos/googlestorage.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Cloud Storage</span></li>
-                    <li class="stack-item"><img src="assets/logos/artifactregistry.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Artifact Registry</span></li>
+                    <li class="stack-item"><img src="assets/logos/aws.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>AWS</span></li>
+                    <li class="stack-item"><img src="assets/logos/firebase.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Firebase</span></li>
+                    <li class="stack-item"><img src="assets/logos/zohocatalyst.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Zoho Catalyst</span></li>
+                    <li class="stack-item"><img src="assets/logos/googleworkspace.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Google Workspace</span></li>
                 </ul>
             </div>
 
             <div class="stack-group stack-group--devops">
-                <p class="stack-group__label">DevOps &amp; Delivery</p>
+                <p class="stack-group__label">DevOps &amp; Infrastructure</p>
                 <ul class="stack-group__list">
+                    <li class="stack-item"><img src="assets/logos/googlecloudrun.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Cloud Run</span></li>
+                    <li class="stack-item"><img src="assets/logos/docker.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Docker</span></li>
+                    <li class="stack-item"><img src="assets/logos/googlestorage.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Cloud Storage</span></li>
+                    <li class="stack-item"><img src="assets/logos/artifactregistry.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Artifact Registry</span></li>
                     <li class="stack-item"><img src="assets/logos/git.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Git</span></li>
                     <li class="stack-item"><img src="assets/logos/githubactions.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>GitHub Actions</span></li>
                     <li class="stack-item"><img src="assets/logos/cicd.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>CI/CD</span></li>
@@ -992,10 +1057,16 @@
             </div>
 
             <div class="stack-group stack-group--ai">
-                <p class="stack-group__label">AI Tools</p>
+                <p class="stack-group__label">AI &amp; Integrations</p>
                 <ul class="stack-group__list">
-                    <li class="stack-item"><img src="assets/logos/anthropic.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Claude Code</span></li>
+                    <li class="stack-item"><img src="assets/logos/openai.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>OpenAI · ChatGPT</span></li>
+                    <li class="stack-item"><img src="assets/logos/googlegemini.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Google Gemini</span></li>
+                    <li class="stack-item"><img src="assets/logos/vertexai.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Vertex AI</span></li>
+                    <li class="stack-item"><img src="assets/logos/anthropic.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Anthropic API</span></li>
                     <li class="stack-item"><img src="assets/logos/cursor.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Cursor AI</span></li>
+                    <li class="stack-item"><img src="assets/logos/anthropic.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Claude Code</span></li>
+                    <li class="stack-item"><img src="assets/logos/telegram.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Telegram Bot</span></li>
+                    <li class="stack-item"><img src="assets/logos/whatsapp.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>WhatsApp Business API</span></li>
                 </ul>
             </div>
 
@@ -1007,6 +1078,18 @@
         <h2>Every part of the system, fully interactive.</h2>
         <p class="grid-lead">All data is synthetic. Every page is a real piece of the build, not a mockup.</p>
         <div class="tiles">
+            <a class="tile" href="ai-integration.html">
+                <div class="tile__icon">◎</div>
+                <h3>AI &amp; chat integration</h3>
+                <p>Secure web + Telegram chatbot — user-based access, read-only LLM tools, multilingual, topic-scoped, pennies a day to run.</p>
+                <div class="tile__arrow">See AI integration →</div>
+            </a>
+            <a class="tile tile--featured" href="leadership.html">
+                <div class="tile__icon">◈</div>
+                <h3>Leadership &amp; team building</h3>
+                <p>Technical hiring for data/AI — 10+ screened, 2 hired, onboarding in progress. Leading new projects as the team scales. <strong>Start here if you hire leads.</strong></p>
+                <div class="tile__arrow">See how I build teams →</div>
+            </a>
             <a class="tile tile--featured" href="impact.html">
                 <div class="tile__icon">✦</div>
                 <h3>What I built &amp; why it matters</h3>
@@ -1068,6 +1151,8 @@
 <footer class="foot">
     <a href="https://www.linkedin.com/in/rahul-srivastava97/" target="_blank" rel="noopener">LinkedIn</a> ·
     <a href="https://github.com/rahulsrivastava97" target="_blank" rel="noopener">GitHub</a> ·
+    <a href="ai-integration.html">AI Integration</a> ·
+    <a href="leadership.html">Leadership</a> ·
     <a href="impact.html">Story</a> ·
     <a href="dashboard.html">Dashboard</a> ·
     <a href="graphs.html">Analytics</a> ·
