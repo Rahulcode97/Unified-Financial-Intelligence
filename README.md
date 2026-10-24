@@ -28,7 +28,7 @@ Marketing used to reach academic researchers with blind lists kept in Excel. Thi
 * **Deploy Guard:** a VS Code extension that flags lock-risk SQL migrations before deploy, plus browser-level health checks after it
 * **Staff operations console:** RBAC with field-level stripping, an AES-256-GCM credential vault, and Google Workspace on/offboarding
 
-**Stack:** Python · FastAPI · PostgreSQL 18 · Rust (Tokio, Axum) · scikit-learn · LLM agents (Grok) · MCP · React · TypeScript · Docker · Coolify · Playwright · passkeys and Google SSO
+**Stack:** Python · FastAPI · PostgreSQL 18 · Rust (Tokio, Axum) · scikit-learn · LLM agents (Grok) · MCP · React · TypeScript · Docker · Coolify on Hostinger VPS · Playwright · passkeys and Google SSO
 
 Internal names, data sources and identifying details are withheld for confidentiality.
 
