@@ -15,7 +15,7 @@ Marketing used to reach academic researchers with blind lists kept in Excel. Thi
 **Impact**
 * **10M+** records under management, deduplicated to one identity each
 * **2,000+** universities covered, department by department
-* **+40%** outreach open rate after moving from blind lists to work-history targeting
+* **8% → 36%** outreach open rate (4.5×) after moving from blind lists to work-history targeting
 * **~30 hours/week** of manual spreadsheet work removed
 * **10 idle PCs** turned into a managed collection fleet, with no new hardware
 * Used daily by directors, marketing and the junior team
