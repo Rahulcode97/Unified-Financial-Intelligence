@@ -7,13 +7,13 @@
     --pa-primary-mid: #6366f1;
     --pa-secondary-container: #e0e7ff;
     --pa-on-secondary-container: #4338ca;
-    --pa-surface: #f7f7fb;
-    --pa-surface-low: #eef0f7;
-    --pa-surface-lowest: #ffffff;
-    --pa-surface-high: #e8eaf3;
-    --pa-outline-variant: #c9cce0;
-    --pa-on-surface: #0f1222;
-    --pa-on-variant: #4b5068;
+    --pa-surface: var(--cs-bg);
+    --pa-surface-low: var(--cs-sunken);
+    --pa-surface-lowest: var(--cs-surface);
+    --pa-surface-high: var(--cs-sunken);
+    --pa-outline-variant: var(--cs-line);
+    --pa-on-surface: var(--cs-ink);
+    --pa-on-variant: var(--cs-ink-soft);
     --pa-font-display: "Space Grotesk", Georgia, serif;
     --pa-font-body: "Inter", system-ui, sans-serif;
     font-family: var(--pa-font-body);
@@ -83,7 +83,7 @@
     height: 100%;
     border-radius: 9999px;
     border: 4px solid var(--pa-surface-lowest);
-    box-shadow: 0 4px 20px rgba(15, 18, 34, 0.08);
+    box-shadow: 0 4px 20px rgba(14, 15, 20, 0.08);
     object-fit: cover;
     background: var(--pa-surface-high);
 }
@@ -93,7 +93,7 @@
     height: 7.5rem;
     border-radius: 9999px;
     border: 4px solid var(--pa-surface-lowest);
-    box-shadow: 0 4px 20px rgba(15, 18, 34, 0.08);
+    box-shadow: 0 4px 20px rgba(14, 15, 20, 0.08);
     object-fit: cover;
     flex-shrink: 0;
     background: var(--pa-surface-high);
@@ -196,7 +196,7 @@
     background: var(--pa-surface-lowest);
     border-radius: 1.5rem;
     padding: clamp(1.5rem, 3vw, 2rem);
-    box-shadow: 0 2px 16px rgba(15, 18, 34, 0.06);
+    box-shadow: 0 2px 16px rgba(14, 15, 20, 0.06);
     border: none;
 }
 
@@ -568,7 +568,7 @@
     background: var(--pa-surface-lowest);
     border-radius: 1.5rem;
     overflow: hidden;
-    box-shadow: 0 2px 16px rgba(15, 18, 34, 0.06);
+    box-shadow: 0 2px 16px rgba(14, 15, 20, 0.06);
 }
 
 .portal-directory__head {
@@ -809,7 +809,7 @@
 .portal-modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(15, 18, 34, 0.7);
+    background: rgba(14, 15, 20, 0.7);
     backdrop-filter: blur(4px);
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -827,7 +827,7 @@
     width: 100%;
     max-height: 90vh;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(15, 18, 34, 0.3);
+    box-shadow: 0 20px 60px rgba(14, 15, 20, 0.3);
     transform: scale(0.95);
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -900,13 +900,13 @@
     --pa-primary-mid: #a5a0ff;
     --pa-secondary-container: rgba(139, 133, 255, 0.15);
     --pa-on-secondary-container: #c7d2fe;
-    --pa-surface: #0b0d17;
-    --pa-surface-low: #0e1122;
-    --pa-surface-lowest: #12152a;
+    --pa-surface: var(--cs-bg);
+    --pa-surface-low: var(--cs-sunken);
+    --pa-surface-lowest: var(--cs-surface);
     --pa-surface-high: rgba(255, 255, 255, 0.08);
     --pa-outline-variant: rgba(255, 255, 255, 0.15);
-    --pa-on-surface: #e7e9f5;
-    --pa-on-variant: #a9aec8;
+    --pa-on-surface: var(--cs-ink);
+    --pa-on-variant: var(--cs-ink-soft);
 }
 
 [data-theme="dark"] .portal-wrap h1,

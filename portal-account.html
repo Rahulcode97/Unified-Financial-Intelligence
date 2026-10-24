@@ -36,7 +36,7 @@
     </div>
 </nav>
 <nav class="cs-subnav" aria-label="Finance Suite pages">
-    <div class="cs-subnav__inner"><span class="cs-subnav__label">Finance Suite</span><a href="finance-suite.html">Overview</a><a href="dashboard.html">Dashboard</a><a href="graphs.html">Analytics</a><a href="ccavenue-master.html">CCAvenue</a><a href="paypal-master.html">PayPal</a><a href="reports.html">Reports</a><a href="portal-account.html" aria-current="page">Access</a><a href="login.html">Passkeys</a><a href="ml-finance.html">Forecasting</a><a href="ai-integration.html">AI Assistant</a><span class="cs-subnav__demo">Demo data</span></div>
+    <div class="cs-subnav__inner"><span class="cs-subnav__label">Finance Suite</span><a href="finance-suite.html">Overview</a><a href="dashboard.html">Dashboard</a><a href="graphs.html">Analytics</a><a href="ccavenue-master.html">CCAvenue</a><a href="paypal-master.html">PayPal</a><a href="reports.html">Reports</a><a href="portal-account.html" aria-current="page">Access</a><a href="ml-finance.html">Forecasting</a><a href="ai-integration.html">AI Assistant</a><span class="cs-subnav__demo">Demo data</span></div>
 </nav>
 <div class="app-shell">
     <div class="main-content">
@@ -49,7 +49,7 @@
             <div>
                 <p class="portal-kicker">Your Profile</p>
                 <h1 class="portal-name">R. Srivastava</h1>
-                <p class="portal-email">rahul.srivastava@grscholastic.in</p>
+                <p class="portal-email">rahul.srivastava@example.com</p>
                 <div class="portal-tags">
                     <span class="portal-tag portal-tag--admin">admin</span>
                     <span class="portal-tag portal-tag--director">director</span>
@@ -60,29 +60,7 @@
 
     <div class="portal-flash portal-flash--ok" id="demoFlash" style="display:none">Update recorded.</div>
 
-    <div class="portal-grid cols-2">
-        <div class="portal-card">
-            <h2>Sign-In &amp; Security</h2>
-            <p class="portal-sub">Use a passkey (Windows Hello, phone, or security key) for quick sign-in on this portal—same flow as the login page.</p>
-            <div class="portal-stat-row">
-                <div class="portal-stat-row__left">
-                    <div class="portal-stat-icon" aria-hidden="true">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M6 10V8a6 6 0 0 1 12 0v2"/><path d="M8 14v2a4 4 0 0 0 8 0v-2"/></svg>
-                    </div>
-                    <div>
-                        <p class="portal-field-label" style="margin-bottom:0.15rem;">Passkeys</p>
-                        <p class="portal-muted" style="margin:0;">Biometric or security key</p>
-                    </div>
-                </div>
-                <span class="portal-stat-pill">2 passkeys</span>
-            </div>
-            <button type="button" class="portal-btn" id="passkeySelfBtn" data-user-id="1">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 11V3M8 7l4-4 4 4"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
-                Add Passkey
-            </button>
-            <p class="portal-muted" id="passkeySelfStatus" role="status"></p>
-        </div>
-
+    <div class="portal-grid">
         <div class="portal-card">
             <h2>Access Overview</h2>
             <p class="portal-sub">Page permissions currently effective for your account (admin users implicitly have full access).</p>
@@ -161,12 +139,12 @@
                     <div class="portal-form-group">
                         <label class="portal-field-label" for="owner-user-id">Select User</label>
                         <select class="portal-select portal-select--enhanced" id="owner-user-id" name="user_id" required>
-                            <option value="1">rahul.srivastava@grscholastic.in (#1)</option>
-                            <option value="2">priya.n@grscholastic.in (#2)</option>
-                            <option value="3">rahul.verma@grscholastic.in (#3)</option>
+                            <option value="1">rahul.srivastava@example.com (#1)</option>
+                            <option value="2">priya.n@example.com (#2)</option>
+                            <option value="3">rahul.verma@example.com (#3)</option>
                             <option value="4">james@partner.edu (#4)</option>
-                            <option value="5">sneha.reddy@grscholastic.in (#5)</option>
-                            <option value="6">noreply+sync@grscholastic.in (#6)</option>
+                            <option value="5">sneha.reddy@example.com (#5)</option>
+                            <option value="6">noreply+sync@example.com (#6)</option>
                         </select>
                     </div>
                     <button type="submit" class="portal-btn portal-btn--primary" style="width:100%;">Set Owner</button>
@@ -178,7 +156,7 @@
     <section class="portal-directory" style="margin-top:2rem;">
         <div class="portal-directory__head">
             <h2>User Directory</h2>
-            <p class="portal-sub" style="margin:0;">Deactivate access, adjust roles, set permission overrides, remove users, or register a passkey for a selected account.</p>
+            <p class="portal-sub" style="margin:0;">Deactivate access, adjust roles, set permission overrides or remove users.</p>
         </div>
         <div class="portal-directory__scroll">
             <table class="portal-dir-table" role="grid">
@@ -186,7 +164,6 @@
                     <tr>
                         <th>User</th>
                         <th>Status &amp; ID</th>
-                        <th>Security</th>
                         <th>Roles</th>
                         <th style="text-align:right;">Actions</th>
                     </tr>
@@ -199,7 +176,7 @@
                                 <div class="portal-dir-avatar">RS</div>
                                 <div>
                                     <p class="portal-dir-name">R. Srivastava</p>
-                                    <p class="portal-dir-email">rahul.srivastava@grscholastic.in</p>
+                                    <p class="portal-dir-email">rahul.srivastava@example.com</p>
                                 </div>
                             </div>
                         </td>
@@ -207,7 +184,6 @@
                             <span class="portal-status-badge"><span class="portal-status-dot" aria-hidden="true"></span>Active</span>
                             <div class="portal-dir-id">ID: 1</div>
                         </td>
-                        <td>2 passkeys</td>
                         <td>
                             <div class="portal-tags" style="margin:0;">
                                 <span class="portal-tag portal-tag--admin">admin</span>
@@ -216,7 +192,6 @@
                         </td>
                         <td>
                             <div class="portal-dir-actions">
-                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm passkey-other-btn" data-user-id="1">Add Passkey</button>
                                 <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm" onclick="toggleUserForms(1)">Manage</button>
                             </div>
                         </td>
@@ -255,7 +230,7 @@
                                 <div class="portal-dir-avatar">PN</div>
                                 <div>
                                     <p class="portal-dir-name">Priya Nair</p>
-                                    <p class="portal-dir-email">priya.n@grscholastic.in</p>
+                                    <p class="portal-dir-email">priya.n@example.com</p>
                                 </div>
                             </div>
                         </td>
@@ -263,7 +238,6 @@
                             <span class="portal-status-badge"><span class="portal-status-dot" aria-hidden="true"></span>Active</span>
                             <div class="portal-dir-id">ID: 2</div>
                         </td>
-                        <td>1 passkey</td>
                         <td>
                             <div class="portal-tags" style="margin:0;">
                                 <span class="portal-tag">finance</span>
@@ -271,7 +245,6 @@
                         </td>
                         <td>
                             <div class="portal-dir-actions">
-                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm passkey-other-btn" data-user-id="2">Add Passkey</button>
                                 <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm" onclick="toggleUserForms(2)">Manage</button>
                                 <button type="button" class="portal-btn portal-btn--danger portal-btn--sm" onclick="portfolioDemoDelete()">Delete</button>
                             </div>
@@ -314,7 +287,7 @@
                                 <div class="portal-dir-avatar">RV</div>
                                 <div>
                                     <p class="portal-dir-name">Rahul Verma</p>
-                                    <p class="portal-dir-email">rahul.verma@grscholastic.in</p>
+                                    <p class="portal-dir-email">rahul.verma@example.com</p>
                                 </div>
                             </div>
                         </td>
@@ -322,13 +295,11 @@
                             <span class="portal-status-badge"><span class="portal-status-dot" aria-hidden="true"></span>Active</span>
                             <div class="portal-dir-id">ID: 3</div>
                         </td>
-                        <td>0 passkeys</td>
                         <td>
                             <div class="portal-tags" style="margin:0;"><span class="portal-tag">conference</span></div>
                         </td>
                         <td>
                             <div class="portal-dir-actions">
-                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm passkey-other-btn" data-user-id="3">Add Passkey</button>
                                 <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm" onclick="toggleUserForms(3)">Manage</button>
                                 <button type="button" class="portal-btn portal-btn--danger portal-btn--sm" onclick="portfolioDemoDelete()">Delete</button>
                             </div>
@@ -353,13 +324,11 @@
                             <span class="portal-status-badge"><span class="portal-status-dot" aria-hidden="true"></span>Active</span>
                             <div class="portal-dir-id">ID: 4</div>
                         </td>
-                        <td>3 passkeys</td>
                         <td>
                             <div class="portal-tags" style="margin:0;"><span class="portal-tag portal-tag--director">director</span></div>
                         </td>
                         <td>
                             <div class="portal-dir-actions">
-                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm passkey-other-btn" data-user-id="4">Add Passkey</button>
                                 <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm" onclick="toggleUserForms(4)">Manage</button>
                                 <button type="button" class="portal-btn portal-btn--danger portal-btn--sm" onclick="portfolioDemoDelete()">Delete</button>
                             </div>
@@ -376,7 +345,7 @@
                                 <div class="portal-dir-avatar">SR</div>
                                 <div>
                                     <p class="portal-dir-name">Sneha Reddy</p>
-                                    <p class="portal-dir-email">sneha.reddy@grscholastic.in</p>
+                                    <p class="portal-dir-email">sneha.reddy@example.com</p>
                                 </div>
                             </div>
                         </td>
@@ -384,13 +353,11 @@
                             <span class="portal-status-badge portal-status-badge--inactive">Inactive</span>
                             <div class="portal-dir-id">ID: 5</div>
                         </td>
-                        <td>0 passkeys</td>
                         <td>
                             <div class="portal-tags" style="margin:0;"><span class="portal-tag">finance</span></div>
                         </td>
                         <td>
                             <div class="portal-dir-actions">
-                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm passkey-other-btn" data-user-id="5">Add Passkey</button>
                                 <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm" onclick="toggleUserForms(5)">Manage</button>
                                 <button type="button" class="portal-btn portal-btn--danger portal-btn--sm" onclick="portfolioDemoDelete()">Delete</button>
                             </div>
@@ -415,7 +382,7 @@
                                 <div class="portal-dir-avatar">SY</div>
                                 <div>
                                     <p class="portal-dir-name">Sync Service</p>
-                                    <p class="portal-dir-email">noreply+sync@grscholastic.in</p>
+                                    <p class="portal-dir-email">noreply+sync@example.com</p>
                                 </div>
                             </div>
                         </td>
@@ -423,13 +390,11 @@
                             <span class="portal-status-badge"><span class="portal-status-dot" aria-hidden="true"></span>Active</span>
                             <div class="portal-dir-id">ID: 6</div>
                         </td>
-                        <td>0 passkeys</td>
                         <td>
                             <div class="portal-tags" style="margin:0;"><span class="portal-tag">viewer</span></div>
                         </td>
                         <td>
                             <div class="portal-dir-actions">
-                                <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm passkey-other-btn" data-user-id="6">Add Passkey</button>
                                 <button type="button" class="portal-btn portal-btn--ghost portal-btn--sm" onclick="toggleUserForms(6)">Manage</button>
                             </div>
                         </td>
@@ -441,7 +406,6 @@
             </table>
         </div>
     </section>
-    <p class="portal-status" id="passkeyOtherStatus" role="status"></p>
 </div>
 
         </div>
@@ -505,19 +469,6 @@
                 closeModal(m.id);
             });
         }
-    });
-    function demoPasskey(label) {
-        var a = document.getElementById('passkeySelfStatus');
-        var b = document.getElementById('passkeyOtherStatus');
-        var el = label === 'self' ? a : b;
-        if (el) {
-            el.textContent = 'Passkey registration would continue in the device secure flow.';
-        }
-    }
-    var selfBtn = document.getElementById('passkeySelfBtn');
-    if (selfBtn) selfBtn.addEventListener('click', function () { demoPasskey('self'); });
-    document.querySelectorAll('.passkey-other-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () { demoPasskey('other'); });
     });
 })();
 </script>

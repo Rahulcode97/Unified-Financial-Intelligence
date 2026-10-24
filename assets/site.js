@@ -18,14 +18,66 @@
         btn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'dark' ? 'true' : 'false');
     });
 
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    requestAnimationFrame(function () { document.body.classList.add('is-ready'); });
+
+    // Stagger index for grid children
+    document.querySelectorAll('.cs-stagger').forEach(function (g) {
+        Array.prototype.forEach.call(g.children, function (c, i) { c.style.setProperty('--i', i); });
+    });
+
+    // Count-up numbers: <span data-count="36" data-decimals="0">36</span>
+    function countUp(el) {
+        var target = parseFloat(el.getAttribute('data-count'));
+        var dec = parseInt(el.getAttribute('data-decimals') || '0', 10);
+        if (isNaN(target) || reduce) return;
+        var start = null, dur = 1100;
+        function fmt(v) { return v.toLocaleString('en-IN', { minimumFractionDigits: dec, maximumFractionDigits: dec }); }
+        function step(ts) {
+            if (start === null) start = ts;
+            var p = Math.min(1, (ts - start) / dur);
+            var e = 1 - Math.pow(1 - p, 3);
+            el.textContent = fmt(target * e);
+            if (p < 1) requestAnimationFrame(step); else el.textContent = fmt(target);
+        }
+        el.textContent = fmt(0);
+        requestAnimationFrame(step);
+    }
+
+    // Pointer-follow glow
+    document.querySelectorAll('.cs-glow').forEach(function (el) {
+        el.addEventListener('pointermove', function (e) {
+            var r = el.getBoundingClientRect();
+            el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+            el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
+    });
+
+    // Homepage fleet teaser: random slot lights
+    document.querySelectorAll('[data-fleet-mini]').forEach(function (wrap) {
+        var leds = wrap.querySelectorAll('.fl-led');
+        function tick() {
+            leds.forEach(function (l) {
+                var r = Math.random();
+                l.className = 'fl-led' + (r < 0.55 ? ' on' : r < 0.75 ? ' ai' : r < 0.8 ? ' warn' : '');
+            });
+        }
+        tick();
+        if (!reduce) setInterval(tick, 1400);
+    });
+
     // Scroll reveal
-    var els = document.querySelectorAll('.cs-reveal');
+    var els = document.querySelectorAll('.cs-reveal, .cs-stagger, [data-count]');
     if (!('IntersectionObserver' in window)) {
         els.forEach(function (el) { el.classList.add('is-in'); });
     } else {
         var io = new IntersectionObserver(function (entries) {
             entries.forEach(function (e) {
-                if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-in');
+                    if (e.target.hasAttribute('data-count')) countUp(e.target);
+                    io.unobserve(e.target);
+                }
             });
         }, { rootMargin: '0px 0px -8% 0px' });
         els.forEach(function (el) { io.observe(el); });

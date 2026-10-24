@@ -40,7 +40,7 @@
     </div>
 </nav>
 <nav class="cs-subnav" aria-label="Research Platform pages">
-    <div class="cs-subnav__inner"><span class="cs-subnav__label">Research Platform</span><a href="research-platform.html" aria-current="page">Overview</a><a href="ml-analysis.html">ML Pipeline</a></div>
+    <div class="cs-subnav__inner"><span class="cs-subnav__label">Research Platform</span><a href="research-platform.html" aria-current="page">Overview</a><a href="fleet.html">Collection Fleet</a><a href="ml-analysis.html">ML Pipeline</a></div>
 </nav>
 
 <main>
@@ -207,11 +207,11 @@
         <p class="cs-eyebrow">What I built</p>
         <h2 id="comp-h">The components, <em>and the engineering in each.</em></h2>
         <p class="cs-sub">Each one is a production system with its own repository, release path and access model. I wrote them, deployed them and support them.</p>
-        <div class="cs-cards">
+        <div class="cs-cards cs-stagger">
 
             <article class="cs-card">
                 <div class="cs-card__k">01 · DISTRIBUTED COLLECTION FLEET</div>
-                <h3>Idle office PCs, turned into a self-managing fleet</h3>
+                <h3><a href="fleet.html" style="color:inherit;text-decoration:none">Idle office PCs, turned into a self-managing fleet →</a></h3>
                 <p>A Rust desktop agent turns any spare Windows PC into a worker. It runs several browser slots, keeps a local outbox so nothing is lost offline, and reports its free memory, CPU and disk on every heartbeat.</p>
                 <ul class="cs-list">
                     <li>PIN-based pairing; each machine then gets its own revocable key</li>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection Fleet — Rahul Srivastava</title>
+    <meta name="description" content="A Rust desktop agent that turns 10 idle office PCs into a self-managing collection fleet: PIN pairing, capacity heartbeats, fair scheduling, self-healing, self-updates, and plain-English control.">
+    <meta property="og:title" content="Collection Fleet — Rahul Srivastava">
+    <meta property="og:description" content="10 idle PCs, one self-driving fleet, controlled in plain English.">
+    <meta property="og:type" content="article">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>try{if(localStorage.getItem("rs-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+    <link rel="stylesheet" href="assets/site.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5MNCLNL933"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5MNCLNL933');
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "wz8ru0m1ax");
+    </script>
+</head>
+<body class="cs">
+
+<nav class="cs-nav" aria-label="Site">
+    <div class="cs-nav__inner">
+        <a class="cs-nav__brand" href="index.html"><span class="cs-nav__mark">RS</span><span class="cs-nav__name">Rahul Srivastava</span></a>
+        <div class="cs-nav__links"><a href="index.html"><span class="cs-hide-sm">Home</span></a><a href="research-platform.html" aria-current="page">Research<span class="cs-hide-sm"> Platform</span></a><a href="finance-suite.html">Finance<span class="cs-hide-sm"> Suite</span></a><a href="leadership.html">Leadership</a></div>
+        <button type="button" class="cs-theme" aria-label="Toggle dark mode"><svg class="cs-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="cs-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+    </div>
+</nav>
+<nav class="cs-subnav" aria-label="Research Platform pages">
+    <div class="cs-subnav__inner"><span class="cs-subnav__label">Research Platform</span><a href="research-platform.html">Overview</a><a href="fleet.html" aria-current="page">Collection Fleet</a><a href="ml-analysis.html">ML Pipeline</a></div>
+</nav>
+
+<main>
+<div class="cs-wrap">
+
+    <header class="cs-hero">
+        <p class="cs-eyebrow">Research Platform · Built in Rust</p>
+        <h1>10 idle PCs, <em>one self-driving fleet.</em></h1>
+        <p class="cs-lead">The office had retired PCs sitting switched off. I wrote a desktop agent in Rust that turns each one into a worker. It runs collection browsers, reports its own health, picks up work, recovers from stalls and updates itself. The team runs the whole fleet from a web page, or by just asking for what they want.</p>
+        <div class="lg-row">
+            <span class="lg-chip"><img src="assets/logos/rust.svg" alt="" class="lg-mono">Rust</span>
+            <span class="lg-chip"><img src="assets/logos/tokio.svg" alt="" class="lg-mono">Tokio · Axum</span>
+            <span class="lg-chip"><img src="assets/logos/githubactions.svg" alt="">GitHub Actions</span>
+            <span class="lg-chip"><img src="assets/logos/fastapi.svg" alt="">FastAPI control plane</span>
+            <span class="lg-chip"><img src="assets/logos/mcp.svg" alt="">MCP copilot</span>
+        </div>
+        <div class="cs-kpis cs-stagger" role="list">
+            <div class="cs-kpi" role="listitem"><div class="cs-kpi__num" data-count="10">10</div><div class="cs-kpi__lbl">Idle PCs put back to work</div><div class="cs-kpi__note">Retired office machines, no new hardware</div></div>
+            <div class="cs-kpi" role="listitem"><div class="cs-kpi__num">0</div><div class="cs-kpi__lbl">Manual updates</div><div class="cs-kpi__note">Agents and browser extensions update themselves</div></div>
+            <div class="cs-kpi" role="listitem"><div class="cs-kpi__num">2×</div><div class="cs-kpi__lbl">Restarts, then reroute</div><div class="cs-kpi__note">A stuck browser gets two retries, then its work moves to another machine</div></div>
+            <div class="cs-kpi" role="listitem"><div class="cs-kpi__num">1 chat</div><div class="cs-kpi__lbl">To run the fleet</div><div class="cs-kpi__note">Directors and juniors ask in plain English</div></div>
+        </div>
+    </header>
+
+    <!-- ── Live console (simulated) ── -->
+    <section class="cs-section cs-reveal" aria-labelledby="con-h" style="padding-top:0;border-top:0">
+        <h2 id="con-h" style="font-size:clamp(1.3rem,2.6vw,1.7rem)">The control room</h2>
+        <p class="cs-sub">A simulation of the fleet page: every machine, every browser slot, a live event log and the ops copilot. The behaviour mirrors the real system; the data is made up.</p>
+        <div class="fl-console">
+            <div class="fl-console__bar">
+                <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span>Fleet · 10 machines</span>
+                <span class="fl-sim">Simulated</span>
+                <span class="fl-live" id="flStatus">Live</span>
+            </div>
+            <div class="fl-body">
+                <div>
+                    <div class="fl-grid" id="flGrid" aria-label="Machines"></div>
+                    <div class="fl-legend" aria-hidden="true">
+                        <span><i style="background:color-mix(in srgb,var(--cs-primary) 22%,var(--cs-sunken))"></i>Collecting</span>
+                        <span><i style="background:color-mix(in srgb,var(--cs-lime) 45%,var(--cs-sunken))"></i>Classifying</span>
+                        <span><i style="background:color-mix(in srgb,var(--cs-warn) 35%,var(--cs-sunken))"></i>Stalled</span>
+                        <span><i style="background:var(--cs-sunken)"></i>Idle</span>
+                    </div>
+                </div>
+                <div class="fl-side">
+                    <div class="fl-side__col">
+                        <div class="fl-side__h">Ops copilot</div>
+                        <div class="fl-chat" id="flChat" aria-live="polite"></div>
+                    </div>
+                    <div class="fl-side__col">
+                        <div class="fl-side__h">Event log</div>
+                        <div class="fl-log" id="flLog" aria-live="off"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Lifecycle ── -->
+    <section class="cs-section cs-reveal" aria-labelledby="life-h">
+        <p class="cs-eyebrow">Lifecycle</p>
+        <h2 id="life-h">From a dusty PC <em>to a fleet worker.</em></h2>
+        <div class="fl-life cs-stagger">
+            <div><div class="ic" aria-hidden="true">🔑</div><h3>Pair</h3><p>An admin issues a short-lived PIN. The agent presents it once and receives its own revocable device key.</p></div>
+            <div><div class="ic" aria-hidden="true">💓</div><h3>Heartbeat</h3><p>Every beat reports free memory, CPU, disk, slot capacity and what each slot is doing.</p></div>
+            <div><div class="ic" aria-hidden="true">🧭</div><h3>Schedule</h3><p>The reply tells each slot which job to run, favouring the job with the most hours left.</p></div>
+            <div><div class="ic" aria-hidden="true">🩹</div><h3>Self-heal</h3><p>A slot with no progress gets restarted. After two restarts, its work moves to another machine.</p></div>
+            <div><div class="ic" aria-hidden="true">🚀</div><h3>Self-update</h3><p>Tagging a release builds a zip in CI. Every machine downloads it and updates itself.</p></div>
+        </div>
+    </section>
+
+    <!-- ── Engineering ── -->
+    <section class="cs-section cs-reveal" aria-labelledby="eng-h">
+        <p class="cs-eyebrow">Under the hood</p>
+        <h2 id="eng-h">Small agent, <em>serious engineering.</em></h2>
+        <div class="cs-cards cs-stagger">
+            <article class="cs-card cs-glow">
+                <div class="cs-card__k">RUST · TOKIO · AXUM</div>
+                <h3>A tray app that runs itself</h3>
+                <p>An async Rust agent sits in the system tray. Its own window is a local page protected by a token minted at launch.</p>
+            </article>
+            <article class="cs-card cs-glow">
+                <div class="cs-card__k">REAL BROWSERS</div>
+                <h3>Full-speed browsers, out of the way</h3>
+                <p>The agent launches real (not headless) browser windows with the collection extensions, then parks them off-screen so they keep running at full speed. A window pops back only when a site needs a human.</p>
+            </article>
+            <article class="cs-card cs-glow">
+                <div class="cs-card__k">LOCAL OUTBOX</div>
+                <h3>Never loses a row</h3>
+                <p>Collected rows land in a local database first and upload when the network allows, so a dropped connection costs nothing.</p>
+            </article>
+            <article class="cs-card cs-glow">
+                <div class="cs-card__k">FAIR SCHEDULING</div>
+                <h3>Placement that doesn't starve</h3>
+                <p>Every job with work gets at least one browser, the job with the most hours left gets more, and browsers don't hop between jobs. Time-left estimates come from measured throughput.</p>
+            </article>
+            <article class="cs-card cs-glow">
+                <div class="cs-card__k">HOT UPDATES</div>
+                <h3>Ships itself</h3>
+                <p>The agent updates from tagged releases. The browser extensions update from the portal build within minutes, and each machine restarts its browsers on the new code.</p>
+            </article>
+            <article class="cs-card cs-glow">
+                <div class="cs-card__k">NETWORK &amp; SCHEDULES</div>
+                <h3>Plays nice with the office</h3>
+                <p>Built-in VPN exits adapt when another VPN is detected. Quiet hours pause a machine or run fewer browsers on a schedule, and slot caps are set per machine.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ── Copilot guardrails ── -->
+    <section class="cs-section cs-reveal" aria-labelledby="gr-h">
+        <p class="cs-eyebrow">Plain-English control, safely</p>
+        <h2 id="gr-h">A copilot that <em>can't break things.</em></h2>
+        <p class="cs-sub">The copilot uses the same tools as the fleet page, exposed over the Model Context Protocol. The limits live in code, not in a prompt.</p>
+        <div class="cs-table-wrap">
+            <table class="cs-table">
+                <thead><tr><th>Guardrail</th><th>What it means</th></tr></thead>
+                <tbody>
+                    <tr><td>No destructive tools</td><td>Nothing can delete data, touch users or keys, or clear a machine's outbox.</td></tr>
+                    <tr><td>Dry-run first</td><td>Every action can be rehearsed inside a transaction that is then rolled back.</td></tr>
+                    <tr><td>Audit &amp; undo</td><td>Every action is logged, and most can be undone in one click.</td></tr>
+                    <tr><td>Fleet-wide = confirm</td><td>Actions that target every machine need explicit confirmation and are rate-limited.</td></tr>
+                    <tr><td>Scoped keys</td><td>Fleet control and data work use separate keys, each limited to 60 calls a minute.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</div>
+</main>
+
+<footer class="cs-foot">
+    <div class="cs-wrap">
+        <div class="cs-foot__links">
+            <a href="index.html">Home</a>
+            <a href="research-platform.html">Research Platform</a>
+            <a href="finance-suite.html">Finance Suite</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="https://www.linkedin.com/in/rahul-srivastava97/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/rahulsrivastava97" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        Research platform figures are real outcomes; internal names, data sources and identifying details are withheld. Finance suite demo data is synthetic.
+    </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+(function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var grid = document.getElementById('flGrid');
+    var log = document.getElementById('flLog');
+    var chat = document.getElementById('flChat');
+    if (!grid) return;
+
+    var STATES = ['collect', 'collect', 'collect', 'classify', 'idle'];
+    var pcs = [];
+    for (var i = 1; i <= 10; i++) {
+        var slots = i % 3 === 0 ? 3 : 4, s = [];
+        for (var k = 0; k < slots; k++) s.push(STATES[Math.floor(Math.random() * STATES.length)]);
+        pcs.push({ id: 'PC-' + (i < 10 ? '0' + i : i), slots: s, cpu: 30 + Math.random() * 40, ram: 35 + Math.random() * 35, disk: 30 + Math.random() * 45,
+                   state: i === 10 ? 'quiet' : 'online', ver: '0.2.3', stall: -1, upd: 0 });
+    }
+
+    function render() {
+        grid.innerHTML = pcs.map(function (p, idx) {
+            var st = p.state === 'quiet' ? '<span class="fl-pc__state quiet">☾ quiet</span>'
+                   : p.upd > 0 ? '<span class="fl-pc__state upd">Updating</span>'
+                   : '<span class="fl-pc__state">v' + p.ver + '</span>';
+            var slots = p.slots.map(function (x) {
+                var c = p.state === 'quiet' || p.upd > 0 ? '' : (x === 'idle' ? '' : x);
+                return '<div class="fl-slot ' + c + '"></div>';
+            }).join('');
+            return '<div class="fl-pc' + (p.state === 'quiet' ? ' quiet' : '') + '" data-i="' + idx + '">' +
+                '<div class="fl-pc__head"><span class="fl-pc__name">' + p.id + '</span>' + st + '</div>' +
+                '<div class="fl-slots">' + slots + '</div>' +
+                '<div class="fl-meter"><span>CPU</span><b><i style="width:' + Math.round(p.state === 'quiet' ? 6 : p.cpu) + '%"></i></b></div>' +
+                '<div class="fl-meter ram"><span>RAM</span><b><i style="width:' + Math.round(p.ram) + '%"></i></b></div>' +
+                '<div class="fl-meter disk"><span>DISK</span><b><i style="width:' + Math.round(p.disk) + '%"></i></b></div>' +
+                '</div>';
+        }).join('');
+    }
+
+    function update() {
+        pcs.forEach(function (p) {
+            p.cpu = Math.max(12, Math.min(92, p.cpu + (Math.random() - 0.5) * 18));
+            p.ram = Math.max(25, Math.min(85, p.ram + (Math.random() - 0.5) * 8));
+            if (p.state === 'quiet') return;
+            if (p.upd > 0) { p.upd--; if (p.upd === 0) { p.ver = '0.2.4'; addLog('ok', p.id + ' back online on v0.2.4'); } return; }
+            if (p.stall >= 0) {
+                if (--p.stallTicks <= 0) { p.slots[p.stall] = 'collect'; addLog('ok', p.id + ' slot ' + (p.stall + 1) + ' restarted, progress resumed'); p.stall = -1; }
+                return;
+            }
+            if (Math.random() < 0.25) {
+                var k = Math.floor(Math.random() * p.slots.length);
+                p.slots[k] = STATES[Math.floor(Math.random() * STATES.length)];
+            }
+        });
+        var r = Math.random(), live = pcs.filter(function (p) { return p.state !== 'quiet' && p.upd === 0 && p.stall < 0; });
+        var p = live[Math.floor(Math.random() * live.length)];
+        if (!p) return;
+        if (r < 0.12) {
+            p.stall = Math.floor(Math.random() * p.slots.length); p.slots[p.stall] = 'stall'; p.stallTicks = 3;
+            addLog('warn', p.id + ' slot ' + (p.stall + 1) + ' no progress for 15 min');
+        } else if (r < 0.18 && p.ver !== '0.2.4') {
+            p.upd = 3; addLog('hi', p.id + ' downloading agent v0.2.4…');
+        } else if (r < 0.45) {
+            var n = 40 + Math.floor(Math.random() * 260);
+            addLog('', p.id + ' uploaded ' + n + ' rows from outbox');
+        } else if (r < 0.55) {
+            var q = live[Math.floor(Math.random() * live.length)];
+            if (q && q !== p) addLog('hi', 'Scheduler moved 1 browser ' + p.id + ' → ' + q.id + ' (most hours left)');
+        }
+    }
+
+    function clock() { var d = new Date(); return d.toTimeString().slice(0, 8); }
+    function addLog(cls, text) {
+        var div = document.createElement('div');
+        div.innerHTML = '<span class="t">' + clock() + '</span><span class="' + cls + '">' + text + '</span>';
+        log.appendChild(div);
+        while (log.children.length > 8) log.removeChild(log.firstChild);
+    }
+    function flash(id) {
+        var idx = pcs.findIndex(function (p) { return p.id === id; });
+        var el = grid.querySelector('[data-i="' + idx + '"]');
+        if (el) { el.classList.add('flash'); setTimeout(function () { el.classList.remove('flash'); }, 2200); }
+    }
+
+    // Copilot conversations
+    var convos = [
+        [['me', 'What\'s stuck right now?'],
+         ['bot', 'PC-07 · slot 2 has made no progress for 18 minutes. Restart it?', [], 'PC-07'],
+         ['me', 'Yes, restart it'],
+         ['bot', 'Restarted PC-07 slot 2. Progress resumed.', ['ok:dry-run ✓', 'audit #4821', 'undo'], 'PC-07']],
+        [['me', 'Move the physics batch from PC-05 to PC-09'],
+         ['bot', 'Dry run: 3 queued jobs would move and PC-09 has room. Applying…', ['ok:dry-run ✓'], 'PC-05'],
+         ['bot', 'Done. PC-09 is now running 4 of 4 slots.', ['audit #4822', 'undo'], 'PC-09']],
+        [['me', 'How long until the current university is finished?'],
+         ['bot', 'About 6.5 hours at the current rate (measured in units per browser-hour). Adding PC-03 would bring it down to about 5 hours.', [], 'PC-03']],
+        [['me', 'Restart every machine'],
+         ['bot', 'That targets the whole fleet, so I need explicit confirmation. Fleet-wide restarts can also run only once every 10 minutes.', ['confirm required'], null]]
+    ];
+    function bubble(who, text, tags) {
+        var d = document.createElement('div');
+        d.className = 'fl-msg fl-msg--' + who;
+        d.textContent = text;
+        (tags || []).forEach(function (t) {
+            var s = document.createElement('span');
+            s.className = 'tag' + (t.indexOf('ok:') === 0 ? ' ok' : '');
+            s.textContent = t.replace('ok:', '');
+            d.appendChild(document.createElement('br'));
+            d.appendChild(s);
+        });
+        chat.appendChild(d);
+        while (chat.children.length > 4) chat.removeChild(chat.firstChild);
+        return d;
+    }
+    function playConvo(ci) {
+        var c = convos[ci % convos.length], step = 0;
+        chat.innerHTML = '';
+        function next() {
+            if (step >= c.length) { setTimeout(function () { playConvo(ci + 1); }, 4200); return; }
+            var m = c[step++];
+            if (m[0] === 'bot') {
+                var t = document.createElement('div');
+                t.className = 'fl-msg fl-msg--bot';
+                t.innerHTML = '<span class="fl-typing"><i></i><i></i><i></i></span>';
+                chat.appendChild(t);
+                setTimeout(function () {
+                    t.remove(); bubble('bot', m[1], m[2]);
+                    if (m[3]) { flash(m[3]); addLog('hi', 'copilot · ' + m[1].split('.')[0].slice(0, 54)); }
+                    setTimeout(next, 1700);
+                }, 1100);
+            } else {
+                bubble('me', m[1]); setTimeout(next, 900);
+            }
+        }
+        next();
+    }
+
+    render();
+    addLog('ok', '10 machines online · 1 in quiet hours');
+    addLog('', 'PC-02 uploaded 184 rows from outbox');
+    if (reduce) {
+        convos[0].forEach(function (m) { bubble(m[0], m[1], m[2]); });
+        return;
+    }
+    var visible = true;
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(grid);
+    }
+    setInterval(function () { if (!visible || document.hidden) return; update(); render(); }, 1300);
+    playConvo(0);
+})();
+</script>
+</body>
+</html>

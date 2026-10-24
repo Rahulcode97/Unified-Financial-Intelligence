@@ -40,7 +40,7 @@
     </div>
 </nav>
 <nav class="cs-subnav" aria-label="Finance Suite pages">
-    <div class="cs-subnav__inner"><span class="cs-subnav__label">Finance Suite</span><a href="finance-suite.html" aria-current="page">Overview</a><a href="dashboard.html">Dashboard</a><a href="graphs.html">Analytics</a><a href="ccavenue-master.html">CCAvenue</a><a href="paypal-master.html">PayPal</a><a href="reports.html">Reports</a><a href="portal-account.html">Access</a><a href="login.html">Passkeys</a><a href="ml-finance.html">Forecasting</a><a href="ai-integration.html">AI Assistant</a></div>
+    <div class="cs-subnav__inner"><span class="cs-subnav__label">Finance Suite</span><a href="finance-suite.html" aria-current="page">Overview</a><a href="dashboard.html">Dashboard</a><a href="graphs.html">Analytics</a><a href="ccavenue-master.html">CCAvenue</a><a href="paypal-master.html">PayPal</a><a href="reports.html">Reports</a><a href="portal-account.html">Access</a><a href="ml-finance.html">Forecasting</a><a href="ai-integration.html">AI Assistant</a></div>
 </nav>
 
 <main>
@@ -56,7 +56,7 @@
             <li class="cs-chip">Node.js · PHP</li>
             <li class="cs-chip">MySQL · NoSQL</li>
             <li class="cs-chip">Google Cloud</li>
-            <li class="cs-chip">Passkeys · RBAC</li>
+            <li class="cs-chip">RBAC · Encryption</li>
         </ul>
         <div class="cs-cta-row">
             <a class="cs-btn" href="dashboard.html">Open the interactive demo →</a>
@@ -101,7 +101,7 @@
         <figure class="cs-diagram cs-diagram--scroll" style="margin:0 0 1.5rem">
             <svg viewBox="0 0 960 240" role="img" aria-labelledby="fa-t fa-d">
                 <title id="fa-t">Finance suite architecture</title>
-                <desc id="fa-d">CCAvenue, PayPal and bank data flow through Node and PHP ingestion APIs into a Python match engine. The engine writes to MySQL on Google Cloud, which feeds the React console and reports. Passkeys and role-based access protect the console.</desc>
+                <desc id="fa-d">CCAvenue, PayPal and bank data flow through Node and PHP ingestion APIs into a Python match engine. The engine writes to MySQL on Google Cloud, which feeds the React console and reports. Role-based access protects the console.</desc>
                 <defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="dg-arrow--hi"/></marker></defs>
                 <rect class="dg-box" x="10" y="20" width="150" height="50" rx="10"/><text class="dg-t" x="85" y="50" text-anchor="middle">CCAvenue</text>
                 <rect class="dg-box" x="10" y="90" width="150" height="50" rx="10"/><text class="dg-t" x="85" y="120" text-anchor="middle">PayPal (multi-FX)</text>
@@ -121,7 +121,7 @@
                 <path class="dg-line dg-line--hi" d="M600 115 H646" marker-end="url(#fa)"/>
                 <path class="dg-line dg-line--hi" d="M790 100 L826 80" marker-end="url(#fa)"/>
                 <path class="dg-line dg-line--hi" d="M790 130 L826 155" marker-end="url(#fa)"/>
-                <text class="dg-lbl" x="480" y="225" text-anchor="middle">passkeys · RBAC · encrypted transaction logs across every layer</text>
+                <text class="dg-lbl" x="480" y="225" text-anchor="middle">role-based access · encrypted transaction logs across every layer</text>
             </svg>
         </figure>
         <div class="cs-table-wrap">
@@ -131,7 +131,7 @@
                     <tr><td>Frontend / desktop</td><td>React for the web; Tauri for a lightweight, secure native shell where a desktop app is needed.</td></tr>
                     <tr><td>Backend &amp; APIs</td><td>Node.js and PHP for gateway APIs; Python for reconciliation logic, refunds and analysis.</td></tr>
                     <tr><td>Database / cloud</td><td>MySQL plus NoSQL on Google Cloud for fast reads across large transaction sets.</td></tr>
-                    <tr><td>Security</td><td>Passkey (biometric or hardware) sign-in, granular role-based access, and encrypted transaction logs.</td></tr>
+                    <tr><td>Security</td><td>Granular role-based access, a role × page permission matrix, and encrypted transaction logs.</td></tr>
                 </tbody>
             </table>
         </div>
@@ -147,7 +147,7 @@
             <a class="cs-card" href="ccavenue-master.html" style="text-decoration:none"><div class="cs-card__k">03 · CCAVENUE</div><h3>Order master</h3><p>Order grid with card brands, event tagging, verification states and a full detail dialog.</p></a>
             <a class="cs-card" href="paypal-master.html" style="text-decoration:none"><div class="cs-card__k">04 · PAYPAL</div><h3>Multi-currency master</h3><p>USD, GBP and EUR payments with live INR equivalents, fee analysis and settlement tracking.</p></a>
             <a class="cs-card" href="reports.html" style="text-decoration:none"><div class="cs-card__k">05 · REPORTS</div><h3>Cross-channel reconciliation</h3><p>PayPal and bank NEFT/RTGS lined up by reference ID.</p></a>
-            <a class="cs-card" href="portal-account.html" style="text-decoration:none"><div class="cs-card__k">06 · ACCESS</div><h3>RBAC &amp; user directory</h3><p>A role × page permission matrix, passkey management and granular access.</p></a>
+            <a class="cs-card" href="portal-account.html" style="text-decoration:none"><div class="cs-card__k">06 · ACCESS</div><h3>RBAC &amp; user directory</h3><p>A role × page permission matrix, user directory and granular access control.</p></a>
             <a class="cs-card" href="ml-finance.html" style="text-decoration:none"><div class="cs-card__k">07 · FORECASTING</div><h3>Revenue forecasting ML</h3><p>Prophet + ARIMA forecasting and K-Means + DBSCAN clustering of payment timing.</p></a>
             <a class="cs-card" href="ai-integration.html" style="text-decoration:none"><div class="cs-card__k">08 · AI ASSISTANT</div><h3>Finance chatbot</h3><p>Web and Telegram assistant with read-only LLM tools, scoped by user, costing pennies a day.</p></a>
         </div>

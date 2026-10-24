@@ -233,7 +233,7 @@
     </div>
 </nav>
 <nav class="cs-subnav" aria-label="Finance Suite pages">
-    <div class="cs-subnav__inner"><span class="cs-subnav__label">Finance Suite</span><a href="finance-suite.html">Overview</a><a href="dashboard.html">Dashboard</a><a href="graphs.html">Analytics</a><a href="ccavenue-master.html">CCAvenue</a><a href="paypal-master.html">PayPal</a><a href="reports.html">Reports</a><a href="portal-account.html">Access</a><a href="login.html">Passkeys</a><a href="ml-finance.html" aria-current="page">Forecasting</a><a href="ai-integration.html">AI Assistant</a></div>
+    <div class="cs-subnav__inner"><span class="cs-subnav__label">Finance Suite</span><a href="finance-suite.html">Overview</a><a href="dashboard.html">Dashboard</a><a href="graphs.html">Analytics</a><a href="ccavenue-master.html">CCAvenue</a><a href="paypal-master.html">PayPal</a><a href="reports.html">Reports</a><a href="portal-account.html">Access</a><a href="ml-finance.html" aria-current="page">Forecasting</a><a href="ai-integration.html">AI Assistant</a></div>
 </nav>
 <div class="app-shell">
     <div class="main-content">
@@ -558,7 +558,7 @@ results = {
 
 <span class="tok-cm"># Token validated by FastAPI middleware</span>
 <span class="tok-cm"># Signed with RS256, exp: 1h</span>
-<span class="tok-cm"># Audience: ml-api.grscholastic.in</span></pre>
+<span class="tok-cm"># Audience: ml-api.example.com</span></pre>
                             </div>
                         </div>
                         <button class="ml-run-btn" id="forecastRunBtn" onclick="runForecastAPI()">
@@ -963,8 +963,8 @@ function runAPI(btnId, logId, resultId, steps, delayMs) {
 function runForecastAPI() {
     runAPI('forecastRunBtn','forecastLog','forecastResult', [
         '<span class="log-dim">→</span> <span class="log-hi">POST</span> /api/v1/forecast',
-        '<span class="log-dim">→</span> Validating JWT (RS256, aud: ml-api.grscholastic.in)…',
-        '<span class="log-ok">✓</span> Auth OK · sub: rahul.srivastava@grscholastic.in',
+        '<span class="log-dim">→</span> Validating JWT (RS256, aud: ml-api.example.com)…',
+        '<span class="log-ok">✓</span> Auth OK · sub: rahul.srivastava@example.com',
         '<span class="log-dim">→</span> Connecting Cloud SQL Proxy (asia-south1)…',
         '<span class="log-ok">✓</span> DB connected · fetching 12mo transaction data…',
         '<span class="log-dim">→</span> Aggregating monthly revenue (2,416 rows)…',

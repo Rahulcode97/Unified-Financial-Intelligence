@@ -1,6 +1,6 @@
 # Rahul Srivastava: Engineering & Data Platforms
 
-Portfolio of two systems I designed, built and operate end to end.
+Portfolio of the systems I design, build and operate end to end. Two flagship projects are written up as case studies here.
 
 ### Live site
 https://rahulcode97.github.io/Unified-Financial-Intelligence/
@@ -40,7 +40,7 @@ Internal names, data sources and identifying details are withheld for confidenti
 * **Efficiency:** reporting cycles cut from 1 week to under 1 hour
 * **Accuracy:** automated reconciliation across PayPal, CCAvenue and bank transfers, removing GST and tax mismatches
 * **Scale:** ₹63 Cr+ of transactions across 5 event portfolios
-* **Security:** passkey authentication and RBAC
+* **Security:** role-based access control and encrypted transaction logs
 * **ML (earlier work):** Prophet + ARIMA forecasting and K-Means + DBSCAN payment clustering ([page](https://rahulcode97.github.io/Unified-Financial-Intelligence/ml-finance.html))
 
 **Stack:** React · Node.js · PHP · Python · MySQL · Google Cloud
@@ -49,7 +49,7 @@ Internal names, data sources and identifying details are withheld for confidenti
 
 ## Site structure
 * `index.html`: overview of both projects, leadership and stack
-* `research-platform.html`, `ml-analysis.html`: research platform case study
-* `finance-suite.html` plus the demo pages (`dashboard`, `graphs`, `ccavenue-master`, `paypal-master`, `reports`, `portal-account`, `login`, `ml-finance`, `ai-integration`): finance suite
+* `research-platform.html`, `fleet.html`, `ml-analysis.html`: research platform case study
+* `finance-suite.html` plus the demo pages (`dashboard`, `graphs`, `ccavenue-master`, `paypal-master`, `reports`, `portal-account`, `ml-finance`, `ai-integration`): finance suite
 * `leadership.html`: leadership across both projects
 * `assets/site.css` and `assets/site.js`: the shared design system (Ink + Indigo, light and dark)
