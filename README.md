@@ -35,7 +35,7 @@ Internal names, data sources and identifying details are withheld for confidenti
 ---
 
 ## 2. Unified Financial Orchestration Suite
-[Interactive demo](https://rahulcode97.github.io/Unified-Financial-Intelligence/dashboard.html) · [Story](https://rahulcode97.github.io/Unified-Financial-Intelligence/impact.html)
+[Case study](https://rahulcode97.github.io/Unified-Financial-Intelligence/finance-suite.html) · [Interactive demo](https://rahulcode97.github.io/Unified-Financial-Intelligence/dashboard.html)
 
 * **Efficiency:** reporting cycles cut from 1 week to under 1 hour
 * **Accuracy:** automated reconciliation across PayPal, CCAvenue and bank transfers, removing GST and tax mismatches
@@ -44,3 +44,12 @@ Internal names, data sources and identifying details are withheld for confidenti
 * **ML (earlier work):** Prophet + ARIMA forecasting and K-Means + DBSCAN payment clustering ([page](https://rahulcode97.github.io/Unified-Financial-Intelligence/ml-finance.html))
 
 **Stack:** React · Node.js · PHP · Python · MySQL · Google Cloud
+
+---
+
+## Site structure
+* `index.html`: overview of both projects, leadership and stack
+* `research-platform.html`, `ml-analysis.html`: research platform case study
+* `finance-suite.html` plus the demo pages (`dashboard`, `graphs`, `ccavenue-master`, `paypal-master`, `reports`, `portal-account`, `login`, `ml-finance`, `ai-integration`): finance suite
+* `leadership.html`: leadership across both projects
+* `assets/site.css` and `assets/site.js`: the shared design system (Ink + Indigo, light and dark)

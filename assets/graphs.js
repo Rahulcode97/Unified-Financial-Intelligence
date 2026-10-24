@@ -5,7 +5,7 @@
     var MONTHS = ['Apr 25', 'May 25', 'Jun 25', 'Jul 25', 'Aug 25', 'Sep 25', 'Oct 25', 'Nov 25', 'Dec 25', 'Jan 26', 'Feb 26', 'Mar 26'];
 
     var CONF = [
-        { id: 'icrai', name: 'ICRAI 2026', color: '#0c5252' },
+        { id: 'icrai', name: 'ICRAI 2026', color: '#4f46e5' },
         { id: 'ncme', name: 'NCME 2026', color: '#0e7490' },
         { id: 'wcm', name: 'WCM 2026', color: '#059669' },
         { id: 'gs', name: 'Global Summit 2026', color: '#7c3aed' },
@@ -73,7 +73,7 @@
                 data: {
                     labels: MONTHS,
                     datasets: [
-                        { label: 'Gross Revenue', data: monthlyRevenue, borderColor: '#0c5252', backgroundColor: 'rgba(12, 82, 82, 0.12)', fill: true, tension: 0.35, borderWidth: 2 },
+                        { label: 'Gross Revenue', data: monthlyRevenue, borderColor: '#4f46e5', backgroundColor: 'rgba(79, 70, 229, 0.12)', fill: true, tension: 0.35, borderWidth: 2 },
                         { label: 'Payment Fees (PG + Gateway)', data: monthlyFees, borderColor: '#ea580c', backgroundColor: 'rgba(234, 88, 12, 0.1)', fill: true, tension: 0.35, borderWidth: 2 },
                         { label: 'Net Profit (After Fees & Est. COGS)', data: monthlyProfit, borderColor: '#059669', borderDash: [5, 4], tension: 0.35, borderWidth: 2, fill: false }
                     ]
@@ -83,7 +83,7 @@
                     maintainAspectRatio: false,
                     interaction: { mode: 'index', intersect: false },
                     plugins: {
-                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 14, font: { size: 10, family: "'Plus Jakarta Sans', sans-serif" } } },
+                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 14, font: { size: 10, family: "Inter, sans-serif" } } },
                         tooltip: { callbacks: { label: function (c) { return c.dataset.label + ': ' + fmtLakh(c.parsed.y); } } }
                     },
                     scales: {

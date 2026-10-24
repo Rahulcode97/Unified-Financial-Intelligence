@@ -4,17 +4,17 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 :root {
-    --lg-bg: #fbf9f6;
-    --lg-surface-low: #f5f3f0;
-    --lg-surface: #ffffff;
-    --lg-primary: #0c5252;
-    --lg-primary-mid: #2d6a6a;
-    --lg-on: #1b1c1a;
-    --lg-muted: #3f4848;
-    --lg-font-display: "Playfair Display", Georgia, serif;
-    --lg-font-body: "Source Sans 3", "Source Sans Pro", system-ui, sans-serif;
-    --lg-shadow: 0 2px 24px rgba(27, 28, 26, 0.08);
-    --lg-shadow-lg: 0 24px 60px -20px rgba(12, 82, 82, 0.2);
+    --lg-bg: var(--cs-bg);
+    --lg-surface-low: var(--cs-sunken);
+    --lg-surface: var(--cs-surface);
+    --lg-primary: var(--cs-primary);
+    --lg-primary-mid: var(--cs-primary-2);
+    --lg-on: var(--cs-ink);
+    --lg-muted: var(--cs-ink-soft);
+    --lg-font-display: "Space Grotesk", Georgia, serif;
+    --lg-font-body: "Inter", system-ui, sans-serif;
+    --lg-shadow: 0 2px 24px rgba(15, 18, 34, 0.08);
+    --lg-shadow-lg: 0 24px 60px -20px rgba(79, 70, 229, 0.2);
 }
 
 body.login-atelier {
@@ -26,6 +26,10 @@ body.login-atelier {
     background: var(--lg-bg);
     position: relative;
     overflow-x: hidden;
+}
+.login-atelier__stage {
+    min-height: calc(100vh - 110px);
+    min-height: calc(100dvh - 110px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,8 +41,8 @@ body.login-atelier {
     inset: 0;
     pointer-events: none;
     background:
-        radial-gradient(ellipse 80% 50% at 20% 20%, rgba(12, 82, 82, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(45, 106, 106, 0.1) 0%, transparent 45%);
+        radial-gradient(ellipse 80% 50% at 20% 20%, rgba(79, 70, 229, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(79, 70, 229, 0.1) 0%, transparent 45%);
 }
 
 .login-atelier__shell {
@@ -131,7 +135,7 @@ body.login-atelier {
 .login-atelier__input::placeholder { color: #707978; opacity: 0.85; }
 .login-atelier__input:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(12, 82, 82, 0.22);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.22);
     background: #fff;
 }
 .login-atelier__email-block { margin-bottom: 1.15rem; }
@@ -165,13 +169,13 @@ body.login-atelier {
 .login-atelier__btn--primary {
     background: linear-gradient(90deg, var(--lg-primary), var(--lg-primary-mid));
     color: #fff;
-    box-shadow: 0 4px 16px rgba(12, 82, 82, 0.28);
+    box-shadow: 0 4px 16px rgba(79, 70, 229, 0.28);
 }
 .login-atelier__btn--primary:hover { opacity: 0.95; }
 .login-atelier__btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .login-atelier__btn--google {
     background: #fff;
-    color: #1b1c1a;
+    color: #0f1222;
     border: 1px solid rgba(191, 200, 200, 0.9);
     box-shadow: var(--lg-shadow);
 }
@@ -189,8 +193,8 @@ body.login-atelier {
     margin-top: 1rem;
     padding: 0.75rem 1rem;
     border-radius: 0.75rem;
-    background: rgba(12, 82, 82, 0.06);
-    border: 1px solid rgba(12, 82, 82, 0.12);
+    background: rgba(79, 70, 229, 0.06);
+    border: 1px solid rgba(79, 70, 229, 0.12);
     font-size: 0.8rem;
     color: var(--lg-muted);
     line-height: 1.45;
