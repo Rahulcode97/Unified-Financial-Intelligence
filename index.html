@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rahul Srivastava — Finance Engineering Portfolio</title>
-    <meta name="description" content="Full-stack fintech portfolio by Rahul Srivastava — automated payment reconciliation, multi-gateway analytics, Python data analysis, and revenue reporting across ₹63 Cr of transactions.">
-    <meta property="og:title" content="Rahul Srivastava — Finance Engineering Portfolio">
-    <meta property="og:description" content="Full-stack fintech system: automated reconciliation, CCAvenue/PayPal APIs, Python analytics, RBAC. Built independently.">
+    <title>Rahul Srivastava — Engineering &amp; Data Platforms</title>
+    <meta name="description" content="Portfolio of Rahul Srivastava: an end-to-end research intelligence platform (10M+ records, 2,000+ universities, ML targeting, a 10-PC collection fleet, an LLM ops copilot) and a finance reconciliation suite handling ₹63 Cr of transactions.">
+    <meta property="og:title" content="Rahul Srivastava — Engineering &amp; Data Platforms">
+    <meta property="og:description" content="Two systems built end to end: a research intelligence platform with ML targeting (+40% open rate) and a finance reconciliation suite (a week of work cut to under an hour).">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,6 +75,36 @@
         .nav-cta { font: 700 0.82rem/1 "Source Sans 3", sans-serif; color: #fff !important; background: var(--teal-700); padding: 9px 14px !important; border-radius: 999px !important; transition: background .15s, transform .15s; }
         .nav-cta:hover { background: var(--teal-900) !important; transform: translateY(-1px); }
         @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+        .flagship {
+            position: relative; z-index: 99;
+            padding: 104px clamp(16px, 4vw, 32px) 40px;
+            background:
+                radial-gradient(ellipse 80% 60% at 0% 0%, rgba(12,82,82,0.10), transparent 60%),
+                radial-gradient(ellipse 60% 50% at 100% 10%, rgba(183,121,31,0.08), transparent 55%);
+        }
+        .flagship__inner { max-width: 1180px; margin: 0 auto; }
+        .flagship__eyebrow { display: inline-flex; align-items: center; gap: 8px; font: 800 0.72rem/1 "Source Sans 3", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal-700); margin: 0 0 18px; }
+        .flagship__eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal-700); box-shadow: 0 0 0 4px rgba(12,82,82,0.12); }
+        .flagship h1 { font: 700 clamp(2rem, 5.4vw, 3.6rem)/1.06 "Playfair Display", Georgia, serif; letter-spacing: -0.02em; color: #1b1c1a; margin: 0 0 18px; max-width: 20ch; text-wrap: balance; }
+        .flagship h1 em { color: var(--teal-700); }
+        .flagship__lead { font: 400 clamp(1rem, 1.6vw, 1.15rem)/1.6 "Source Sans 3", sans-serif; color: var(--ink-soft); max-width: 70ch; margin: 0 0 26px; }
+        .flagship__lead strong { color: #1b1c1a; }
+        .flagship__kpis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 0 0 26px; }
+        .flagship__kpis > div { background: #fff; border: 1px solid rgba(12,82,82,0.12); border-radius: 14px; padding: 16px; box-shadow: 0 4px 18px rgba(12,82,82,0.06); }
+        .flagship__kpis b { display: block; font: 700 clamp(1.5rem, 3vw, 2.1rem)/1 "Playfair Display", serif; color: var(--teal-700); margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+        .flagship__kpis span { font: 600 0.82rem/1.35 "Source Sans 3", sans-serif; color: var(--ink-soft); }
+        .flagship__cta { display: flex; flex-wrap: wrap; gap: 10px; }
+        .flagship__btn { font: 700 0.9rem/1 "Source Sans 3", sans-serif; text-decoration: none; color: #fff; background: var(--teal-700); padding: 13px 18px; border-radius: 999px; transition: background .15s, transform .15s; }
+        .flagship__btn:hover { background: var(--teal-900); transform: translateY(-1px); }
+        .flagship__btn--ghost { background: rgba(255,255,255,0.85); color: var(--teal-700); border: 1px solid rgba(12,82,82,0.16); }
+        .flagship__btn--ghost:hover { background: #fff; }
+        .flagship__next { margin: 30px 0 0; font: 500 0.9rem/1.5 "Source Sans 3", sans-serif; color: var(--ink-soft); }
+        @media (max-width: 960px) { .flagship__kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        @media (max-width: 560px) {
+            .flagship { padding-top: 88px; }
+            .flagship__kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
 
         .leadership-spotlight {
             position: relative; z-index: 99;
@@ -767,27 +797,40 @@
                     <stop stop-color="#0c5252"/><stop offset="1" stop-color="#2d6a6a"/>
                 </linearGradient></defs>
             </svg>
-            <span>Finance Console</span>
+            <span>Rahul Srivastava</span>
         </div>
         <div class="nav-links">
+            <a href="research-platform.html">Research Platform</a>
+            <a href="ml-analysis.html">ML</a>
             <a href="leadership.html">Leadership</a>
             <a href="ai-integration.html">AI</a>
             <a href="impact.html">Story</a>
             <a href="dashboard.html">Dashboard</a>
-            <a href="graphs.html">Analytics</a>
-            <a href="ml-analysis.html">ML</a>
-            <a class="nav-cta" href="leadership.html">How I build teams →</a>
+            <a class="nav-cta" href="research-platform.html">Flagship case study →</a>
         </div>
     </div>
 </div>
 
-<div class="leadership-spotlight">
-    <div class="leadership-spotlight__inner">
-        <span class="leadership-spotlight__badge">Leadership</span>
-        <p>Led technical hiring for the data/AI function — screened 10+ candidates and made final hiring decisions for 2 engineering hires, defining the technical bar for the role. Now training new hires and leading the next wave of projects.</p>
-        <a href="leadership.html">How I build teams →</a>
+<section class="flagship" aria-labelledby="flagship-h">
+    <div class="flagship__inner">
+        <p class="flagship__eyebrow"><span class="dot"></span>Flagship · Built end to end · 2025–26</p>
+        <h1 id="flagship-h">I build the systems that tell a business <em>who to reach, and run themselves.</em></h1>
+        <p class="flagship__lead">Most recently: a research intelligence platform. It collects public academic profiles on a fleet of repurposed PCs, classifies <strong>10M+ records</strong> by department and field with a hybrid ML + LLM pipeline, and ranks researchers by work history so marketing reaches the right people. The team operates all of it in plain English. I scoped it with the people who use it, built it, and run the infrastructure under it.</p>
+        <div class="flagship__kpis">
+            <div><b>10M+</b><span>records classified &amp; deduplicated</span></div>
+            <div><b>2,000+</b><span>universities covered</span></div>
+            <div><b>+40%</b><span>outreach open rate</span></div>
+            <div><b>~30 h</b><span>manual work removed per week</span></div>
+            <div><b>10</b><span>idle PCs turned into a managed fleet</span></div>
+        </div>
+        <div class="flagship__cta">
+            <a class="flagship__btn" href="research-platform.html">Read the case study →</a>
+            <a class="flagship__btn flagship__btn--ghost" href="ml-analysis.html">See the ML pipeline</a>
+            <a class="flagship__btn flagship__btn--ghost" href="leadership.html">Leadership &amp; hiring</a>
+        </div>
+        <p class="flagship__next">Below: <strong>case study 2</strong>, a finance reconciliation suite that cut a week of work to under an hour. Scroll ↓</p>
     </div>
-</div>
+</section>
 
 <div class="stage-wrap" id="stageWrap">
     <div class="stage" id="stage">
@@ -805,8 +848,8 @@
             <div class="copy-stack" id="copyStack">
 
                 <div class="scene is-active" data-scene="0">
-                    <div class="scene-eyebrow"><span class="dot"></span>The problem</div>
-                    <h1>A week of finance work, <em>buried in spreadsheets.</em></h1>
+                    <div class="scene-eyebrow"><span class="dot"></span>Finance suite · The problem</div>
+                    <h2>Case study 2: a week of finance work, <em>buried in spreadsheets.</em></h2>
                     <p>Three payment gateways. Hundreds of transactions a month. A finance team reconciling them by hand, line by line — <strong>40+ hours every cycle</strong>, with errors that took two months to surface.</p>
                     <div class="scene-meta"><span>CCAvenue</span><span>PayPal</span><span>Bank NEFT/RTGS</span></div>
                 </div>
@@ -969,8 +1012,9 @@
     <div class="identity">
         <div class="identity__avatar">RS</div>
         <h2 class="identity__name">Rahul Srivastava</h2>
-        <p class="identity__role">Full-stack engineer · Data analyst · Fintech</p>
-        <p class="identity__bio">I design and build full-stack systems independently — React frontends, Node/PHP APIs, Python data pipelines, MySQL on Google Cloud — solving real operational bottlenecks. One system cut a finance team's monthly payment reconciliation across three gateways from a full week to under an hour.</p>
+        <p class="identity__role">Engineering lead · Data &amp; ML platforms · Infrastructure</p>
+        <p class="identity__bio">I take operational problems from stakeholder interviews to production systems, and then run them. Most recently I built a research intelligence platform end to end: a Rust-agent collection fleet on repurposed PCs, a PostgreSQL system of record holding 10M+ records, a hybrid ML + LLM pipeline that classifies researchers and ranks them by work history (+40% outreach open rate), an LLM ops copilot that directors and juniors use to run the fleet in plain English, and the self-hosted infrastructure and deploy tooling beneath it.</p>
+        <p class="identity__bio">Before that, I designed and built full-stack systems independently — React frontends, Node/PHP APIs, Python data pipelines, MySQL on Google Cloud — solving real operational bottlenecks. One system cut a finance team's monthly payment reconciliation across three gateways from a full week to under an hour.</p>
         <p class="identity__bio">I've since moved deeper into applied AI: building an MCP-style tool-calling architecture that lets LLMs safely query internal systems and trigger actions (like generating and returning charts), and shipping a multi-LLM chatbot (OpenAI, Gemini, Anthropic) with a Telegram interface so leadership can get answers and visual reports on the go — scoped, secure, and running for pennies a day.</p>
         <p class="identity__bio">I work across the full stack and at the intersection of engineering, data, and AI — building systems that make complex workflows feel effortless, while owning technical decisions around cost, infrastructure, and hiring. I use AI tools (Claude Code, Cursor) throughout my development workflow.</p>
         <div class="identity__links">
@@ -1015,6 +1059,8 @@
                     <li class="stack-item"><img src="assets/logos/nodejs.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Node.js</span></li>
                     <li class="stack-item"><img src="assets/logos/php.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>PHP</span></li>
                     <li class="stack-item"><img src="assets/logos/restapi.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>REST APIs</span></li>
+                    <li class="stack-item"><img src="assets/logos/python.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Python · FastAPI</span></li>
+                    <li class="stack-item"><img src="assets/logos/rust.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Rust (Tokio · Axum)</span></li>
                     <li class="stack-item"><img src="assets/logos/passkey.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>WebAuthn</span></li>
                     <li class="stack-item"><img src="assets/logos/rbac.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>RBAC</span></li>
                 </ul>
@@ -1027,6 +1073,8 @@
                     <li class="stack-item"><img src="assets/logos/pandas.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Pandas</span></li>
                     <li class="stack-item"><img src="assets/logos/mysql.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>MySQL</span></li>
                     <li class="stack-item"><img src="assets/logos/neon.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Neon PostgreSQL</span></li>
+                    <li class="stack-item"><img src="assets/logos/postgresql.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>PostgreSQL 18 · partitioning</span></li>
+                    <li class="stack-item"><img src="assets/logos/python.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>scikit-learn</span></li>
                     <li class="stack-item"><img src="assets/logos/postgresql.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>SQL Analytics</span></li>
                 </ul>
             </div>
@@ -1047,6 +1095,8 @@
                 <ul class="stack-group__list">
                     <li class="stack-item"><img src="assets/logos/googlecloudrun.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Cloud Run</span></li>
                     <li class="stack-item"><img src="assets/logos/docker.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Docker</span></li>
+                    <li class="stack-item"><img src="assets/logos/cicd.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Coolify (self-hosted PaaS)</span></li>
+                    <li class="stack-item"><img src="assets/logos/typescript.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>VS Code extension dev</span></li>
                     <li class="stack-item"><img src="assets/logos/googlestorage.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Cloud Storage</span></li>
                     <li class="stack-item"><img src="assets/logos/artifactregistry.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Artifact Registry</span></li>
                     <li class="stack-item"><img src="assets/logos/git.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Git</span></li>
@@ -1064,6 +1114,8 @@
                     <li class="stack-item"><img src="assets/logos/vertexai.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Vertex AI</span></li>
                     <li class="stack-item"><img src="assets/logos/anthropic.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Anthropic API</span></li>
                     <li class="stack-item"><img src="assets/logos/cursor.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Cursor AI</span></li>
+                    <li class="stack-item"><img src="assets/logos/restapi.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Model Context Protocol</span></li>
+                    <li class="stack-item"><img src="assets/logos/restapi.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Grok (xAI) agents</span></li>
                     <li class="stack-item"><img src="assets/logos/anthropic.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Claude Code</span></li>
                     <li class="stack-item"><img src="assets/logos/telegram.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>Telegram Bot</span></li>
                     <li class="stack-item"><img src="assets/logos/whatsapp.svg" alt="" width="14" height="14" loading="lazy" decoding="async"><span>WhatsApp Business API</span></li>
@@ -1074,10 +1126,16 @@
     </section>
 
     <div class="grid-section">
-        <p class="grid-eyebrow">Explore the platform</p>
-        <h2>Every part of the system, fully interactive.</h2>
-        <p class="grid-lead">All data is synthetic. Every page is a real piece of the build, not a mockup.</p>
+        <p class="grid-eyebrow">Explore the work</p>
+        <h2>Two systems, built end to end.</h2>
+        <p class="grid-lead">The research platform is written up as a case study, with confidential details withheld. The finance suite pages are interactive and use synthetic data.</p>
         <div class="tiles">
+            <a class="tile tile--featured" href="research-platform.html">
+                <div class="tile__icon">◆</div>
+                <h3>Research intelligence platform</h3>
+                <p>10M+ records, 2,000+ universities, a 10-PC collection fleet, ML targeting and an LLM ops copilot. +40% open rate, ~30 h/week saved. <strong>Start here.</strong></p>
+                <div class="tile__arrow">Read the case study →</div>
+            </a>
             <a class="tile" href="ai-integration.html">
                 <div class="tile__icon">◎</div>
                 <h3>AI &amp; chat integration</h3>
@@ -1090,10 +1148,10 @@
                 <p>Technical hiring for data/AI — 10+ screened, 2 hired, onboarding in progress. Leading new projects as the team scales. <strong>Start here if you hire leads.</strong></p>
                 <div class="tile__arrow">See how I build teams →</div>
             </a>
-            <a class="tile tile--featured" href="impact.html">
+            <a class="tile" href="impact.html">
                 <div class="tile__icon">✦</div>
-                <h3>What I built &amp; why it matters</h3>
-                <p>Plain-English outcomes for any reader, plus the architecture and data story for technical hiring managers. <strong>Start here.</strong></p>
+                <h3>Finance suite: what I built &amp; why</h3>
+                <p>Plain-English outcomes plus the architecture and data story behind the reconciliation suite.</p>
                 <div class="tile__arrow">Read the story →</div>
             </a>
             <a class="tile" href="dashboard.html">
@@ -1110,9 +1168,15 @@
             </a>
             <a class="tile" href="ml-analysis.html">
                 <div class="tile__icon">◉</div>
-                <h3>ML analysis</h3>
-                <p>Prophet + ARIMA revenue forecasting and K-Means + DBSCAN payment clustering — synthetic demo with Chart.js and Cloud Run API panels.</p>
-                <div class="tile__arrow">Open ML analysis →</div>
+                <h3>ML pipeline</h3>
+                <p>Confidence-gated local classifier, LLM enrichment with provenance, fingerprint identity resolution and work-history ranking.</p>
+                <div class="tile__arrow">Open ML pipeline →</div>
+            </a>
+            <a class="tile" href="ml-finance.html">
+                <div class="tile__icon">◌</div>
+                <h3>Finance forecasting ML (earlier)</h3>
+                <p>Prophet + ARIMA revenue forecasting and K-Means + DBSCAN payment clustering, with Chart.js and Cloud Run API panels.</p>
+                <div class="tile__arrow">Open finance ML →</div>
             </a>
             <a class="tile" href="ccavenue-master.html">
                 <div class="tile__icon">💳</div>
@@ -1151,6 +1215,7 @@
 <footer class="foot">
     <a href="https://www.linkedin.com/in/rahul-srivastava97/" target="_blank" rel="noopener">LinkedIn</a> ·
     <a href="https://github.com/rahulsrivastava97" target="_blank" rel="noopener">GitHub</a> ·
+    <a href="research-platform.html">Research Platform</a> ·
     <a href="ai-integration.html">AI Integration</a> ·
     <a href="leadership.html">Leadership</a> ·
     <a href="impact.html">Story</a> ·
@@ -1158,7 +1223,7 @@
     <a href="graphs.html">Analytics</a> ·
     <a href="ml-analysis.html">ML</a>
     <div class="foot__notice">
-        <strong>Note:</strong> All figures, names, and transaction data on this site are entirely synthetic and for demonstration purposes only. No real financial or personal data is used. Built by Rahul Srivastava.
+        <strong>Note:</strong> Research platform figures are real outcomes; internal names, data sources and identifying details are withheld. Finance suite figures, names and transaction data are entirely synthetic and for demonstration purposes only. No real financial or personal data is used. Built by Rahul Srivastava.
     </div>
 </footer>
 
