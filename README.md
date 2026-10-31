@@ -15,7 +15,7 @@ Marketing used to reach academic researchers with blind lists kept in Excel. Thi
 **Impact**
 * **10M+** records under management, deduplicated to one identity each
 * **2,000+** universities covered, department by department
-* **8% → 36%** outreach open rate (4.5×) after moving from blind lists to work-history targeting
+* **8% → 36%** outreach open rate (4.5×) within two months of moving from blind lists to work-history targeting
 * **~30 hours/week** of manual spreadsheet work removed
 * **10 idle PCs** turned into a managed collection fleet, with no new hardware
 * Used daily by directors, marketing and the junior team
@@ -39,7 +39,7 @@ Internal names, data sources and identifying details are withheld for confidenti
 
 * **Efficiency:** reporting cycles cut from 1 week to under 1 hour
 * **Accuracy:** automated reconciliation across PayPal, CCAvenue and bank transfers, removing GST and tax mismatches
-* **Scale:** ₹63 Cr+ of transactions across 5 event portfolios
+* **Scale:** ₹63 Cr+ of transactions over five years across 5 event portfolios
 * **Security:** role-based access control and encrypted transaction logs
 * **ML (earlier work):** Prophet + ARIMA forecasting and K-Means + DBSCAN payment clustering ([page](https://rahulcode97.github.io/Unified-Financial-Intelligence/ml-finance.html))
 
